@@ -7,7 +7,7 @@ class Type(str,Enum):
     DAIRY= 'dairy'
     FUR= 'fur'
 
-class Float(float,Enum):
+class FloatScore(float,Enum):
     ZERO = 0
     HALF = 0.5
     FULL = 1.0
@@ -26,7 +26,7 @@ class ResponsePart(BaseModel):
     score : float
     light_score : float
     health_score: float
-    protein_score: float
+    complexity_score: float
     popularity_score: float
     matched_ingredients: list[str|None]
 
