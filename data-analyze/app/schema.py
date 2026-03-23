@@ -21,7 +21,7 @@ class ClientRequest(BaseModel):
     type: Type
     weights: WeightsChoice
 
-class DBResponse(BaseModel):
+class ResponsePart(BaseModel):
     id: int
     score : float
     light_score : float
@@ -29,4 +29,9 @@ class DBResponse(BaseModel):
     protein_score: float
     popularity_score: float
     matched_ingredients: list[str|None]
+
+class DBResponse(BaseModel):
+    main: ResponsePart
+    side: ResponsePart
+    salad: ResponsePart
     
