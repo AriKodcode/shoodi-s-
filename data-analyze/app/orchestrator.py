@@ -20,7 +20,7 @@ class Orchestrator():
         part_weights = {'main': 0.5, 'side': 0.3, 'salad': 0.2}
         
         total_meal_percent = 0
-        dishes_ids = []
+        dishes_ids = {}
         
         # מילון לצבירת ציונים של קטגוריות לארוחה כולה (עבור התגיות)
         category_totals = {} 
@@ -29,7 +29,7 @@ class Orchestrator():
             if part not in part_weights:
                 continue
                 
-            dishes_ids.append({part: info.get('id')}) # שימוש ב-.get למניעת קריסה
+            dishes_ids[part] = info.get('id') # שימוש ב-.get למניעת קריסה
             
             raw_score = 0
             max_possible = 0
