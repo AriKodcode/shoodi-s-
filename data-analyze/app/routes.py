@@ -18,8 +18,8 @@ def get_choice(request:ClientRequest, manager: Orchestrator = Depends(get_manage
         response.raise_for_status()
         logger.info('success send client request to db server')
     except Exception:
-        logger.error('failed to send client equest to db server',exc_info=True)
-        raise HTTPException(status_code=400,detail='failed')
+        logger.error('failed to send client request to db server',exc_info=True)
+        raise HTTPException(status_code=521,detail='failed')
     try:
         data= [DBResponse.model_validate(recipe) for recipe in response.json()]
     except Exception:
