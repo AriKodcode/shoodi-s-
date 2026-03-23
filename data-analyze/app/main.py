@@ -11,16 +11,17 @@ def setup_logging():
                     datefmt='%Y-%m-%d %H:%M:%S')
 
 @asynccontextmanager
-def lifespan(app: FastAPI):
-    logger = logging.getLogger(__name__)
-    service_config = Configuration()
-    manager = Orchestrator(service_config.client_server, service_config.db_server)
-    app.state.manager 
-    logger.info('start service')
-    yield
-    logger.info('service shutdown')
+async def lifespan(app: FastAPI):
+        setup_logging()
+        logger = logging.getLogger(__name__)
+        service_config = Configuration()
+        manager = Orchestrator(service_config.client_server, service_config.db_server)
+        app.state.manager = manager
+        logger.info('start service')
+        yield
+        logger.info('service shutdown')
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 app.include_router(router)
 
 
