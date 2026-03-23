@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException,Depends,Request
-from schema import ClientRequest, DBResponse
+from .schema import ClientRequest, DBResponse
 import requests
-from orchestrator import Orchestrator
+from .orchestrator import Orchestrator
 import logging
 
 router = APIRouter()

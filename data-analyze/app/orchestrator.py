@@ -1,4 +1,4 @@
-from schema import DBResponse, ClientRequest
+from .schema import DBResponse, ClientRequest
 import logging 
 
 class Orchestrator():
