@@ -66,5 +66,5 @@ class Orchestrator():
         return {
             'recipe_ids': dishes_ids,
             'match': round(total_meal_percent, 2),
-            'information': tags 
+            'tags': tags 
         }
