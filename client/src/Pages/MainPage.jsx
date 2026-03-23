@@ -1,6 +1,6 @@
 import React from 'react'
-import SelectFood from '../components/SelectFood'
 // import data from '../DB/example.json'
+import SelectFood from '../components/SelectFood'
 function MainPage() {
     return (
         <div>
