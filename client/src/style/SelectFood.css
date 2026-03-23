@@ -134,6 +134,10 @@
     border: 2px solid transparent;
 }
 
+.one-card .choose{
+    border: 1px solid black;
+}
+
 .one-card:hover {
     transform: translateY(-5px);
     background-color: #ffffff;
@@ -166,5 +170,5 @@
 
 .buttons button:hover {
     transform: translateY(-3px);
-     border-color: black;
+    border-color: black;
 }
