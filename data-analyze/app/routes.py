@@ -26,8 +26,8 @@ def get_choice(request:ClientRequest, manager: Orchestrator = Depends(get_manage
         logger.error('not correct data from db',exc_info=True)
         raise HTTPException(status_code=522,detail='unexpect data from db')
     try:
-        info = manager.calculate_score(data,request)
-        return {'status':'success','information':info}
+        info = manager.process_response(data,request)
+        return {'result':info}
     except Exception as e:
         logger.error('failed analyze',exc_info=True)
         raise HTTPException(status_code=400,detail=f'failed analyze {str(e)}')
