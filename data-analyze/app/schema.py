@@ -13,9 +13,9 @@ class Float(float,Enum):
     FULL = 1.0
 
 class WeightsChoice(BaseModel):
-    lightness: Float
-    health: Float
-    complexity: Float
+    lightness: FloatScore
+    health: FloatScore
+    complexity: FloatScore
 
 class ClientRequest(BaseModel):
     type: Type
