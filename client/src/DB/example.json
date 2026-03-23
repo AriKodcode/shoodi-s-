@@ -1,0 +1,282 @@
+[
+    {
+        "id": 5,
+        "name": "Chicken Rice",
+        "type": "meat",
+        "category": "main",
+        "recipe": "Cook chicken, add rice, mix together.",
+        "ingredients": [
+            {
+                "name": "chicken",
+                "quantity": 200,
+                "unit": "grams"
+            },
+            {
+                "name": "rice",
+                "quantity": 100,
+                "unit": "grams"
+            },
+            {
+                "name": "olive oil",
+                "quantity": 1,
+                "unit": "tbsp"
+            }
+        ],
+        "reason": [
+            "High protein",
+            "Matches your health preference"
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Chicken Salad",
+        "type": "meat",
+        "category": "salad",
+        "recipe": "Mix chicken with vegetables and dressing.",
+        "ingredients": [
+            {
+                "name": "chicken",
+                "quantity": 150,
+                "unit": "grams"
+            },
+            {
+                "name": "tomato",
+                "quantity": 2,
+                "unit": "units"
+            },
+            {
+                "name": "lettuce",
+                "quantity": 1,
+                "unit": "unit"
+            }
+        ],
+        "reason": [
+            "Light meal",
+            "Includes tomato"
+        ]
+    },
+    {
+        "id": 18,
+        "name": "Baked Salmon",
+        "type": "fish",
+        "category": "main",
+        "recipe": "Season salmon with lemon and herbs, bake for 15 minutes.",
+        "ingredients": [
+            {
+                "name": "salmon fillet",
+                "quantity": 250,
+                "unit": "grams"
+            },
+            {
+                "name": "lemon",
+                "quantity": 0.5,
+                "unit": "unit"
+            },
+            {
+                "name": "dill",
+                "quantity": 1,
+                "unit": "tsp"
+            }
+        ],
+        "reason": [
+            "Rich in Omega-3",
+            "Quick preparation"
+        ]
+    },
+    {
+        "id": 22,
+        "name": "Pasta Primavera",
+        "type": "vegetarian",
+        "category": "main",
+        "recipe": "Boil pasta and sauté with seasonal vegetables and garlic.",
+        "ingredients": [
+            {
+                "name": "pasta",
+                "quantity": 120,
+                "unit": "grams"
+            },
+            {
+                "name": "zucchini",
+                "quantity": 1,
+                "unit": "unit"
+            },
+            {
+                "name": "garlic",
+                "quantity": 2,
+                "unit": "cloves"
+            }
+        ],
+        "reason": [
+            "Full of vitamins",
+            "Great for dinner"
+        ]
+    },
+    {
+        "id": 30,
+        "name": "Lentil Soup",
+        "type": "vegan",
+        "category": "soup",
+        "recipe": "Simmer lentils with carrots, onions, and cumin until soft.",
+        "ingredients": [
+            {
+                "name": "red lentils",
+                "quantity": 150,
+                "unit": "grams"
+            },
+            {
+                "name": "carrot",
+                "quantity": 1,
+                "unit": "unit"
+            },
+            {
+                "name": "onion",
+                "quantity": 1,
+                "unit": "unit"
+            }
+        ],
+        "reason": [
+            "High fiber",
+            "Hearty and warming"
+        ]
+    },
+    {
+        "id": 41,
+        "name": "Beef Stir-fry",
+        "type": "meat",
+        "category": "main",
+        "recipe": "Flash fry beef strips with peppers and soy sauce.",
+        "ingredients": [
+            {
+                "name": "beef strips",
+                "quantity": 200,
+                "unit": "grams"
+            },
+            {
+                "name": "bell pepper",
+                "quantity": 2,
+                "unit": "units"
+            },
+            {
+                "name": "soy sauce",
+                "quantity": 2,
+                "unit": "tbsp"
+            }
+        ],
+        "reason": [
+            "Iron rich",
+            "Very tasty"
+        ]
+    },
+    {
+        "id": 55,
+        "name": "Quinoa Salad",
+        "type": "vegan",
+        "category": "salad",
+        "recipe": "Mix cooked quinoa with parsley, cucumber, and lemon juice.",
+        "ingredients": [
+            {
+                "name": "quinoa",
+                "quantity": 100,
+                "unit": "grams"
+            },
+            {
+                "name": "parsley",
+                "quantity": 0.5,
+                "unit": "bunch"
+            },
+            {
+                "name": "cucumber",
+                "quantity": 2,
+                "unit": "units"
+            }
+        ],
+        "reason": [
+            "Gluten free",
+            "Refreshing"
+        ]
+    },
+    {
+        "id": 67,
+        "name": "Tofu Curry",
+        "type": "vegan",
+        "category": "main",
+        "recipe": "Cook tofu cubes in coconut milk and curry spices.",
+        "ingredients": [
+            {
+                "name": "tofu",
+                "quantity": 250,
+                "unit": "grams"
+            },
+            {
+                "name": "coconut milk",
+                "quantity": 200,
+                "unit": "ml"
+            },
+            {
+                "name": "curry powder",
+                "quantity": 1,
+                "unit": "tbsp"
+            }
+        ],
+        "reason": [
+            "Plant based protein",
+            "Exotic flavor"
+        ]
+    },
+    {
+        "id": 82,
+        "name": "Omelet with Mushrooms",
+        "type": "vegetarian",
+        "category": "breakfast",
+        "recipe": "Whisk eggs and fry with sliced mushrooms.",
+        "ingredients": [
+            {
+                "name": "eggs",
+                "quantity": 3,
+                "unit": "units"
+            },
+            {
+                "name": "mushrooms",
+                "quantity": 100,
+                "unit": "grams"
+            },
+            {
+                "name": "butter",
+                "quantity": 10,
+                "unit": "grams"
+            }
+        ],
+        "reason": [
+            "Fast breakfast",
+            "Good fats"
+        ]
+    },
+    {
+        "id": 94,
+        "name": "Grilled Sea Bass",
+        "type": "fish",
+        "category": "main",
+        "recipe": "Grill the fish with salt and pepper until skin is crispy.",
+        "ingredients": [
+            {
+                "name": "sea bass",
+                "quantity": 300,
+                "unit": "grams"
+            },
+            {
+                "name": "sea salt",
+                "quantity": 1,
+                "unit": "tsp"
+            },
+            {
+                "name": "black pepper",
+                "quantity": 0.5,
+                "unit": "tsp"
+            }
+        ],
+        "reason": [
+            "Low calorie",
+            "Elegant dish"
+        ]
+    }
+]
