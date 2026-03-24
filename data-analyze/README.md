@@ -82,7 +82,7 @@ Analyze a client's meal preferences and return matching meal combinations.
         "side_id": 2,
         "salad_id": 3
       },
-      "match": "87%",
+      "match": 87,
       "tags": ["health", "light"]
     }
   ]
@@ -101,7 +101,7 @@ Analyze a client's meal preferences and return matching meal combinations.
 | Field                 | Type         | Description                                       |
 | --------------------- | ------------ | ------------------------------------------------- |
 | `recipe_ids`          | dict[string] | ids of dishes in meal
-| `match`               | string       | Match percentage                                  |
+| `match`               | float      | Match percentage                                  |
 | `tags`         | list[string] | Tags like `health`, `light`, `protein`, `popular` |
 #### Each fields in `recipe_ids`:
 | Field                 | Type         | Description                                       |
@@ -175,8 +175,7 @@ Each meal consists of:
   "light_score": 0.7,
   "health_score": 0.9,
   "complexity_score": 0.6,
-  "popularity_score": 0.8,
-  "matched_ingredients": ["chicken", "rice"]
+  "popularity_score": 0.8
 }
 ```
 

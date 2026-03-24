@@ -4,9 +4,8 @@ import {
   checkDB,
   checkFrontBody,
 } from "../services/checkReqRes.services.js";
-import { getMealsByID } from "../dal/mysqlQuery.dal.js";
 import "dotenv/config";
-
+import { getMealsByID } from "../dal/mysqlQuery.dal.js";
 const HOST = process.env.ANALYZE_HOST;
 const PORT = process.env.ANALYZE_PORT;
 const ROUTE = process.env.ANALYZE_ROUTE;

@@ -5,7 +5,7 @@ from enum import Enum
 class Type(str,Enum):
     MEAT= 'meat'
     DAIRY= 'dairy'
-    FUR= 'fur'
+    FUR= 'vegan'
 
 class FloatScore(float,Enum):
     ZERO = 0

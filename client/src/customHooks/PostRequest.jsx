@@ -1,32 +1,41 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function PostRequest(url, filters) {
-    const [data, setData] = useState([]) // הstate הזה בשביל כל הדאטה שחוזרת מהשרת
+// 1. שינוי שם ל-usePostRequest
+function usePostRequest() {
+    const [data, setData] = useState([]) 
     const navigate = useNavigate()
     
-    async function getMeal() {
+    // 2. הוספת פרמטרים לפונקציה כדי שתהיה גמישה
+    async function getMeal(url, filters) {
         try {
             const res = await fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ filters })
+                body: JSON.stringify(filters) // שליחת הפילטרים בצורה ישירה
             })
+
             if (!res.ok) {
-                console.log(res)
+                console.log("Response error:", res)
                 navigate('/errorPage')
             }
             else {
-                const data = await res.json()
-                setData(data.meals)
-                navigate('/')// תכניס פה ניתוב לדף שלך 
+                const result = await res.json()
+                
+                // עדכון ה-State המקומי (ליתר ביטחון)
+                setData(result.meals)
+                
+                // 3. הניווט הקריטי: מעבירים את המידע לדף הבא
+                // שים לב: שיניתי את הניתוב ל- /recipe (או השם של דף התוצאה שלך)
+                navigate('/recipe', { state: { mealData: result.meals } })
             }
         } catch (err) {
-            console.log(err)
+            console.log("Fetch error:", err)
             navigate('/errorPage')
         }
     }
+
     return { getMeal, data }
 }
 
-export default PostRequest
+export default usePostRequest
