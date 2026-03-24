@@ -2544,19 +2544,24 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 CREATE VIEW meal_full_view AS
 SELECT 
     m.id,
-    m.name,
-    m.type,
-    m.category,
-    m.style,
-    m.recipe,
 
-    JSON_ARRAYAGG(
-        JSON_OBJECT(
-            'ingredient', sub.name,
-            'quantity', sub.quantity,
-            'unit', sub.unit
+    JSON_OBJECT(
+        'id', m.id,
+        'name', m.name,
+        'type', m.type,
+        'category', m.category,
+        'style', m.style,
+        'recipe', m.recipe,
+        'image', m.image,
+
+        'ingredients', JSON_ARRAYAGG(
+            JSON_OBJECT(
+                'ingredient', sub.name,
+                'quantity', sub.quantity,
+                'unit', sub.unit
+            )
         )
-    ) AS ingredients
+    ) AS meal
 
 FROM meals m
 
@@ -2570,10 +2575,7 @@ JOIN (
     JOIN ingredients i ON i.id = mi.ingredient_id
 ) sub ON m.id = sub.meal_id
 
-GROUP BY 
-    m.id, m.name, m.type, m.category, m.style, m.recipe;
-
-
+GROUP BY m.id;
 UPDATE meal_ingredients
 SET unit = CASE unit
     WHEN 'grams' THEN 'גרם'
