@@ -38,7 +38,7 @@ CREATE TABLE meals (
 CREATE TABLE ingredients (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL UNIQUE
-); CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 -- =========================
 -- 3. meal_ingredients (קשר + כמויות)
@@ -59,7 +59,7 @@ CREATE TABLE meal_ingredients (
     FOREIGN KEY (ingredient_id)
         REFERENCES ingredients(id)
         ON DELETE CASCADE
-); CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 -- =========================
 -- אינדקסים (לביצועים)
@@ -1088,6 +1088,7 @@ INSERT IGNORE INTO ingredients (name) VALUES
 ('גבינה צהובה'),
 ('זעתר'),
 ('קישוא');
+INSERT INTO ingredients (name) VALUES ('עדשים כתומות');
 
 
 -- מנה 1: שניצל עוף קלאסי
@@ -1996,7 +1997,7 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 -- 56: מרק גזר ג׳ינג׳ר
 (56, (SELECT id FROM ingredients WHERE name='גזר'), 800, 'grams'),
-(56, (SELECT id FROM ingredients WHERE name='ג'ינג'ר'), 20, 'grams'),
+(56, (SELECT id FROM ingredients WHERE name='ג''ינג''ר'), 20, 'grams'),
 (56, (SELECT id FROM ingredients WHERE name='בצל'), 1, 'units'),
 (56, (SELECT id FROM ingredients WHERE name='שום'), 4, 'units'),
 (56, (SELECT id FROM ingredients WHERE name='כורכום'), 1, 'tsp'),
@@ -2031,7 +2032,7 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 (58, (SELECT id FROM ingredients WHERE name='פנה'), 400, 'grams'),
 (58, (SELECT id FROM ingredients WHERE name='עגבניות'), 700, 'grams'),
 (58, (SELECT id FROM ingredients WHERE name='שום'), 5, 'units'),
-(58, (SELECT id FROM ingredients WHERE name='פתיתי צ'ילי'), 1.5, 'tsp'),
+(58, (SELECT id FROM ingredients WHERE name='פתיתי צ''ילי'), 1.5, 'tsp'),
 (58, (SELECT id FROM ingredients WHERE name='צלפים'), 2, 'tbsp'),
 (58, (SELECT id FROM ingredients WHERE name='בזיליקום'), 20, 'grams'),
 (58, (SELECT id FROM ingredients WHERE name='שמן זית'), 5, 'tbsp'),
@@ -2458,7 +2459,7 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 (94, (SELECT id FROM ingredients WHERE name='עצמות בקר'), 2000, 'grams'),
 (94, (SELECT id FROM ingredients WHERE name='בצל'), 2, 'units'),
-(94, (SELECT id FROM ingredients WHERE name='ג'ינג'ר'), 30, 'grams'),
+(94, (SELECT id FROM ingredients WHERE name='ג''ינג''ר'), 30, 'grams'),
 (94, (SELECT id FROM ingredients WHERE name='כוכב אניס'), 4, 'units'),
 (94, (SELECT id FROM ingredients WHERE name='קינמון'), 2, 'units'),
 (94, (SELECT id FROM ingredients WHERE name='ציפורן'), 4, 'units'),
@@ -2513,7 +2514,7 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 (98, (SELECT id FROM ingredients WHERE name='זיתים'), 80, 'grams'),
 (98, (SELECT id FROM ingredients WHERE name='אנשובי'), 4, 'units'),
 (98, (SELECT id FROM ingredients WHERE name='חסה'), 80, 'grams'),
-(98, (SELECT id FROM ingredients WHERE name='חרדל דיז'ון'), 1, 'tsp'),
+(98, (SELECT id FROM ingredients WHERE name='חרדל דיז''ון'), 1, 'tsp'),
 (98, (SELECT id FROM ingredients WHERE name='חומץ יין לבן'), 2, 'tbsp'),
 (98, (SELECT id FROM ingredients WHERE name='שמן זית'), 4, 'tbsp'),
 (98, (SELECT id FROM ingredients WHERE name='מלח'), 0.5, 'tsp');
@@ -2535,7 +2536,7 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 (100, (SELECT id FROM ingredients WHERE name='נענע'), 15, 'grams'),
 (100, (SELECT id FROM ingredients WHERE name='בצל ירוק'), 3, 'units'),
 (100, (SELECT id FROM ingredients WHERE name='רוטב סויה'), 2, 'tbsp'),
-(100, (SELECT id FROM ingredients WHERE name='ג'ינג'ר'), 8, 'grams'),
+(100, (SELECT id FROM ingredients WHERE name='ג''ינג''ר'), 8, 'grams'),
 (100, (SELECT id FROM ingredients WHERE name='ליים'), 1, 'units'),
 (100, (SELECT id FROM ingredients WHERE name='שומשום'), 1, 'tsp');
 
@@ -2573,7 +2574,15 @@ GROUP BY
     m.id, m.name, m.type, m.category, m.style, m.recipe;
 
 
-
+UPDATE meal_ingredients
+SET unit = CASE unit
+    WHEN 'grams' THEN 'גרם'
+    WHEN 'tbsp' THEN 'כף'
+    WHEN 'tsp' THEN 'כפית'
+    WHEN 'units' THEN 'יחידות'
+    WHEN 'ml' THEN 'מ״ל'
+    ELSE unit
+END;
 
 
 UPDATE meals SET image = 'https://healthyrecipesblogs.com/wp-content/uploads/2013/10/meatballs-tomato-sauce-featured.jpg' WHERE id = 2;
