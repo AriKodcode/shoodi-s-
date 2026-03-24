@@ -2798,6 +2798,1587 @@ CREATE TABLE meal_tags (
     meal_id INT,
     tag_id INT,
     PRIMARY KEY (meal_id, tag_id),
-    FOREIGN KEY (meal_id) REFERENCES meals(id) ON DELETE CASCADE,
-    FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
+    FOREIGN KEY (meal_id) REFERENCES meals(id),
+    FOREIGN KEY (tag_id) REFERENCES tags(id)
 );
+
+ALTER TABLE meals
+ADD COLUMN prep_time_minutes INT,
+ADD COLUMN calories INT,
+ADD COLUMN description TEXT,
+ADD COLUMN difficulty ENUM('easy', 'medium', 'hard');
+
+
+UPDATE meals
+SET 
+    prep_time_minutes = CASE id
+        WHEN 1 THEN 40
+        WHEN 2 THEN 90
+        WHEN 3 THEN 60
+        WHEN 4 THEN 75
+        WHEN 5 THEN 60
+        WHEN 6 THEN 180
+        WHEN 7 THEN 120
+        WHEN 8 THEN 80
+        WHEN 9 THEN 720
+        WHEN 10 THEN 60
+        WHEN 11 THEN 240
+        WHEN 12 THEN 150
+        WHEN 13 THEN 60
+        WHEN 14 THEN 30
+        WHEN 15 THEN 120
+        WHEN 16 THEN 90
+        WHEN 17 THEN 120
+        WHEN 18 THEN 480
+        WHEN 19 THEN 90
+        WHEN 20 THEN 60
+        WHEN 21 THEN 35
+        WHEN 22 THEN 30
+        WHEN 23 THEN 25
+        WHEN 24 THEN 30
+        WHEN 25 THEN 15
+        WHEN 26 THEN 15
+        WHEN 27 THEN 45
+        WHEN 28 THEN 30
+        WHEN 29 THEN 40
+        WHEN 30 THEN 30
+        WHEN 31 THEN 35
+        WHEN 32 THEN 30
+        WHEN 33 THEN 90
+        WHEN 34 THEN 25
+        WHEN 35 THEN 90
+        WHEN 36 THEN 20
+        WHEN 37 THEN 60
+        WHEN 38 THEN 35
+        WHEN 39 THEN 120
+        WHEN 40 THEN 90
+        WHEN 41 THEN 120
+        WHEN 42 THEN 40
+        WHEN 43 THEN 60
+        WHEN 44 THEN 40
+        WHEN 45 THEN 35
+        WHEN 46 THEN 90
+        WHEN 47 THEN 25
+        WHEN 48 THEN 30
+        WHEN 49 THEN 50
+        WHEN 50 THEN 20
+    END,
+
+    calories = CASE id
+        WHEN 1 THEN 650
+        WHEN 2 THEN 550
+        WHEN 3 THEN 700
+        WHEN 4 THEN 500
+        WHEN 5 THEN 600
+        WHEN 6 THEN 800
+        WHEN 7 THEN 850
+        WHEN 8 THEN 550
+        WHEN 9 THEN 900
+        WHEN 10 THEN 650
+        WHEN 11 THEN 850
+        WHEN 12 THEN 300
+        WHEN 13 THEN 350
+        WHEN 14 THEN 400
+        WHEN 15 THEN 700
+        WHEN 16 THEN 650
+        WHEN 17 THEN 800
+        WHEN 18 THEN 900
+        WHEN 19 THEN 700
+        WHEN 20 THEN 650
+        WHEN 21 THEN 350
+        WHEN 22 THEN 450
+        WHEN 23 THEN 400
+        WHEN 24 THEN 300
+        WHEN 25 THEN 450
+        WHEN 26 THEN 350
+        WHEN 27 THEN 450
+        WHEN 28 THEN 400
+        WHEN 29 THEN 450
+        WHEN 30 THEN 500
+        WHEN 31 THEN 500
+        WHEN 32 THEN 600
+        WHEN 33 THEN 750
+        WHEN 34 THEN 700
+        WHEN 35 THEN 650
+        WHEN 36 THEN 300
+        WHEN 37 THEN 450
+        WHEN 38 THEN 650
+        WHEN 39 THEN 700
+        WHEN 40 THEN 600
+        WHEN 41 THEN 400
+        WHEN 42 THEN 500
+        WHEN 43 THEN 450
+        WHEN 44 THEN 400
+        WHEN 45 THEN 350
+        WHEN 46 THEN 350
+        WHEN 47 THEN 250
+        WHEN 48 THEN 400
+        WHEN 49 THEN 250
+        WHEN 50 THEN 200
+    END,
+
+    difficulty = CASE id
+        WHEN 1 THEN 'medium'
+        WHEN 2 THEN 'medium'
+        WHEN 3 THEN 'medium'
+        WHEN 4 THEN 'easy'
+        WHEN 5 THEN 'easy'
+        WHEN 6 THEN 'hard'
+        WHEN 7 THEN 'hard'
+        WHEN 8 THEN 'medium'
+        WHEN 9 THEN 'hard'
+        WHEN 10 THEN 'medium'
+        WHEN 11 THEN 'hard'
+        WHEN 12 THEN 'medium'
+        WHEN 13 THEN 'easy'
+        WHEN 14 THEN 'easy'
+        WHEN 15 THEN 'hard'
+        WHEN 16 THEN 'medium'
+        WHEN 17 THEN 'hard'
+        WHEN 18 THEN 'hard'
+        WHEN 19 THEN 'medium'
+        WHEN 20 THEN 'medium'
+        WHEN 21 THEN 'easy'
+        WHEN 22 THEN 'easy'
+        WHEN 23 THEN 'easy'
+        WHEN 24 THEN 'easy'
+        WHEN 25 THEN 'easy'
+        WHEN 26 THEN 'easy'
+        WHEN 27 THEN 'easy'
+        WHEN 28 THEN 'medium'
+        WHEN 29 THEN 'easy'
+        WHEN 30 THEN 'easy'
+        WHEN 31 THEN 'easy'
+        WHEN 32 THEN 'medium'
+        WHEN 33 THEN 'hard'
+        WHEN 34 THEN 'easy'
+        WHEN 35 THEN 'medium'
+        WHEN 36 THEN 'easy'
+        WHEN 37 THEN 'medium'
+        WHEN 38 THEN 'medium'
+        WHEN 39 THEN 'medium'
+        WHEN 40 THEN 'medium'
+        WHEN 41 THEN 'medium'
+        WHEN 42 THEN 'easy'
+        WHEN 43 THEN 'medium'
+        WHEN 44 THEN 'easy'
+        WHEN 45 THEN 'easy'
+        WHEN 46 THEN 'medium'
+        WHEN 47 THEN 'easy'
+        WHEN 48 THEN 'easy'
+        WHEN 49 THEN 'easy'
+        WHEN 50 THEN 'easy'
+    END,
+
+    description = CASE id
+        WHEN 1 THEN 'שניצל פריך וזהוב עם ציפוי קראנצ׳י קלאסי'
+        WHEN 2 THEN 'קציצות עסיסיות ברוטב עגבניות עשיר'
+        WHEN 3 THEN 'סטייק אנטריקוט עסיסי עם חמאת עשבים'
+        WHEN 4 THEN 'חזה עוף עסיסי עם ירקות שורש בתנור'
+        WHEN 5 THEN 'פרגיות צלויות עם חציל שרוף'
+        WHEN 6 THEN 'רוטב בולונז איטלקי עמוק ועשיר'
+        WHEN 7 THEN 'לזניה שכבות בשר ובשמל קלאסית'
+        WHEN 8 THEN 'עוף מרוקאי עם לימון כבוש וזיתים'
+        WHEN 9 THEN 'חמין מסורתי עשיר בבישול ארוך'
+        WHEN 10 THEN 'קבב כבש עסיסי עם טחינה'
+        WHEN 11 THEN 'אסאדו רך ונימוח בבישול ארוך'
+        WHEN 12 THEN 'מרק עוף צח עם אטריות'
+        WHEN 13 THEN 'מרק עדשים חמים ומשביע'
+        WHEN 14 THEN 'עוף מוקפץ עם ברוקולי ברוטב אסייתי'
+        WHEN 15 THEN 'טאג׳ין כבש מתקתק עם תמרים'
+        WHEN 16 THEN 'עוף שלם עסיסי עם חמאת עשבים'
+        WHEN 17 THEN 'מוסקה יוונית עשירה'
+        WHEN 18 THEN 'בריסקט רך בבישול איטי'
+        WHEN 19 THEN 'פסטה עם רוטב בשר עשיר'
+        WHEN 20 THEN 'שיפודי כבש מתובלים בזעתר'
+        WHEN 21 THEN 'סלט עוף קליל עם אבוקדו'
+        WHEN 22 THEN 'פוקה בול עוף בסגנון יפני'
+        WHEN 23 THEN 'סלמון אפוי עם אספרגוס'
+        WHEN 24 THEN 'מרק עוף ותרד רענן עם לימון'
+        WHEN 25 THEN 'טונה צרובה עם שומשום'
+        WHEN 26 THEN 'שרימפס מוקפץ עם שום ולימון'
+        WHEN 27 THEN 'עוף עם קינואה וירקות צלויים'
+        WHEN 28 THEN 'סלמון במיסו עמוק טעמים'
+        WHEN 29 THEN 'שיפודי עוף ואננס מתקתקים'
+        WHEN 30 THEN 'פסטה ים תיכונית עם טונה'
+        WHEN 31 THEN 'שקשוקה קלאסית עשירה'
+        WHEN 32 THEN 'ריזוטו קרמי עם פרמזן'
+        WHEN 33 THEN 'פיצה מרגריטה ביתית'
+        WHEN 34 THEN 'פסטה ברוטב שמנת פרמזן'
+        WHEN 35 THEN 'גרטן תפוחי אדמה קרמי'
+        WHEN 36 THEN 'חביתה אפויה עם ירקות'
+        WHEN 37 THEN 'קרפים ממולאים גבינה ותרד'
+        WHEN 38 THEN 'ריזוטו פטריות עמוק'
+        WHEN 39 THEN 'מאפה גבינות עשיר'
+        WHEN 40 THEN 'עוגת גבינה ניו יורק קלאסית'
+        WHEN 41 THEN 'חומוס חלק וקרמי ביתי'
+        WHEN 42 THEN 'קארי ירקות עם קוקוס'
+        WHEN 43 THEN 'פלאפל ירוק פריך'
+        WHEN 44 THEN 'דאל עדשים חם ומתובל'
+        WHEN 45 THEN 'בודהה בול קינואה בריא'
+        WHEN 46 THEN 'מרק שעועית עם רוזמרין'
+        WHEN 47 THEN 'טאבולה רעננה ועשבונית'
+        WHEN 48 THEN 'קארי חומוס ותרד'
+        WHEN 49 THEN 'מרק עגבניות קלוי'
+        WHEN 50 THEN 'גספאצ׳ו ספרדי קר'
+    END
+    WHERE id BETWEEN 1 AND 50;
+
+UPDATE meals
+SET
+    prep_time_minutes = CASE id
+        WHEN 51 THEN 60
+        WHEN 52 THEN 50
+        WHEN 53 THEN 90
+        WHEN 54 THEN 45
+        WHEN 55 THEN 60
+        WHEN 56 THEN 50
+        WHEN 57 THEN 40
+        WHEN 58 THEN 35
+        WHEN 59 THEN 15
+        WHEN 60 THEN 90
+        WHEN 61 THEN 120
+        WHEN 62 THEN 40
+        WHEN 63 THEN 25
+        WHEN 64 THEN 70
+        WHEN 65 THEN 10
+        WHEN 66 THEN 30
+        WHEN 67 THEN 50
+        WHEN 68 THEN 60
+        WHEN 69 THEN 15
+        WHEN 70 THEN 20
+        WHEN 71 THEN 40
+        WHEN 72 THEN 75
+        WHEN 73 THEN 90
+        WHEN 74 THEN 60
+        WHEN 75 THEN 25
+        WHEN 76 THEN 60
+        WHEN 77 THEN 90
+        WHEN 78 THEN 90
+        WHEN 79 THEN 35
+        WHEN 80 THEN 30
+        WHEN 81 THEN 25
+        WHEN 82 THEN 15
+        WHEN 83 THEN 20
+        WHEN 84 THEN 120
+        WHEN 85 THEN 90
+        WHEN 86 THEN 120
+        WHEN 87 THEN 90
+        WHEN 88 THEN 45
+        WHEN 89 THEN 60
+        WHEN 90 THEN 30
+        WHEN 91 THEN 50
+        WHEN 92 THEN 70
+        WHEN 93 THEN 25
+        WHEN 94 THEN 300
+        WHEN 95 THEN 90
+        WHEN 96 THEN 60
+        WHEN 97 THEN 30
+        WHEN 98 THEN 40
+        WHEN 99 THEN 120
+        WHEN 100 THEN 25
+    END,
+
+    calories = CASE id
+        WHEN 51 THEN 450
+        WHEN 52 THEN 520
+        WHEN 53 THEN 480
+        WHEN 54 THEN 320
+        WHEN 55 THEN 250
+        WHEN 56 THEN 300
+        WHEN 57 THEN 350
+        WHEN 58 THEN 600
+        WHEN 59 THEN 220
+        WHEN 60 THEN 180
+        WHEN 61 THEN 400
+        WHEN 62 THEN 350
+        WHEN 63 THEN 200
+        WHEN 64 THEN 420
+        WHEN 65 THEN 300
+        WHEN 66 THEN 180
+        WHEN 67 THEN 350
+        WHEN 68 THEN 400
+        WHEN 69 THEN 200
+        WHEN 70 THEN 220
+        WHEN 71 THEN 650
+        WHEN 72 THEN 500
+        WHEN 73 THEN 420
+        WHEN 74 THEN 350
+        WHEN 75 THEN 300
+        WHEN 76 THEN 700
+        WHEN 77 THEN 650
+        WHEN 78 THEN 700
+        WHEN 79 THEN 350
+        WHEN 80 THEN 800
+        WHEN 81 THEN 650
+        WHEN 82 THEN 600
+        WHEN 83 THEN 500
+        WHEN 84 THEN 350
+        WHEN 85 THEN 400
+        WHEN 86 THEN 700
+        WHEN 87 THEN 550
+        WHEN 88 THEN 600
+        WHEN 89 THEN 650
+        WHEN 90 THEN 550
+        WHEN 91 THEN 700
+        WHEN 92 THEN 650
+        WHEN 93 THEN 450
+        WHEN 94 THEN 500
+        WHEN 95 THEN 600
+        WHEN 96 THEN 700
+        WHEN 97 THEN 400
+        WHEN 98 THEN 450
+        WHEN 99 THEN 500
+        WHEN 100 THEN 250
+    END,
+
+    difficulty = CASE id
+        WHEN 51 THEN 'medium'
+        WHEN 52 THEN 'hard'
+        WHEN 53 THEN 'medium'
+        WHEN 54 THEN 'easy'
+        WHEN 55 THEN 'medium'
+        WHEN 56 THEN 'easy'
+        WHEN 57 THEN 'easy'
+        WHEN 58 THEN 'medium'
+        WHEN 59 THEN 'easy'
+        WHEN 60 THEN 'medium'
+        WHEN 61 THEN 'hard'
+        WHEN 62 THEN 'easy'
+        WHEN 63 THEN 'easy'
+        WHEN 64 THEN 'medium'
+        WHEN 65 THEN 'easy'
+        WHEN 66 THEN 'easy'
+        WHEN 67 THEN 'medium'
+        WHEN 68 THEN 'medium'
+        WHEN 69 THEN 'easy'
+        WHEN 70 THEN 'easy'
+        WHEN 71 THEN 'medium'
+        WHEN 72 THEN 'hard'
+        WHEN 73 THEN 'medium'
+        WHEN 74 THEN 'easy'
+        WHEN 75 THEN 'easy'
+        WHEN 76 THEN 'medium'
+        WHEN 77 THEN 'hard'
+        WHEN 78 THEN 'hard'
+        WHEN 79 THEN 'easy'
+        WHEN 80 THEN 'hard'
+        WHEN 81 THEN 'hard'
+        WHEN 82 THEN 'easy'
+        WHEN 83 THEN 'easy'
+        WHEN 84 THEN 'medium'
+        WHEN 85 THEN 'medium'
+        WHEN 86 THEN 'hard'
+        WHEN 87 THEN 'hard'
+        WHEN 88 THEN 'medium'
+        WHEN 89 THEN 'medium'
+        WHEN 90 THEN 'easy'
+        WHEN 91 THEN 'medium'
+        WHEN 92 THEN 'medium'
+        WHEN 93 THEN 'easy'
+        WHEN 94 THEN 'hard'
+        WHEN 95 THEN 'medium'
+        WHEN 96 THEN 'medium'
+        WHEN 97 THEN 'medium'
+        WHEN 98 THEN 'easy'
+        WHEN 99 THEN 'medium'
+        WHEN 100 THEN 'easy'
+    END,
+
+    description = CASE id
+        WHEN 51 THEN 'בורגר טבעוני עשיר מחלבון עם קינואה ושעועית'
+        WHEN 52 THEN 'פד תאי טבעוני קלאסי עם טופו ונודלס אורז'
+        WHEN 53 THEN 'ירקות ממולאים בתערובת אורז ועשבים'
+        WHEN 54 THEN 'מרק עדשים כתומות חמצמץ עם לימון'
+        WHEN 55 THEN 'סלט חצילים מעושן בטחינה ולימון'
+        WHEN 56 THEN 'מרק גזר מתקתק עם ג׳ינג׳ר וקוקוס'
+        WHEN 57 THEN 'סלט תבואות רענן בסגנון ים תיכוני'
+        WHEN 58 THEN 'פסטה חריפה ברוטב עגבניות'
+        WHEN 59 THEN 'ממרח אבוקדו טרי עם ליים וכוסברה'
+        WHEN 60 THEN 'סלט עגבניות מבושל בסגנון מרוקאי'
+        WHEN 61 THEN 'ראמן ירקות עמוק עם ציר עשיר'
+        WHEN 62 THEN 'שקשוקה ירוקה עשירה בעשבים'
+        WHEN 63 THEN 'מרק מיסו יפני קלאסי'
+        WHEN 64 THEN 'פשטידת קישואים אפויה'
+        WHEN 65 THEN 'טוסט אבוקדו קלאסי'
+        WHEN 66 THEN 'ברוקולי צלוי עם שום'
+        WHEN 67 THEN 'חצילים אפויים עם טחינה'
+        WHEN 68 THEN 'כרובית שלמה צלויה בתנור'
+        WHEN 69 THEN 'אדמאמה מוקפץ עם שום ושומשום'
+        WHEN 70 THEN 'זיתים כבושים בשמן ותבלינים'
+        WHEN 71 THEN 'פנה ארביאטה עשירה בתוספות'
+        WHEN 72 THEN 'אורז פרסי עם שקדים ותבלינים'
+        WHEN 73 THEN 'ירקות שורש מקורמלים בתנור'
+        WHEN 74 THEN 'מרק דלעת קרמי עם קוקוס'
+        WHEN 75 THEN 'סלט כרוב אסיאתי עם רוטב בוטנים'
+        WHEN 76 THEN 'שווארמה עוף ביתית בתנור'
+        WHEN 77 THEN 'קובה מטוגנת במילוי בשר'
+        WHEN 78 THEN 'קיש גבינות עשיר'
+        WHEN 79 THEN 'גרנולה אפויה ביתית'
+        WHEN 80 THEN 'פסטה קרבונרה קלאסית'
+        WHEN 81 THEN 'פסטה פקורינו ופלפל שחור'
+        WHEN 82 THEN 'מלאווח עם ביצה וגבינה'
+        WHEN 83 THEN 'פנקייק אמריקאי רך ואוורירי'
+        WHEN 84 THEN 'חלה ביתית רכה'
+        WHEN 85 THEN 'בייגלה ירושלמי עם שומשום'
+        WHEN 86 THEN 'עוגת גבינה גבוהה ועשירה'
+        WHEN 87 THEN 'מרק בצל צרפתי עם גבינה'
+        WHEN 88 THEN 'פד תאי עם עוף'
+        WHEN 89 THEN 'קארי עוף תאילנדי ירוק'
+        WHEN 90 THEN 'פסטה ים תיכונית עם זיתים'
+        WHEN 91 THEN 'שישליק כבש על האש'
+        WHEN 92 THEN 'קישואים ממולאים בבשר'
+        WHEN 93 THEN 'פסטה קלה עם ריקוטה ולימון'
+        WHEN 94 THEN 'מרק פו ויאטנמי עשיר'
+        WHEN 95 THEN 'כרוב ממולא בבשר ואורז'
+        WHEN 96 THEN 'ניוקי ברוטב פרמזן'
+        WHEN 97 THEN 'ביצה עלומה עם רוטב הולנדז'
+        WHEN 98 THEN 'סלט ניסואז קלאסי'
+        WHEN 99 THEN 'קרם ברולה צרפתי'
+        WHEN 100 THEN 'ספרינג רולס טריים'
+    END
+    WHERE id BETWEEN 1 AND 50;
+
+
+
+UPDATE meals
+SET
+    prep_time_minutes = CASE id
+        WHEN 101 THEN 70
+        WHEN 102 THEN 100
+        WHEN 103 THEN 30
+        WHEN 104 THEN 90
+        WHEN 105 THEN 40
+        WHEN 106 THEN 70
+        WHEN 107 THEN 120
+        WHEN 108 THEN 25
+        WHEN 109 THEN 35
+        WHEN 110 THEN 30
+        WHEN 111 THEN 90
+        WHEN 112 THEN 35
+        WHEN 113 THEN 60
+        WHEN 114 THEN 50
+        WHEN 115 THEN 30
+        WHEN 116 THEN 180
+        WHEN 117 THEN 720
+        WHEN 118 THEN 35
+        WHEN 119 THEN 30
+        WHEN 120 THEN 90
+        WHEN 121 THEN 45
+        WHEN 122 THEN 20
+        WHEN 123 THEN 30
+        WHEN 124 THEN 60
+        WHEN 125 THEN 150
+        WHEN 126 THEN 25
+        WHEN 127 THEN 120
+        WHEN 128 THEN 20
+        WHEN 129 THEN 30
+        WHEN 130 THEN 40
+        WHEN 131 THEN 20
+        WHEN 132 THEN 25
+        WHEN 133 THEN 20
+        WHEN 134 THEN 150
+        WHEN 135 THEN 40
+        WHEN 136 THEN 35
+        WHEN 137 THEN 50
+        WHEN 138 THEN 60
+        WHEN 139 THEN 30
+        WHEN 140 THEN 60
+        WHEN 141 THEN 45
+        WHEN 142 THEN 1440
+        WHEN 143 THEN 60
+        WHEN 144 THEN 60
+        WHEN 145 THEN 40
+        WHEN 146 THEN 120
+        WHEN 147 THEN 20
+        WHEN 148 THEN 40
+        WHEN 149 THEN 15
+        WHEN 150 THEN 30
+    END,
+
+    calories = CASE id
+        WHEN 101 THEN 220
+        WHEN 102 THEN 650
+        WHEN 103 THEN 480
+        WHEN 104 THEN 720
+        WHEN 105 THEN 550
+        WHEN 106 THEN 680
+        WHEN 107 THEN 750
+        WHEN 108 THEN 420
+        WHEN 109 THEN 600
+        WHEN 110 THEN 500
+        WHEN 111 THEN 300
+        WHEN 112 THEN 700
+        WHEN 113 THEN 520
+        WHEN 114 THEN 650
+        WHEN 115 THEN 480
+        WHEN 116 THEN 800
+        WHEN 117 THEN 900
+        WHEN 118 THEN 750
+        WHEN 119 THEN 520
+        WHEN 120 THEN 850
+        WHEN 121 THEN 550
+        WHEN 122 THEN 350
+        WHEN 123 THEN 400
+        WHEN 124 THEN 650
+        WHEN 125 THEN 780
+        WHEN 126 THEN 420
+        WHEN 127 THEN 500
+        WHEN 128 THEN 450
+        WHEN 129 THEN 480
+        WHEN 130 THEN 520
+        WHEN 131 THEN 450
+        WHEN 132 THEN 500
+        WHEN 133 THEN 600
+        WHEN 134 THEN 850
+        WHEN 135 THEN 480
+        WHEN 136 THEN 520
+        WHEN 137 THEN 300
+        WHEN 138 THEN 700
+        WHEN 139 THEN 400
+        WHEN 140 THEN 600
+        WHEN 141 THEN 450
+        WHEN 142 THEN 200
+        WHEN 143 THEN 650
+        WHEN 144 THEN 500
+        WHEN 145 THEN 600
+        WHEN 146 THEN 350
+        WHEN 147 THEN 250
+        WHEN 148 THEN 550
+        WHEN 149 THEN 200
+        WHEN 150 THEN 480
+    END,
+
+    description = CASE id
+        WHEN 101 THEN 'מרק עגבניות קרמי עמוק מטעמים'
+        WHEN 102 THEN 'עלי גפן ממולאים בבשר ואורז'
+        WHEN 103 THEN 'מח עצם צלוי עם גרמולטה'
+        WHEN 104 THEN 'קסרול עוף עשיר עם ירקות'
+        WHEN 105 THEN 'בולגוגי קוריאני מוקפץ'
+        WHEN 106 THEN 'עוף בציפוי חרדל ודבש'
+        WHEN 107 THEN 'תבשיל בקר מרוקאי עם שזיפים'
+        WHEN 108 THEN 'סלט ירוקים עם שרימפס'
+        WHEN 109 THEN 'פסטה לימונית עם ארטישוק'
+        WHEN 110 THEN 'מוקפץ עוף וירקות'
+        WHEN 111 THEN 'ביצים בתה סיני ארומטי'
+        WHEN 112 THEN 'מעורב ירושלמי קלאסי'
+        WHEN 113 THEN 'קארי עדשים עשיר'
+        WHEN 114 THEN 'ריזוטו ירוק עשיר'
+        WHEN 115 THEN 'פילה דג ברוטב חמאה לבנה'
+        WHEN 116 THEN 'ראגו כבש איטלקי'
+        WHEN 117 THEN 'חמין חיטה מסורתי'
+        WHEN 118 THEN 'פסטה עם בייקון ואפונה'
+        WHEN 119 THEN 'עוף לימון וצלפים'
+        WHEN 120 THEN 'בורקס בשר ביתי'
+        WHEN 121 THEN 'מרק פטריות קרמי'
+        WHEN 122 THEN 'פנקייק בריא מדגנים מלאים'
+        WHEN 123 THEN 'טופו בסגנון בולגוגי'
+        WHEN 124 THEN 'קיש פטריות עשיר'
+        WHEN 125 THEN 'תבשיל כבש עם שקדים'
+        WHEN 126 THEN 'פסטה עשבים ירוקה'
+        WHEN 127 THEN 'קישואים ממולאים חומוס'
+        WHEN 128 THEN 'חביתת עשבים עם פטה'
+        WHEN 129 THEN 'דג אפוי ים תיכוני'
+        WHEN 130 THEN 'תבשיל שעועית מקסיקני'
+        WHEN 131 THEN 'טרטר בקר קלאסי'
+        WHEN 132 THEN 'פנקייק אוכמניות'
+        WHEN 133 THEN 'ספגטי שום ושמן זית'
+        WHEN 134 THEN 'קאסולה צרפתי'
+        WHEN 135 THEN 'פריטאטה ירקות'
+        WHEN 136 THEN 'עוף טריאקי יפני'
+        WHEN 137 THEN 'מרק גזר ובטטה'
+        WHEN 138 THEN 'קנלוני ריקוטה ותרד'
+        WHEN 139 THEN 'סביצ׳ה שרימפס'
+        WHEN 140 THEN 'מרק דגים ים תיכוני'
+        WHEN 141 THEN 'פשטידת בטטה מתוקה'
+        WHEN 142 THEN 'קימצ׳י מותסס ביתי'
+        WHEN 143 THEN 'ריזוטו דיו דיונון'
+        WHEN 144 THEN 'פאי בטטה מתוק'
+        WHEN 145 THEN 'שניצל פטריות'
+        WHEN 146 THEN 'לחם שיפון ביתי'
+        WHEN 147 THEN 'קרוסטיני עגבניות'
+        WHEN 148 THEN 'חלת שום'
+        WHEN 149 THEN 'סלט תפוזים ושומר'
+        WHEN 150 THEN 'מוקפץ קשיו וירקות'
+    END,
+
+    difficulty = CASE id
+        WHEN 101 THEN 'medium'
+        WHEN 102 THEN 'hard'
+        WHEN 103 THEN 'easy'
+        WHEN 104 THEN 'medium'
+        WHEN 105 THEN 'medium'
+        WHEN 106 THEN 'easy'
+        WHEN 107 THEN 'medium'
+        WHEN 108 THEN 'easy'
+        WHEN 109 THEN 'easy'
+        WHEN 110 THEN 'easy'
+        WHEN 111 THEN 'medium'
+        WHEN 112 THEN 'medium'
+        WHEN 113 THEN 'easy'
+        WHEN 114 THEN 'medium'
+        WHEN 115 THEN 'hard'
+        WHEN 116 THEN 'hard'
+        WHEN 117 THEN 'hard'
+        WHEN 118 THEN 'easy'
+        WHEN 119 THEN 'easy'
+        WHEN 120 THEN 'medium'
+        WHEN 121 THEN 'easy'
+        WHEN 122 THEN 'easy'
+        WHEN 123 THEN 'easy'
+        WHEN 124 THEN 'medium'
+        WHEN 125 THEN 'hard'
+        WHEN 126 THEN 'easy'
+        WHEN 127 THEN 'medium'
+        WHEN 128 THEN 'easy'
+        WHEN 129 THEN 'medium'
+        WHEN 130 THEN 'easy'
+        WHEN 131 THEN 'hard'
+        WHEN 132 THEN 'easy'
+        WHEN 133 THEN 'easy'
+        WHEN 134 THEN 'hard'
+        WHEN 135 THEN 'easy'
+        WHEN 136 THEN 'medium'
+        WHEN 137 THEN 'easy'
+        WHEN 138 THEN 'medium'
+        WHEN 139 THEN 'medium'
+        WHEN 140 THEN 'medium'
+        WHEN 141 THEN 'easy'
+        WHEN 142 THEN 'hard'
+        WHEN 143 THEN 'hard'
+        WHEN 144 THEN 'medium'
+        WHEN 145 THEN 'medium'
+        WHEN 146 THEN 'medium'
+        WHEN 147 THEN 'easy'
+        WHEN 148 THEN 'easy'
+        WHEN 149 THEN 'easy'
+        WHEN 150 THEN 'easy'
+    END
+    WHERE id BETWEEN 1 AND 50;
+
+
+UPDATE meals
+SET
+prep_time_minutes = CASE id
+    WHEN 151 THEN 10
+    WHEN 152 THEN 90
+    WHEN 153 THEN 35
+    WHEN 154 THEN 70
+    WHEN 155 THEN 30
+    WHEN 156 THEN 40
+    WHEN 157 THEN 720
+    WHEN 158 THEN 60
+    WHEN 159 THEN 45
+    WHEN 160 THEN 25
+    WHEN 161 THEN 25
+    WHEN 162 THEN 80
+    WHEN 163 THEN 25
+    WHEN 164 THEN 30
+    WHEN 165 THEN 60
+    WHEN 166 THEN 50
+    WHEN 167 THEN 20
+    WHEN 168 THEN 720
+    WHEN 169 THEN 90
+    WHEN 170 THEN 10
+    WHEN 171 THEN 75
+    WHEN 172 THEN 30
+    WHEN 173 THEN 50
+    WHEN 174 THEN 45
+    WHEN 175 THEN 90
+    WHEN 176 THEN 80
+    WHEN 177 THEN 110
+    WHEN 178 THEN 40
+    WHEN 179 THEN 120
+    WHEN 180 THEN 30
+    WHEN 181 THEN 110
+    WHEN 182 THEN 45
+    WHEN 183 THEN 60
+    WHEN 184 THEN 720
+    WHEN 185 THEN 60
+    WHEN 186 THEN 25
+    WHEN 187 THEN 120
+    WHEN 188 THEN 75
+    WHEN 189 THEN 720
+    WHEN 190 THEN 60
+    WHEN 191 THEN 35
+    WHEN 192 THEN 10
+    WHEN 193 THEN 35
+    WHEN 194 THEN 60
+    WHEN 195 THEN 30
+    WHEN 196 THEN 90
+    WHEN 197 THEN 20
+    WHEN 198 THEN 90
+    WHEN 199 THEN 240
+    WHEN 200 THEN 120
+END,
+
+calories = CASE id
+    WHEN 151 THEN 250
+    WHEN 152 THEN 650
+    WHEN 153 THEN 400
+    WHEN 154 THEN 700
+    WHEN 155 THEN 500
+    WHEN 156 THEN 750
+    WHEN 157 THEN 800
+    WHEN 158 THEN 650
+    WHEN 159 THEN 450
+    WHEN 160 THEN 350
+    WHEN 161 THEN 300
+    WHEN 162 THEN 550
+    WHEN 163 THEN 450
+    WHEN 164 THEN 400
+    WHEN 165 THEN 600
+    WHEN 166 THEN 500
+    WHEN 167 THEN 300
+    WHEN 168 THEN 450
+    WHEN 169 THEN 600
+    WHEN 170 THEN 280
+    WHEN 171 THEN 700
+    WHEN 172 THEN 500
+    WHEN 173 THEN 550
+    WHEN 174 THEN 550
+    WHEN 175 THEN 450
+    WHEN 176 THEN 800
+    WHEN 177 THEN 750
+    WHEN 178 THEN 400
+    WHEN 179 THEN 550
+    WHEN 180 THEN 450
+    WHEN 181 THEN 600
+    WHEN 182 THEN 650
+    WHEN 183 THEN 550
+    WHEN 184 THEN 300
+    WHEN 185 THEN 450
+    WHEN 186 THEN 700
+    WHEN 187 THEN 350
+    WHEN 188 THEN 500
+    WHEN 189 THEN 800
+    WHEN 190 THEN 550
+    WHEN 191 THEN 400
+    WHEN 192 THEN 350
+    WHEN 193 THEN 700
+    WHEN 194 THEN 500
+    WHEN 195 THEN 400
+    WHEN 196 THEN 750
+    WHEN 197 THEN 450
+    WHEN 198 THEN 800
+    WHEN 199 THEN 350
+    WHEN 200 THEN 850
+END,
+
+difficulty = CASE id
+    WHEN 151 THEN 'easy'
+    WHEN 152 THEN 'medium'
+    WHEN 153 THEN 'medium'
+    WHEN 154 THEN 'medium'
+    WHEN 155 THEN 'easy'
+    WHEN 156 THEN 'medium'
+    WHEN 157 THEN 'hard'
+    WHEN 158 THEN 'medium'
+    WHEN 159 THEN 'medium'
+    WHEN 160 THEN 'easy'
+    WHEN 161 THEN 'medium'
+    WHEN 162 THEN 'medium'
+    WHEN 163 THEN 'easy'
+    WHEN 164 THEN 'medium'
+    WHEN 165 THEN 'medium'
+    WHEN 166 THEN 'medium'
+    WHEN 167 THEN 'easy'
+    WHEN 168 THEN 'hard'
+    WHEN 169 THEN 'hard'
+    WHEN 170 THEN 'easy'
+    WHEN 171 THEN 'hard'
+    WHEN 172 THEN 'medium'
+    WHEN 173 THEN 'medium'
+    WHEN 174 THEN 'medium'
+    WHEN 175 THEN 'medium'
+    WHEN 176 THEN 'hard'
+    WHEN 177 THEN 'hard'
+    WHEN 178 THEN 'medium'
+    WHEN 179 THEN 'hard'
+    WHEN 180 THEN 'medium'
+    WHEN 181 THEN 'hard'
+    WHEN 182 THEN 'medium'
+    WHEN 183 THEN 'medium'
+    WHEN 184 THEN 'easy'
+    WHEN 185 THEN 'medium'
+    WHEN 186 THEN 'easy'
+    WHEN 187 THEN 'medium'
+    WHEN 188 THEN 'medium'
+    WHEN 189 THEN 'hard'
+    WHEN 190 THEN 'medium'
+    WHEN 191 THEN 'easy'
+    WHEN 192 THEN 'easy'
+    WHEN 193 THEN 'medium'
+    WHEN 194 THEN 'medium'
+    WHEN 195 THEN 'medium'
+    WHEN 196 THEN 'hard'
+    WHEN 197 THEN 'easy'
+    WHEN 198 THEN 'hard'
+    WHEN 199 THEN 'hard'
+    WHEN 200 THEN 'hard'
+END,
+
+description = CASE id
+    WHEN 151 THEN 'סלט יווני קלאסי עם פטה, זיתים וירקות טריים'
+    WHEN 152 THEN 'פלפלים ממולאים בבשר ואורז ברוטב עגבניות'
+    WHEN 153 THEN 'מרק תאילנדי ארומטי עם קוקוס, עוף ולמון גראס'
+    WHEN 154 THEN 'עוף איטלקי עשיר ברוטב עגבניות, יין ועשבי תיבול'
+    WHEN 155 THEN 'פסטה אביבית עם ירקות טריים ולימון'
+    WHEN 156 THEN 'עוף ברוטב שמנת עם פטריות שיטאקי'
+    WHEN 157 THEN 'שוורמה כבש מתובלת בסגנון ביתי'
+    WHEN 158 THEN 'קיש גבינות עשיר עם שמיר וסלמון'
+    WHEN 159 THEN 'טופו מוקפץ בסגנון תאילנדי עם ירקות'
+    WHEN 160 THEN 'דג אפוי עם אבוקדו ותיבול ים תיכוני'
+    WHEN 161 THEN 'ספרינג רולס טריים עם ירקות ונודלס'
+    WHEN 162 THEN 'מרק לוביה שחורה עשיר ומתובל'
+    WHEN 163 THEN 'פסטה עם ברוקולי ועגבניות שרי'
+    WHEN 164 THEN 'שיפודי עוף סאטה עם רוטב בוטנים'
+    WHEN 165 THEN 'תבשיל עדשים שחורות בסגנון הודי'
+    WHEN 166 THEN 'עוגת סמולינה מתוקה עם סירופ ורדים'
+    WHEN 167 THEN 'ממרח פלפלים קלויים ואגוזים'
+    WHEN 168 THEN 'ציר עצמות בקר עמוק ועשיר'
+    WHEN 169 THEN 'טארט לימון עם מרנג צרוב'
+    WHEN 170 THEN 'סלט תרד עם תותים ואגוזים'
+    WHEN 171 THEN 'ניוקי תרד עם חמאה חומה'
+    WHEN 172 THEN 'עוף מוקפץ ברוטב תמרינד'
+    WHEN 173 THEN 'מרק קרמי של תפוחי אדמה וכרישה'
+    WHEN 174 THEN 'בורגר ירקות קלוי ועשיר'
+    WHEN 175 THEN 'עוגיות שוקולד צ׳יפס קלאסיות'
+    WHEN 176 THEN 'חציל פרמזן אפוי עם גבינות'
+    WHEN 177 THEN 'אוסובוקו עגל ברוטב לימוני'
+    WHEN 178 THEN 'פריטטה טבעונית מבטטה וטופו'
+    WHEN 179 THEN 'מרק אסיאתי עם נודלס ועוף'
+    WHEN 180 THEN 'מוס שוקולד עשיר ואוורירי'
+    WHEN 181 THEN 'ראגו ירקות עשיר בסגנון איטלקי'
+    WHEN 182 THEN 'ספרינג רולס מטוגנים עם בשר'
+    WHEN 183 THEN 'מרק ירקות סמיך עם בשמל'
+    WHEN 184 THEN 'לבנה ביתית עם מלפפונים ועשבים'
+    WHEN 185 THEN 'עוגת גזר עם קרם גבינה'
+    WHEN 186 THEN 'שרימפס בחמאה מתובלת'
+    WHEN 187 THEN 'לחם ביתי עם זיתים ורוזמרין'
+    WHEN 188 THEN 'טארט אגסים ושקדים'
+    WHEN 189 THEN 'חמין חיטה עשיר בסגנון מסורתי'
+    WHEN 190 THEN 'ניוקי בטטה רכים'
+    WHEN 191 THEN 'מרק דלעת עם שיבולת שועל'
+    WHEN 192 THEN 'סלט קפרזה משודרג'
+    WHEN 193 THEN 'פסטה ברוטב וודקה ושמנת'
+    WHEN 194 THEN 'מרק עוף עם אורז ולימון'
+    WHEN 195 THEN 'שקשוקה ירוקה טבעונית'
+    WHEN 196 THEN 'לזניה ירקות עם בשמל'
+    WHEN 197 THEN 'אבוקדו ממולא בשרימפס'
+    WHEN 198 THEN 'קוסקוס מרוקאי עם בשר וירקות'
+    WHEN 199 THEN 'גלידת וניל ביתית עשירה'
+    WHEN 200 THEN 'ביריאני עוף חגיגי ומתובל'
+END
+WHERE id BETWEEN 1 AND 50;
+
+
+
+INSERT IGNORE INTO tags (name) VALUES
+('fried'), ('grilled'), ('baked'), ('stew'), ('slow_cooked'),
+('quick'), ('long_cooking'),
+('high_protein'), ('comfort_food'),
+('healthy'), ('low_carb'),
+('italian'), ('middle_eastern'), ('asian'),
+('one_pot'), ('bbq'), ('spicy');
+
+INSERT IGNORE INTO tags (name) VALUES
+('vegetarian'),
+('vegan'),
+('salad'),
+('soup'),
+('dessert'),
+('creamy'),
+('street_food'),
+('brunch'),
+('fresh'),
+('high_fiber'),
+('dip'),
+('meal_prep'),
+('no_bake'),
+('bread'),
+('seafood'),
+('family'),
+('rice');
+
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 1, id FROM tags WHERE name IN ('fried','comfort_food','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 2, id FROM tags WHERE name IN ('stew','one_pot','comfort_food','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 3, id FROM tags WHERE name IN ('grilled','high_protein','low_carb');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 4, id FROM tags WHERE name IN ('baked','healthy','high_protein','one_pot');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 5, id FROM tags WHERE name IN ('bbq','grilled','middle_eastern','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 6, id FROM tags WHERE name IN ('italian','stew','long_cooking','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 7, id FROM tags WHERE name IN ('baked','italian','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 8, id FROM tags WHERE name IN ('stew','middle_eastern','one_pot');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 9, id FROM tags WHERE name IN ('slow_cooked','one_pot','comfort_food','long_cooking');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 10, id FROM tags WHERE name IN ('bbq','grilled','middle_eastern','high_protein');
+
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 11, id FROM tags WHERE name IN ('baked','slow_cooked','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 12, id FROM tags WHERE name IN ('one_pot','healthy','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 13, id FROM tags WHERE name IN ('stew','healthy','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 14, id FROM tags WHERE name IN ('asian','quick','healthy','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 15, id FROM tags WHERE name IN ('stew','middle_eastern','comfort_food','slow_cooked');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 16, id FROM tags WHERE name IN ('baked','comfort_food','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 17, id FROM tags WHERE name IN ('baked','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 18, id FROM tags WHERE name IN ('slow_cooked','comfort_food','long_cooking');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 19, id FROM tags WHERE name IN ('italian','stew','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 20, id FROM tags WHERE name IN ('bbq','middle_eastern','grilled','high_protein');
+
+-- 21
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 21, id FROM tags WHERE name IN ('healthy','high_protein','salad','low_carb');
+
+-- 22
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 22, id FROM tags WHERE name IN ('healthy','asian','high_protein','rice_based');
+
+-- 23
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 23, id FROM tags WHERE name IN ('healthy','high_protein','oven','low_carb');
+
+-- 24
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 24, id FROM tags WHERE name IN ('healthy','soup','high_protein','one_pot');
+
+-- 25
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 25, id FROM tags WHERE name IN ('healthy','high_protein','low_carb','asian');
+
+-- 26
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 26, id FROM tags WHERE name IN ('quick','high_protein','seafood');
+
+-- 27
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 27, id FROM tags WHERE name IN ('healthy','high_protein','balanced','meal_prep');
+
+-- 28
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 28, id FROM tags WHERE name IN ('asian','high_protein','healthy');
+
+-- 29
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 29, id FROM tags WHERE name IN ('grill','sweet_savory','high_protein');
+
+-- 30
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 30, id FROM tags WHERE name IN ('pasta','quick','mediterranean');
+
+-- 31
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 31, id FROM tags WHERE name IN ('one_pot','comfort_food','vegetarian');
+
+-- 32
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 32, id FROM tags WHERE name IN ('italian','comfort_food','rice_based');
+
+-- 33
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 33, id FROM tags WHERE name IN ('italian','oven','comfort_food');
+
+-- 34
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 34, id FROM tags WHERE name IN ('pasta','comfort_food','quick');
+
+-- 35
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 35, id FROM tags WHERE name IN ('oven','comfort_food','side');
+
+-- 36
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 36, id FROM tags WHERE name IN ('healthy','quick','vegetarian','low_carb');
+
+-- 37
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 37, id FROM tags WHERE name IN ('vegetarian','oven','comfort_food');
+
+-- 38
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 38, id FROM tags WHERE name IN ('italian','comfort_food','rice_based');
+
+-- 39
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 39, id FROM tags WHERE name IN ('baked','comfort_food');
+
+-- 40
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 40, id FROM tags WHERE name IN ('dessert','baked','sweet');
+
+-- 41
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 41, id FROM tags WHERE name IN ('vegan','healthy','high_protein','middle_eastern');
+
+-- 42
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 42, id FROM tags WHERE name IN ('vegan','healthy','asian','one_pot');
+
+-- 43
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 43, id FROM tags WHERE name IN ('vegan','fried','street_food','middle_eastern');
+
+-- 44
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 44, id FROM tags WHERE name IN ('vegan','healthy','one_pot','indian');
+
+-- 45
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 45, id FROM tags WHERE name IN ('vegan','healthy','meal_prep','gluten_free');
+
+-- 46
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 46, id FROM tags WHERE name IN ('vegan','healthy','soup','one_pot');
+
+-- 47
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 47, id FROM tags WHERE name IN ('vegan','salad','healthy','middle_eastern');
+
+-- 48
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 48, id FROM tags WHERE name IN ('vegan','healthy','one_pot','indian');
+
+-- 49
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 49, id FROM tags WHERE name IN ('vegan','healthy','soup');
+
+-- 50
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 50, id FROM tags WHERE name IN ('vegan','healthy','cold','soup');
+
+-- 51
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 51, id FROM tags WHERE name IN ('vegan','high_protein','healthy','pan_fried');
+
+-- 52
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 52, id FROM tags WHERE name IN ('vegan','asian','stir_fry','noodles');
+
+-- 53
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 53, id FROM tags WHERE name IN ('vegan','one_pot','healthy','mediterranean');
+
+-- 54
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 54, id FROM tags WHERE name IN ('vegan','soup','healthy','one_pot');
+
+-- 55
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 55, id FROM tags WHERE name IN ('vegan','dip','mediterranean','smoky');
+
+-- 56
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 56, id FROM tags WHERE name IN ('vegan','soup','healthy','comfort_food');
+
+-- 57
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 57, id FROM tags WHERE name IN ('vegan','salad','healthy','high_fiber');
+
+-- 58
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 58, id FROM tags WHERE name IN ('vegan','pasta','italian','spicy');
+
+-- 59
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 59, id FROM tags WHERE name IN ('vegan','dip','healthy','quick');
+
+-- 60
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 60, id FROM tags WHERE name IN ('vegan','dip','mediterranean','slow_cooked');
+
+-- 61
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 61, id FROM tags WHERE name IN ('vegan','soup','asian','comfort_food');
+
+-- 62
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 62, id FROM tags WHERE name IN ('vegan','one_pot','healthy','mediterranean');
+
+-- 63
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 63, id FROM tags WHERE name IN ('vegan','soup','asian','light');
+
+-- 64
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 64, id FROM tags WHERE name IN ('vegan','baked','comfort_food','vegetable_based');
+
+-- 65
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 65, id FROM tags WHERE name IN ('vegan','quick','healthy','breakfast');
+
+-- 66
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 66, id FROM tags WHERE name IN ('vegan','roasted','healthy','side_dish');
+
+-- 67
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 67, id FROM tags WHERE name IN ('vegan','roasted','mediterranean','comfort_food');
+
+-- 68
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 68, id FROM tags WHERE name IN ('vegan','roasted','showstopper','vegetable_based');
+
+-- 69
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 69, id FROM tags WHERE name IN ('vegan','quick','high_protein','snack');
+
+-- 70
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 70, id FROM tags WHERE name IN ('vegan','mediterranean','snack','quick');
+
+-- 71
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 71, id FROM tags WHERE name IN ('vegan','pasta','italian','rich');
+
+-- 72
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 72, id FROM tags WHERE name IN ('vegan','rice','middle_eastern','comfort_food');
+
+-- 73
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 73, id FROM tags WHERE name IN ('vegan','roasted','healthy','seasonal');
+
+-- 74
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 74, id FROM tags WHERE name IN ('vegan','soup','healthy','comfort_food');
+
+-- 75
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 75, id FROM tags WHERE name IN ('vegan','salad','asian','healthy');
+
+-- 76
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 76, id FROM tags WHERE name IN ('meat','street_food','middle_eastern','grill');
+
+-- 77
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 77, id FROM tags WHERE name IN ('meat','fried','traditional','comfort_food');
+
+-- 78
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 78, id FROM tags WHERE name IN ('dairy','baked','french','comfort_food');
+
+-- 79
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 79, id FROM tags WHERE name IN ('vegan','breakfast','healthy','meal_prep');
+
+-- 80
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 80, id FROM tags WHERE name IN ('meat','pasta','italian','classic');
+
+-- 81
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 81, id FROM tags WHERE name IN ('dairy','pasta','italian','classic');
+
+-- 82
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 82, id FROM tags WHERE name IN ('dairy','street_food','comfort_food','quick');
+
+-- 83
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 83, id FROM tags WHERE name IN ('dairy','breakfast','sweet','quick');
+
+-- 84
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 84, id FROM tags WHERE name IN ('dairy','bread','baked','traditional');
+
+-- 85
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 85, id FROM tags WHERE name IN ('vegan','bread','street_food','baked');
+
+-- 86
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 86, id FROM tags WHERE name IN ('dairy','dessert','baked','classic');
+
+-- 87
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 87, id FROM tags WHERE name IN ('dairy','soup','french','comfort_food');
+
+-- 88
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 88, id FROM tags WHERE name IN ('meat','asian','stir_fry','noodles');
+
+-- 89
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 89, id FROM tags WHERE name IN ('meat','asian','curry','spicy');
+
+-- 90
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 90, id FROM tags WHERE name IN ('vegan','pasta','mediterranean','light');
+
+-- 91
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 91, id FROM tags WHERE name IN ('meat','grill','middle_eastern','bbq');
+
+-- 92
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 92, id FROM tags WHERE name IN ('meat','one_pot','comfort_food','home_cooking');
+
+-- 93
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 93, id FROM tags WHERE name IN ('dairy','pasta','light','quick');
+
+-- 94
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 94, id FROM tags WHERE name IN ('meat','soup','asian','comfort_food');
+
+-- 95
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 95, id FROM tags WHERE name IN ('meat','one_pot','traditional','comfort_food');
+
+-- 96
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 96, id FROM tags WHERE name IN ('dairy','pasta','italian','comfort_food');
+
+-- 97
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 97, id FROM tags WHERE name IN ('dairy','breakfast','french','classic');
+
+-- 98
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 98, id FROM tags WHERE name IN ('meat','salad','french','healthy');
+
+-- 99
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 99, id FROM tags WHERE name IN ('dairy','dessert','french','classic');
+
+-- 100
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 100, id FROM tags WHERE name IN ('vegan','asian','light','fresh');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 101, id FROM tags WHERE name IN ('soup','vegan','healthy','light');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 102, id FROM tags WHERE name IN ('meat','rice','one_pot','traditional');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 103, id FROM tags WHERE name IN ('meat','side','rich','quick');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 104, id FROM tags WHERE name IN ('chicken','one_pot','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 105, id FROM tags WHERE name IN ('meat','asian','quick','sweet_savory');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 106, id FROM tags WHERE name IN ('chicken','oven','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 107, id FROM tags WHERE name IN ('meat','sweet_savory','stew','traditional');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 108, id FROM tags WHERE name IN ('salad','seafood','healthy','light');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 109, id FROM tags WHERE name IN ('pasta','dairy','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 110, id FROM tags WHERE name IN ('chicken','asian','quick','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 111, id FROM tags WHERE name IN ('eggs','side','asian','marinated');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 112, id FROM tags WHERE name IN ('meat','street_food','quick','israeli');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 113, id FROM tags WHERE name IN ('vegan','curry','one_pot','protein_rich');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 114, id FROM tags WHERE name IN ('rice','dairy','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 115, id FROM tags WHERE name IN ('fish','gourmet','quick','light');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 116, id FROM tags WHERE name IN ('meat','stew','slow_cooked','italian');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 117, id FROM tags WHERE name IN ('meat','stew','slow_cooked','traditional');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 118, id FROM tags WHERE name IN ('pasta','meat','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 119, id FROM tags WHERE name IN ('chicken','quick','light','lemon');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 120, id FROM tags WHERE name IN ('meat','baked','pastry','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 121, id FROM tags WHERE name IN ('soup','dairy','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 122, id FROM tags WHERE name IN ('vegan','breakfast','healthy','sweet');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 123, id FROM tags WHERE name IN ('vegan','asian','protein_rich');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 124, id FROM tags WHERE name IN ('dairy','baked','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 125, id FROM tags WHERE name IN ('meat','stew','sweet_savory','traditional');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 126, id FROM tags WHERE name IN ('vegan','pasta','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 127, id FROM tags WHERE name IN ('vegan','stuffed','one_pot');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 128, id FROM tags WHERE name IN ('eggs','dairy','quick','breakfast');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 129, id FROM tags WHERE name IN ('fish','oven','healthy','mediterranean');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 130, id FROM tags WHERE name IN ('vegan','beans','one_pot','spicy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 131, id FROM tags WHERE name IN ('meat','raw','gourmet');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 132, id FROM tags WHERE name IN ('dairy','sweet','dessert');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 133, id FROM tags WHERE name IN ('vegan','pasta','quick','classic');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 134, id FROM tags WHERE name IN ('meat','stew','slow_cooked','french');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 135, id FROM tags WHERE name IN ('eggs','dairy','healthy','baked');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 136, id FROM tags WHERE name IN ('chicken','asian','sweet_savory');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 137, id FROM tags WHERE name IN ('soup','vegan','healthy','light');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 138, id FROM tags WHERE name IN ('pasta','dairy','baked','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 139, id FROM tags WHERE name IN ('seafood','raw','light','citrus');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 140, id FROM tags WHERE name IN ('seafood','soup','mediterranean');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 141, id FROM tags WHERE name IN ('vegan','sweet','baked');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 142, id FROM tags WHERE name IN ('vegan','fermented','asian','side');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 143, id FROM tags WHERE name IN ('rice','seafood','gourmet');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 144, id FROM tags WHERE name IN ('vegan','dessert','sweet');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 145, id FROM tags WHERE name IN ('vegan','fried','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 146, id FROM tags WHERE name IN ('bread','vegan','baked');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 147, id FROM tags WHERE name IN ('vegan','salad','light','mediterranean');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 148, id FROM tags WHERE name IN ('bread','dairy','baked','garlic');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 149, id FROM tags WHERE name IN ('salad','vegan','healthy','light');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 150, id FROM tags WHERE name IN ('vegan','asian','stir_fry','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 151, id FROM tags WHERE name IN ('vegetarian','salad','healthy','quick');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 152, id FROM tags WHERE name IN ('one_pot','high_protein','family');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 153, id FROM tags WHERE name IN ('soup','asian','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 154, id FROM tags WHERE name IN ('one_pot','italian','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 155, id FROM tags WHERE name IN ('vegan','healthy','quick');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 156, id FROM tags WHERE name IN ('creamy','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 157, id FROM tags WHERE name IN ('street_food','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 158, id FROM tags WHERE name IN ('baked','brunch');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 159, id FROM tags WHERE name IN ('vegan','asian','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 160, id FROM tags WHERE name IN ('healthy','high_protein','quick');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 161, id FROM tags WHERE name IN ('vegan','healthy','fresh');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 162, id FROM tags WHERE name IN ('vegan','one_pot','high_fiber');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 163, id FROM tags WHERE name IN ('vegan','quick','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 164, id FROM tags WHERE name IN ('asian','high_protein','grill');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 165, id FROM tags WHERE name IN ('vegan','high_fiber','one_pot');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 166, id FROM tags WHERE name IN ('dessert','baked');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 167, id FROM tags WHERE name IN ('vegan','dip','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 168, id FROM tags WHERE name IN ('soup','one_pot','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 169, id FROM tags WHERE name IN ('dessert','baked');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 170, id FROM tags WHERE name IN ('vegan','salad','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 171, id FROM tags WHERE name IN ('italian','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 172, id FROM tags WHERE name IN ('asian','quick','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 173, id FROM tags WHERE name IN ('soup','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 174, id FROM tags WHERE name IN ('vegan','high_fiber','meal_prep');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 175, id FROM tags WHERE name IN ('dessert','baked');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 176, id FROM tags WHERE name IN ('italian','baked','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 177, id FROM tags WHERE name IN ('one_pot','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 178, id FROM tags WHERE name IN ('vegan','baked','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 179, id FROM tags WHERE name IN ('soup','asian','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 180, id FROM tags WHERE name IN ('dessert','no_bake');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 181, id FROM tags WHERE name IN ('vegan','one_pot','meal_prep');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 182, id FROM tags WHERE name IN ('fried','asian');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 183, id FROM tags WHERE name IN ('soup','creamy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 184, id FROM tags WHERE name IN ('vegetarian','salad','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 185, id FROM tags WHERE name IN ('dessert','baked');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 186, id FROM tags WHERE name IN ('seafood','high_protein');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 187, id FROM tags WHERE name IN ('baked','bread');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 188, id FROM tags WHERE name IN ('dessert','baked');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 189, id FROM tags WHERE name IN ('one_pot','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 190, id FROM tags WHERE name IN ('vegan','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 191, id FROM tags WHERE name IN ('vegan','healthy','soup');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 192, id FROM tags WHERE name IN ('vegetarian','salad','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 193, id FROM tags WHERE name IN ('italian','creamy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 194, id FROM tags WHERE name IN ('soup','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 195, id FROM tags WHERE name IN ('vegan','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 196, id FROM tags WHERE name IN ('baked','comfort_food');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 197, id FROM tags WHERE name IN ('seafood','healthy');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 198, id FROM tags WHERE name IN ('one_pot','family');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 199, id FROM tags WHERE name IN ('dessert');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 200, id FROM tags WHERE name IN ('one_pot','rice','family');
