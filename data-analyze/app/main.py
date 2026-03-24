@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-from .routes import router
+from routes import router
 from contextlib import asynccontextmanager
-from .orchestrator import Orchestrator
-from .config import Configuration
+from orchestrator import Orchestrator
+from config import Configuration
 import logging 
 
 def setup_logging():
