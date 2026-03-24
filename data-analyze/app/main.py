@@ -15,7 +15,7 @@ async def lifespan(app: FastAPI):
         setup_logging()
         logger = logging.getLogger(__name__)
         service_config = Configuration()
-        manager = Orchestrator(service_config.client_server, service_config.db_server)
+        manager = Orchestrator(service_config.db_server)
         app.state.manager = manager
         logger.info('start service')
         yield
