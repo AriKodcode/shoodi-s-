@@ -21,7 +21,7 @@ def get_choice(request:ClientRequest, manager: Orchestrator = Depends(get_manage
         logger.error('failed to send client request to db server',exc_info=True)
         raise HTTPException(status_code=521,detail='failed')
     try:
-        data= [DBResponse.model_validate(recipe) for recipe in response.json()]
+        data = MealsDB.model_validate(response.json())
     except Exception:
         logger.error('not correct data from db',exc_info=True)
         raise HTTPException(status_code=522,detail='unexpect data from db')
