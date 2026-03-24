@@ -9,7 +9,7 @@ service = MealsService()
 
 @router.post("/candidates")
 def get_candidates(request: CandidateRequest):
-    meals = MealsService.get_full_meal(request)
+    meals = MealsService.get_full_meals(request)
 
     return {
         "meals": meals
