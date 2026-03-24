@@ -2,9 +2,8 @@ from .schema import DBResponse, ClientRequest
 import logging 
 
 class Orchestrator():
-    def __init__(self,client_uri:str, db_uri:str):
+    def __init__(self, db_uri:str):
         self.logger = logging.getLogger(__name__)
-        self.client_uri = client_uri
         self.db_uri = db_uri 
     
     def process_response(self, recipe:list[DBResponse], request: ClientRequest):
