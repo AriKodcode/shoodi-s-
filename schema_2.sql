@@ -2789,3 +2789,7 @@ UPDATE meals SET image = 'https://www.unileverfoodsolutions.com.au/dam/global-uf
 UPDATE meals SET image = 'https://www.tasteofhome.com/wp-content/uploads/2018/03/Asian-Vegetable-Beef-Soup_EXPS_SSBZ18_41319_D03_09_1b.jpg' WHERE id = 179;
 
 
+CREATE TABLE tags (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL
+);
