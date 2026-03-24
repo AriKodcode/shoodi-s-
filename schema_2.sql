@@ -2543,6 +2543,8 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 
 CREATE VIEW meal_full_view AS
 SELECT 
+    m.id,
+
     JSON_OBJECT(
         'id', m.id,
         'name', m.name,
@@ -2574,7 +2576,6 @@ JOIN (
 ) sub ON m.id = sub.meal_id
 
 GROUP BY m.id;
-
 UPDATE meal_ingredients
 SET unit = CASE unit
     WHEN 'grams' THEN 'גרם'
