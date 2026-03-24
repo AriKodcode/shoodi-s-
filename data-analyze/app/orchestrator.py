@@ -8,12 +8,18 @@ class Orchestrator():
     
     def process_response(self, recipe:MealsDB, request: ClientRequest):
         result = []
-        client_choice = request.model_dump()
+        client_choice = self.serialize_client_choice(request)
         
         for meal_obj in recipe.meals: 
             meal_dict = meal_obj.model_dump()
             result.append(self.calculate_meal_score_percent(meal_dict, client_choice))
         return result 
+    def serialize_client_choice(self,request: ClientRequest):
+        client_choice = request.model_dump()
+        end = client_choice['weights']
+        return {'light_score' :end['lightness'], 
+        'health_score':end['health'], 
+        'complex_score': end['complexity']}
     
     def calculate_meal_score_percent(self, meal: dict, client: dict):
         
