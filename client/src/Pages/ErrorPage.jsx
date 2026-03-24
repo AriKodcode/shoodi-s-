@@ -11,7 +11,7 @@ function ErrorPage() {
       <p>מצטערים...</p>
       <p>הדף המבוקש לא נמצא</p>
       
-      <button className='error-btn' onClick={()=>navigate('/')}>חזור לדף הראשי</button>
+      <button className='error-btn' onClick={()=>navigate('/')}>לחזרה לדף הראשי</button>
     </div>
   )
 }
