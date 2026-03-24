@@ -6,7 +6,8 @@ function Card({ item, state, set }) {
     <div className="cards">
       {item.map((item) => (
         
-        <div className="one-card" onClick={() => { set(item.value)}}>
+        <div className={`one-card ${state === item.value ? 'selected' : ''}`} 
+        onClick={() => { set(item.value)}}>
           <p className='type'>{item.text}</p>
           <p className='icon'>{item?.icon}</p>
         </div>

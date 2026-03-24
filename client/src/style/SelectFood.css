@@ -134,7 +134,7 @@
     border: 2px solid transparent;
 }
 
-.one-card .choose{
+.one-card .choose {
     border: 1px solid black;
 }
 
@@ -142,6 +142,12 @@
     transform: translateY(-5px);
     background-color: #ffffff;
     border-color: #EBB49E;
+}
+
+.one-card.selected {
+    border: 2px solid #ff672a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
 }
 
 .type {
