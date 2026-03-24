@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 function PostRequest(url, filters) {
     const [data, setData] = useState([]) // הstate הזה בשביל כל הדאטה שחוזרת מהשרת
     const navigate = useNavigate()
+    
     async function getMeal() {
         try {
             const res = await fetch(url, {
@@ -21,8 +22,8 @@ function PostRequest(url, filters) {
                 navigate('/')// תכניס פה ניתוב לדף שלך 
             }
         } catch (err) {
-            navigate('/errorPage')
             console.log(err)
+            navigate('/errorPage')
         }
     }
     return { getMeal, data }
