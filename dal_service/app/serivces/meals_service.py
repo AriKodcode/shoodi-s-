@@ -19,13 +19,19 @@ class MealsService:
         }
 
     @staticmethod
-    def get_full_meal(request):
-        main = MealsDAL.fetch_top_by_category(request, "main")
-        side = MealsDAL.fetch_top_by_category(request, "side")
-        salad = MealsDAL.fetch_top_by_category(request, "salad")
+    def get_full_meals(request):
+        mains = MealsDAL.fetch_top_by_category(request, "main")
+        sides = MealsDAL.fetch_top_by_category(request, "side")
+        salads = MealsDAL.fetch_top_by_category(request, "salad")
 
-        return {
-            "main": MealsService._format_row(main) if main else None,
-            "side": MealsService._format_row(side) if side else None,
-            "salad": MealsService._format_row(salad) if salad else None
-        }
+        meals = []
+
+        for i in range(3):
+            meal = {
+                "main": MealsService._format_row(mains[i]) if i < len(mains) else None,
+                "side": MealsService._format_row(sides[i]) if i < len(sides) else None,
+                "salad": MealsService._format_row(salads[i]) if i < len(salads) else None,
+            }
+            meals.append(meal)
+
+        return meals
