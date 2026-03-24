@@ -2806,12 +2806,6 @@ CREATE TABLE meal_tags (
     FOREIGN KEY (tag_id) REFERENCES tags(id)
 );
 
-ALTER TABLE meals
-ADD COLUMN prep_time_minutes INT,
-ADD COLUMN calories INT,
-ADD COLUMN description TEXT,
-ADD COLUMN difficulty ENUM('easy', 'medium', 'hard');
-
 
 UPDATE meals
 SET 
