@@ -2549,6 +2549,7 @@ SELECT
     m.category,
     m.style,
     m.recipe,
+    m.image,
 
     JSON_ARRAYAGG(
         JSON_OBJECT(
@@ -2571,8 +2572,13 @@ JOIN (
 ) sub ON m.id = sub.meal_id
 
 GROUP BY 
-    m.id, m.name, m.type, m.category, m.style, m.recipe;
-
+    m.id, 
+    m.name, 
+    m.type, 
+    m.category, 
+    m.style, 
+    m.recipe,
+    m.image;
 
 UPDATE meal_ingredients
 SET unit = CASE unit
