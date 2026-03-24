@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException,Depends,Request
-from .schema import ClientRequest, DBResponse
+from schema import ClientRequest, MealsDB
 import requests
-from .orchestrator import Orchestrator
+from orchestrator import Orchestrator
 import logging
 
 router = APIRouter()
@@ -14,14 +14,14 @@ def get_choice(request:ClientRequest, manager: Orchestrator = Depends(get_manage
     logger = logging.getLogger(__name__)
 
     try:
-        response = requests.post(manager.db_uri, json=request.model_dump(),timeout=5)
+        response = requests.post(manager.db_uri, json=request.model_dump(),timeout=30)
         response.raise_for_status()
         logger.info('success send client request to db server')
     except Exception:
         logger.error('failed to send client request to db server',exc_info=True)
         raise HTTPException(status_code=521,detail='failed')
     try:
-        data= [DBResponse.model_validate(recipe) for recipe in response.json()]
+        data = MealsDB.model_validate(response.json())
     except Exception:
         logger.error('not correct data from db',exc_info=True)
         raise HTTPException(status_code=522,detail='unexpect data from db')

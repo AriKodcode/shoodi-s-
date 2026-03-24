@@ -53,6 +53,6 @@ def build_query(request, category):
             """
     query += """
     ORDER BY score DESC
-    LIMIT 1
+    LIMIT 3
     """
     return query

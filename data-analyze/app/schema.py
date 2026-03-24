@@ -26,12 +26,14 @@ class ResponsePart(BaseModel):
     score : float
     light_score : float
     health_score: float
-    complexity_score: float
+    complex_score: float
     popularity_score: float
-    matched_ingredients: list[str|None]
+    # matched_ingredients: list[str|None] |None
 
 class DBResponse(BaseModel):
     main: ResponsePart
     side: ResponsePart
     salad: ResponsePart
-    
+
+class MealsDB(BaseModel):
+    meals: list[DBResponse]

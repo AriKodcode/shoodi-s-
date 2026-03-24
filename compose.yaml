@@ -24,9 +24,9 @@ services:
       timeout: 5s
       retries: 10
 
-  app:
+  dal-service:
     build: ./dal_service
-    container_name: meals-service
+    container_name: dal-service
 
     depends_on:
       db:
@@ -41,7 +41,30 @@ services:
 
     ports:
       - "8000:8000"
+  analyze-service:
+    build: ./data-analyze
+    container_name: analyze-service
+    depends_on:
+      db:
+        condition: service_healthy
+      dal-service:
+        condition: service_started
+    ports:
+      - "8001:8001"
+    environment:
+      - DAL_HOST=dal-service
+      - DAL_PORT=8000
 
+  frontend:
+    build: ./client
+    container_name: frontend
+
+    depends_on:
+      dal-service:
+        condition: service_started
+
+    ports:
+      - "3000:80"
 
 volumes:
   db_data:
