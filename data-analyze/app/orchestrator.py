@@ -6,15 +6,15 @@ class Orchestrator():
         self.logger = logging.getLogger(__name__)
         self.db_uri = db_uri 
     
-    def process_response(self, recipe:list[DBResponse], request: ClientRequest):
+    def process_response(self, recipe:MealsDB, request: ClientRequest):
         result = []
-        for rec in recipe:
-            result.append(self.calculate_meal_score_percent(rec, request))
+        meals = recipe.model_dump()
+        client_choice = request.model_dump()
+        for meal in meals:
+            result.append(self.calculate_meal_score_percent(meal, client_choice))
         return result 
     
-    def calculate_meal_score_percent(self, response: DBResponse, client_choices: ClientRequest):
-        meal = response.model_dump()
-        client = client_choices.model_dump()
+    def calculate_meal_score_percent(self, meal: dict, client: dict):
         
         part_weights = {'main': 0.5, 'side': 0.3, 'salad': 0.2}
         
