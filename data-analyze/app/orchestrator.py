@@ -8,10 +8,11 @@ class Orchestrator():
     
     def process_response(self, recipe:MealsDB, request: ClientRequest):
         result = []
-        meals = recipe.model_dump()
         client_choice = request.model_dump()
-        for meal in meals:
-            result.append(self.calculate_meal_score_percent(meal, client_choice))
+        
+        for meal_obj in recipe.meals: 
+            meal_dict = meal_obj.model_dump()
+            result.append(self.calculate_meal_score_percent(meal_dict, client_choice))
         return result 
     
     def calculate_meal_score_percent(self, meal: dict, client: dict):
