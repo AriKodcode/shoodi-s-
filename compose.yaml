@@ -54,6 +54,7 @@ services:
     environment:
       - DAL_HOST=dal-service
       - DAL_PORT=8000
+      - DAL_ROUTE=candidates
 
   frontend:
     build: ./client
