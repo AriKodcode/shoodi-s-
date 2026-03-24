@@ -55,7 +55,7 @@ class Orchestrator():
         tags = []
         if category_totals.get('health_score', 0) > 0.8:
             tags.append("Healthy")
-        if category_totals.get('complexity_score', 0) > 0.7:
+        if category_totals.get('complex_score', 0) > 0.7:
             tags.append("High complexity")
         if category_totals.get('light_score', 0) > 0.7:
             tags.append("Light Meal")
