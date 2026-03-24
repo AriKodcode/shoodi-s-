@@ -14,7 +14,7 @@ def get_choice(request:ClientRequest, manager: Orchestrator = Depends(get_manage
     logger = logging.getLogger(__name__)
 
     try:
-        response = requests.post(manager.db_uri, json=request.model_dump(),timeout=5)
+        response = requests.post(manager.db_uri, json=request.model_dump(),timeout=30)
         response.raise_for_status()
         logger.info('success send client request to db server')
     except Exception:
