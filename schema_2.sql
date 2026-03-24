@@ -3235,7 +3235,7 @@ SET
         WHEN 99 THEN 'קרם ברולה צרפתי'
         WHEN 100 THEN 'ספרינג רולס טריים'
     END
-    WHERE id BETWEEN 1 AND 50;
+    WHERE id BETWEEN 51 AND 100;
 
 
 
@@ -3452,7 +3452,7 @@ SET
         WHEN 149 THEN 'easy'
         WHEN 150 THEN 'easy'
     END
-    WHERE id BETWEEN 1 AND 50;
+    WHERE id BETWEEN 101 AND 150;
 
 
 UPDATE meals
@@ -3668,7 +3668,7 @@ description = CASE id
     WHEN 199 THEN 'גלידת וניל ביתית עשירה'
     WHEN 200 THEN 'ביריאני עוף חגיגי ומתובל'
 END
-WHERE id BETWEEN 1 AND 50;
+WHERE id BETWEEN 151 AND 200;
 
 
 
