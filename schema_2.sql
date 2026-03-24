@@ -2543,21 +2543,23 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 
 CREATE VIEW meal_full_view AS
 SELECT 
-    m.id,
-    m.name,
-    m.type,
-    m.category,
-    m.style,
-    m.recipe,
-    m.image,
+    JSON_OBJECT(
+        'id', m.id,
+        'name', m.name,
+        'type', m.type,
+        'category', m.category,
+        'style', m.style,
+        'recipe', m.recipe,
+        'image', m.image,
 
-    JSON_ARRAYAGG(
-        JSON_OBJECT(
-            'ingredient', sub.name,
-            'quantity', sub.quantity,
-            'unit', sub.unit
+        'ingredients', JSON_ARRAYAGG(
+            JSON_OBJECT(
+                'ingredient', sub.name,
+                'quantity', sub.quantity,
+                'unit', sub.unit
+            )
         )
-    ) AS ingredients
+    ) AS meal
 
 FROM meals m
 
@@ -2571,14 +2573,7 @@ JOIN (
     JOIN ingredients i ON i.id = mi.ingredient_id
 ) sub ON m.id = sub.meal_id
 
-GROUP BY 
-    m.id, 
-    m.name, 
-    m.type, 
-    m.category, 
-    m.style, 
-    m.recipe,
-    m.image;
+GROUP BY m.id;
 
 UPDATE meal_ingredients
 SET unit = CASE unit
