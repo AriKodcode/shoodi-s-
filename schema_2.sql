@@ -1093,6 +1093,9 @@ INSERT IGNORE INTO ingredients (name) VALUES
 ('זעתר'),
 ('קישוא');
 INSERT INTO ingredients (name) VALUES ('עדשים כתומות');
+INSERT IGNORE INTO ingredients (name) VALUES
+('עוף'),
+('זיתים ירוקים');
 
 INSERT IGNORE INTO ingredients (name) VALUES
 ('שאלוט'),
@@ -1150,7 +1153,75 @@ INSERT IGNORE INTO ingredients (name) VALUES
 ('קמח תופח'),
 ('שמן עמוק'),
 ('מים חמים');
+INSERT IGNORE INTO ingredients (name) VALUES ('שורש פטרוזיליה');
+INSERT IGNORE INTO ingredients (name) VALUES ('פלפל חריף');
+INSERT IGNORE INTO ingredients (name) VALUES
+('עלי גפן'),
+('בשר כבש טחון');
+INSERT IGNORE INTO ingredients (name) VALUES
+('סינטה'),
+('מייפל'),
+('אגס');
+INSERT IGNORE INTO ingredients (name) VALUES
+('ארטישוק'),
+('פלפל'),
+('תה שחור'),
+('לב עוף'),
+('כבד עוף'),
+('עדשים ירוקות'),
+('אפונה'),
+('פילה מוסר'),
+('חיטה'),
+('בייקון'),
+('חומץ יין'),
+('שמן'),
+('ביצה'),
+('קמח כוסמת'),
+('חלב שקדים'),
+('פטריות שמפיניון'),
+('גבינת גרוייר'),
+('דניס'),
+('ג׳ינג׳ר');
 
+INSERT IGNORE INTO ingredients (name) VALUES
+('פילה בקר'),
+('קורנישונים'),
+('אוכמניות'),
+('צ׳ילי'),
+('נקניקיות'),
+('קנלוני'),
+('דג'),
+('ציר דגים'),
+('פקאנים'),
+('סויה'),
+('דיונון'),
+('פורטובלו'),
+('קמח שיפון'),
+('שמרים'),
+('בגט'),
+('תפוזים'),
+('אשכולית'),
+('שומר'),
+('שמנת מתוקה'),
+('פילה דג');
+INSERT IGNORE INTO ingredients (name) VALUES
+('דפי אורז'),
+('אטריות אורז'),
+('לוביה'),
+('סולת'),
+('תותים'),
+('אגוזי פקאן'),
+('עדשים'),
+('עגל'),
+('עירית'),
+('בצק ספרינג רול');
+INSERT IGNORE INTO ingredients (name) VALUES
+('גינגר'),
+('שמנת מתוקה'),
+('עלי לזניה'),
+('וניל'),
+('וודקה');
+INSERT IGNORE INTO ingredients (name) VALUES ('בשר טחון');
 
 -- מנה 1: שניצל עוף קלאסי
 INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
@@ -2646,7 +2717,7 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 
 -- מנה 104: קסרול עוף וירקות
 INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
-(104, (SELECT id FROM ingredients WHERE name='עוף'), 8, 'units'),
+(104, (SELECT id FROM ingredients WHERE name='חזה עוף'), 8, 'units'),
 (104, (SELECT id FROM ingredients WHERE name='שמן זית'), 3, 'tbsp'),
 (104, (SELECT id FROM ingredients WHERE name='בצל'), 2, 'units'),
 (104, (SELECT id FROM ingredients WHERE name='גזר'), 3, 'units'),
@@ -2662,6 +2733,12 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 (104, (SELECT id FROM ingredients WHERE name='צלפים'), 2, 'tbsp'),
 (104, (SELECT id FROM ingredients WHERE name='פטרוזיליה'), 2, 'tbsp');
 
+INSERT IGNORE INTO ingredients (name) VALUES
+('סינטה'),
+('מייפל'),
+('אגס');
+INSERT IGNORE INTO ingredients (name) VALUES ('ג׳ינג׳ר');
+
 -- מנה 105: בולגוגי קוריאני
 INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 (105, (SELECT id FROM ingredients WHERE name='סינטה'), 600, 'grams'),
@@ -2674,6 +2751,14 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 (105, (SELECT id FROM ingredients WHERE name='פלפל שחור'), 0.5, 'tsp'),
 (105, (SELECT id FROM ingredients WHERE name='שומשום'), 1, 'tbsp'),
 (105, (SELECT id FROM ingredients WHERE name='בצל ירוק'), 2, 'units');
+
+
+INSERT IGNORE INTO ingredients (name) VALUES
+('ירכי עוף'),
+('חרדל גרגירים'),
+('חרדל'),
+('תפוחי אדמה'),
+('בצל שאלוט');
 
 -- מנה 106: עוף בחרדל גרגירים
 INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
@@ -2689,6 +2774,11 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 (106, (SELECT id FROM ingredients WHERE name='תפוחי אדמה'), 200, 'grams'),
 (106, (SELECT id FROM ingredients WHERE name='בצל שאלוט'), 2, 'units'),
 (106, (SELECT id FROM ingredients WHERE name='רוזמרין'), 1, 'tsp');
+
+INSERT IGNORE INTO ingredients (name) VALUES
+('כתף בקר'),
+('ציר'),
+('שזיפים יבשים');
 
 -- מנה 107: בשר מרוקאי עם שזיפים
 INSERT INTO meal_ingredients VALUES
