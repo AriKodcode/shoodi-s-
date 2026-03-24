@@ -2793,3 +2793,11 @@ CREATE TABLE tags (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) UNIQUE NOT NULL
 );
+
+CREATE TABLE meal_tags (
+    meal_id INT,
+    tag_id INT,
+    PRIMARY KEY (meal_id, tag_id),
+    FOREIGN KEY (meal_id) REFERENCES meals(id) ON DELETE CASCADE,
+    FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
+);
