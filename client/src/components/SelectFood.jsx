@@ -9,15 +9,15 @@ function SelectFood() {
   const [lightness, setLightness] = useState(null)
   const [health, setHealth] = useState(null)
   const [complexity, setComplexity] = useState(null)
-  
+
 
   const steps = ["סוג ארוחה", "זמן עשייה", "בריאות", "רמת מורכבות"];
   const typeMeal = [{ text: "חלבי", icon: "🍕", value: "dairy" }, { text: "פרווה", icon: "🥪", value: "vegan" }, { text: "בשרי", icon: "🍔", value: "meat" }]
-  const preferTime = [{ text: "מהיר", icon: "⚡", value: 0.2 }, { text: "בינוני", icon: "🍳", value: 0.6 }, { text: "ארוך", icon: "⏳", value: 1 }]
-  const foodHealth = [{ text: "בריא", icon: "🥦", value: 1 }, { text: "קלאסי", icon: "🍲", value: 0.6 }, { text: "ג'אנק", icon: "🍟", value: 0.2 }]
-  const complexityPrefer = [{ text: "קשה", icon: "🥣", value: 1 }, { text: "רגיל", icon: "🍳", value: 0.6 }, { text: "קל", icon: "👨‍🍳", value: 0.2 },]
+  const preferTime = [{ text: "מהיר", icon: "⚡", value: 0 }, { text: "בינוני", icon: "🍳", value: 0.5 }, { text: "ארוך", icon: "⏳", value: 1 }]
+  const foodHealth = [{ text: "בריא", icon: "🥦", value: 1 }, { text: "קלאסי", icon: "🍲", value: 0.5 }, { text: "ג'אנק", icon: "🍟", value: 0 }]
+  const complexityPrefer = [{ text: "קשה", icon: "🥣", value: 0 }, { text: "רגיל", icon: "🍳", value: 0.5 }, { text: "קל", icon: "👨‍🍳", value: 1 },]
 
-  function isValid(){
+  function isValid() {
     if (currentStep === 0) return type === null
     if (currentStep === 1) return lightness === null
     if (currentStep === 2) return health === null
@@ -50,7 +50,7 @@ function SelectFood() {
       <div className="buttons">
         {currentStep !== 3 && <button disabled={isValid()} onClick={() => setCurrentStep(currentStep + 1)}>המשך</button>}
         {currentStep === 3 && <button disabled={isValid()}>מצאו לי מנה</button>}
-        {currentStep !== 0 && <button onClick={() => setCurrentStep(currentStep - 1) }>חזרה</button>}
+        {currentStep !== 0 && <button onClick={() => setCurrentStep(currentStep - 1)}>חזרה</button>}
       </div>
     </div>
   )
