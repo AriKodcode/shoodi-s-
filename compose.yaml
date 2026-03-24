@@ -55,6 +55,17 @@ services:
       - DAL_HOST=dal-service
       - DAL_PORT=8000
 
+  frontend:
+    build: ./client
+    container_name: frontend
+
+    depends_on:
+      dal-service:
+        condition: service_started
+
+    ports:
+      - "3000:80"
+
 volumes:
   db_data:
 
