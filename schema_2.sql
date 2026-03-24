@@ -24,13 +24,17 @@ CREATE TABLE meals (
     recipe TEXT NOT NULL,
     image VARCHAR(500),
 
+    prep_time_minutes INT,
+    calories INT,
+    description TEXT,
+    difficulty ENUM('easy', 'medium', 'hard'),
+
     complex_score DECIMAL(3,2) NOT NULL CHECK (complex_score BETWEEN 0 AND 1),
     light_score DECIMAL(3,2) NOT NULL CHECK (light_score BETWEEN 0 AND 1),
     health_score DECIMAL(3,2) NOT NULL CHECK (health_score BETWEEN 0 AND 1),
     popularity_score DECIMAL(3,2) NOT NULL CHECK (popularity_score BETWEEN 0 AND 1)
+
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-
-
 
 -- =========================
 -- 2. ingredients (רכיבים)
