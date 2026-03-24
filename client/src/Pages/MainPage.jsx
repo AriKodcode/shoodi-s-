@@ -1,4 +1,6 @@
+import React from 'react'
 import SelectFood from '../components/SelectFood'
+
 function MainPage() {
     return (
         <div>

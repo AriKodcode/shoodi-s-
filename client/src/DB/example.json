@@ -1,282 +1,59 @@
 [
-    {
-        "id": 5,
-        "name": "Chicken Rice",
-        "type": "meat",
-        "category": "main",
-        "recipe": "Cook chicken, add rice, mix together.",
-        "ingredients": [
-            {
-                "name": "chicken",
-                "quantity": 200,
-                "unit": "grams"
-            },
-            {
-                "name": "rice",
-                "quantity": 100,
-                "unit": "grams"
-            },
-            {
-                "name": "olive oil",
-                "quantity": 1,
-                "unit": "tbsp"
-            }
-        ],
-        "reason": [
-            "High protein",
-            "Matches your health preference"
-        ]
-    },
-    {
-        "id": 12,
-        "name": "Chicken Salad",
-        "type": "meat",
-        "category": "salad",
-        "recipe": "Mix chicken with vegetables and dressing.",
-        "ingredients": [
-            {
-                "name": "chicken",
-                "quantity": 150,
-                "unit": "grams"
-            },
-            {
-                "name": "tomato",
-                "quantity": 2,
-                "unit": "units"
-            },
-            {
-                "name": "lettuce",
-                "quantity": 1,
-                "unit": "unit"
-            }
-        ],
-        "reason": [
-            "Light meal",
-            "Includes tomato"
-        ]
-    },
-    {
-        "id": 18,
-        "name": "Baked Salmon",
-        "type": "fish",
-        "category": "main",
-        "recipe": "Season salmon with lemon and herbs, bake for 15 minutes.",
-        "ingredients": [
-            {
-                "name": "salmon fillet",
-                "quantity": 250,
-                "unit": "grams"
-            },
-            {
-                "name": "lemon",
-                "quantity": 0.5,
-                "unit": "unit"
-            },
-            {
-                "name": "dill",
-                "quantity": 1,
-                "unit": "tsp"
-            }
-        ],
-        "reason": [
-            "Rich in Omega-3",
-            "Quick preparation"
-        ]
-    },
-    {
-        "id": 22,
-        "name": "Pasta Primavera",
-        "type": "vegetarian",
-        "category": "main",
-        "recipe": "Boil pasta and sauté with seasonal vegetables and garlic.",
-        "ingredients": [
-            {
-                "name": "pasta",
-                "quantity": 120,
-                "unit": "grams"
-            },
-            {
-                "name": "zucchini",
-                "quantity": 1,
-                "unit": "unit"
-            },
-            {
-                "name": "garlic",
-                "quantity": 2,
-                "unit": "cloves"
-            }
-        ],
-        "reason": [
-            "Full of vitamins",
-            "Great for dinner"
-        ]
-    },
-    {
-        "id": 30,
-        "name": "Lentil Soup",
-        "type": "vegan",
-        "category": "soup",
-        "recipe": "Simmer lentils with carrots, onions, and cumin until soft.",
-        "ingredients": [
-            {
-                "name": "red lentils",
-                "quantity": 150,
-                "unit": "grams"
-            },
-            {
-                "name": "carrot",
-                "quantity": 1,
-                "unit": "unit"
-            },
-            {
-                "name": "onion",
-                "quantity": 1,
-                "unit": "unit"
-            }
-        ],
-        "reason": [
-            "High fiber",
-            "Hearty and warming"
-        ]
-    },
-    {
-        "id": 41,
-        "name": "Beef Stir-fry",
-        "type": "meat",
-        "category": "main",
-        "recipe": "Flash fry beef strips with peppers and soy sauce.",
-        "ingredients": [
-            {
-                "name": "beef strips",
-                "quantity": 200,
-                "unit": "grams"
-            },
-            {
-                "name": "bell pepper",
-                "quantity": 2,
-                "unit": "units"
-            },
-            {
-                "name": "soy sauce",
-                "quantity": 2,
-                "unit": "tbsp"
-            }
-        ],
-        "reason": [
-            "Iron rich",
-            "Very tasty"
-        ]
-    },
-    {
-        "id": 55,
-        "name": "Quinoa Salad",
-        "type": "vegan",
-        "category": "salad",
-        "recipe": "Mix cooked quinoa with parsley, cucumber, and lemon juice.",
-        "ingredients": [
-            {
-                "name": "quinoa",
-                "quantity": 100,
-                "unit": "grams"
-            },
-            {
-                "name": "parsley",
-                "quantity": 0.5,
-                "unit": "bunch"
-            },
-            {
-                "name": "cucumber",
-                "quantity": 2,
-                "unit": "units"
-            }
-        ],
-        "reason": [
-            "Gluten free",
-            "Refreshing"
-        ]
-    },
-    {
-        "id": 67,
-        "name": "Tofu Curry",
-        "type": "vegan",
-        "category": "main",
-        "recipe": "Cook tofu cubes in coconut milk and curry spices.",
-        "ingredients": [
-            {
-                "name": "tofu",
-                "quantity": 250,
-                "unit": "grams"
-            },
-            {
-                "name": "coconut milk",
-                "quantity": 200,
-                "unit": "ml"
-            },
-            {
-                "name": "curry powder",
-                "quantity": 1,
-                "unit": "tbsp"
-            }
-        ],
-        "reason": [
-            "Plant based protein",
-            "Exotic flavor"
-        ]
-    },
-    {
-        "id": 82,
-        "name": "Omelet with Mushrooms",
-        "type": "vegetarian",
-        "category": "breakfast",
-        "recipe": "Whisk eggs and fry with sliced mushrooms.",
-        "ingredients": [
-            {
-                "name": "eggs",
-                "quantity": 3,
-                "unit": "units"
-            },
-            {
-                "name": "mushrooms",
-                "quantity": 100,
-                "unit": "grams"
-            },
-            {
-                "name": "butter",
-                "quantity": 10,
-                "unit": "grams"
-            }
-        ],
-        "reason": [
-            "Fast breakfast",
-            "Good fats"
-        ]
-    },
-    {
-        "id": 94,
-        "name": "Grilled Sea Bass",
-        "type": "fish",
-        "category": "main",
-        "recipe": "Grill the fish with salt and pepper until skin is crispy.",
-        "ingredients": [
-            {
-                "name": "sea bass",
-                "quantity": 300,
-                "unit": "grams"
-            },
-            {
-                "name": "sea salt",
-                "quantity": 1,
-                "unit": "tsp"
-            },
-            {
-                "name": "black pepper",
-                "quantity": 0.5,
-                "unit": "tsp"
-            }
-        ],
-        "reason": [
-            "Low calorie",
-            "Elegant dish"
-        ]
-    }
+  {
+    "id": 83,
+    "name": "פנקייק אמריקאי",
+    "type": "dairy",
+    "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/fluffyamericanpancak_74828_16x9.jpg",
+    "style": "heavy",
+    "category": "main",
+    "recipe": "**הסוד:** לא לערבב יתר על המידה! **הרטובים:** מערבבים: 2 ביצים + 300 מ\"ל חמאה (בוטרמילק) + 3 כפות חמאה מומסת + כפית תמצית וניל. **היבשים בנפרד:** 250 גרם קמח + כף אבקת אפייה + כפית סודה לשתייה + 2 כפות סוכר + קורט מלח — מערבבים. **השילוב (קריטי!):** מוסיפים הרטובים ליבשים. מערבבים **עד לייחוד בלבד** — גושים קטנים = בסדר גמור, ערבוב יתר = גומי. **הטיגון:** מחבת על בינונית עם טיפת חמאה. שופכים 1/3 כוס. כשמופיעות בועות ושוליים מתייצבים — הופכים פעם אחת. **לא ללחוץ!** **הגשה:** גבוה עם: חמאה, מייפל, פירות יער.",
+    "ingredients": [
+      { "unit": "כפית", "quantity": 1.0, "ingredient": "סודה לשתייה" },
+      { "unit": "כף", "quantity": 3.0, "ingredient": "חמאה" },
+      { "unit": "מ״ל", "quantity": 300.0, "ingredient": "לבן" },
+      { "unit": "יחידות", "quantity": 2.0, "ingredient": "ביצים" },
+      { "unit": "גרם", "quantity": 250.0, "ingredient": "קמח" },
+      { "unit": "כף", "quantity": 3.0, "ingredient": "סירופ מייפל" },
+      { "unit": "כפית", "quantity": 0.25, "ingredient": "מלח" },
+      { "unit": "כף", "quantity": 2.0, "ingredient": "סוכר" },
+      { "unit": "כפית", "quantity": 1.0, "ingredient": "תמצית וניל" },
+      { "unit": "כף", "quantity": 1.0, "ingredient": "אבקת אפייה" }
+    ]
+  },
+  {
+    "id": 84,
+    "name": "חלה ביתית",
+    "type": "dairy",
+    "image": "https://static01.nyt.com/images/2015/11/19/dining/19COOKING-CHALLAHLOAF2/19COOKING-CHALLAHLOAF2-jumbo.jpg",
+    "style": "heavy",
+    "category": "side",
+    "recipe": "**הבצק:** בקערה גדולה מחברים: 7 גרם שמרים יבשים + כף סוכר + 250 מ\"ל מים חמים (37 מעלות). מניחים 10 דקות לתפיחה. מוסיפים: 500 גרם קמח לבן + כפית מלח + 2 ביצים + 3 כפות שמן + 2 כפות דבש. לשים 10 דקות מלאות עד לבצק חלק ומגמיש. **תפיחה ראשונה:** מכסים ומניחים שעה ורבע — הבצק מכפיל. **האריגה:** מחלקים ל-3 גלילים שווים (40 ס\"מ). אורגים צמה רופפת. **תפיחה שנייה:** 45 דקות. **לפני אפייה:** מברישים בביצה טרופה. מפזרים שומשום. **האפייה:** ב-180 מעלות 30 דקות. הקשה על הגוף — צליל חלול = מוכן.",
+    "ingredients": [
+      { "unit": "גרם", "quantity": 500.0, "ingredient": "קמח" },
+      { "unit": "כף", "quantity": 3.0, "ingredient": "שמן צמחי" },
+      { "unit": "כפית", "quantity": 1.0, "ingredient": "סוכר" },
+      { "unit": "כף", "quantity": 2.0, "ingredient": "שומשום" },
+      { "unit": "כפית", "quantity": 1.0, "ingredient": "מלח" },
+      { "unit": "כף", "quantity": 2.0, "ingredient": "דבש" },
+      { "unit": "יחידות", "quantity": 2.0, "ingredient": "ביצים" },
+      { "unit": "גרם", "quantity": 7.0, "ingredient": "שמרים יבשים" }
+    ]
+  },
+  {
+    "id": 85,
+    "name": "בייגלה ירושלמי",
+    "type": "vegan",
+    "image": "https://jewishfood.wordpress.com/files/2009/12/img_1761.jpg",
+    "style": "heavy",
+    "category": "side",
+    "recipe": "**הבצק:** שמרים + מים חמים + סוכר — 10 דקות. מוסיפים: 500 גרם קמח + מלח + 2 כפות שמן זית. לשים 8 דקות. תפיחה שעה. **העיצוב:** מחלקים ל-8. מגלגלים לגלגלים ארוכים. מחברים לטבעות גדולות. **הציפוי:** מכינים תערובת: שומשום + זעתר (2:1). מניחים הטבעות בתערובת — לוחצים. **האפייה:** 15 דקות ב-210 מעלות — לא יותר! חייב להיות רך מבפנים, זהוב מבחוץ. **הגשה:** עם גבינת שמנת, שמן זית, פלפל.",
+    "ingredients": [
+      { "unit": "גרם", "quantity": 7.0, "ingredient": "שמרים יבשים" },
+      { "unit": "גרם", "quantity": 500.0, "ingredient": "קמח" },
+      { "unit": "כף", "quantity": 2.0, "ingredient": "שמן זית" },
+      { "unit": "כפית", "quantity": 1.0, "ingredient": "מלח" },
+      { "unit": "כף", "quantity": 4.0, "ingredient": "שומשום" },
+      { "unit": "כף", "quantity": 2.0, "ingredient": "זעתר" }
+    ]
+  }
 ]
