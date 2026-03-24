@@ -28,7 +28,7 @@ class ResponsePart(BaseModel):
     health_score: float
     complex_score: float
     popularity_score: float
-    matched_ingredients: list[str|None]
+    # matched_ingredients: list[str|None] |None
 
 class DBResponse(BaseModel):
     main: ResponsePart
