@@ -1,10 +1,10 @@
 import React from 'react'
-import CookRecipe from '../components/CookRecipe'
+import RecipeDetail from '../components/RecipeDetails'
 
 function RecipeDetailsPage() {
   return (
     <div>
-        <CookRecipe/>
+        <RecipeDetail/>
     </div>
   )
 }
