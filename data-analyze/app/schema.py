@@ -34,4 +34,6 @@ class DBResponse(BaseModel):
     main: ResponsePart
     side: ResponsePart
     salad: ResponsePart
-    
+
+class MealsDB(BaseModel):
+    meals: list[DBResponse]
