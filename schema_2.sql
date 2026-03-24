@@ -1093,7 +1093,135 @@ INSERT IGNORE INTO ingredients (name) VALUES
 ('זעתר'),
 ('קישוא');
 INSERT INTO ingredients (name) VALUES ('עדשים כתומות');
+INSERT IGNORE INTO ingredients (name) VALUES
+('עוף'),
+('זיתים ירוקים');
 
+INSERT IGNORE INTO ingredients (name) VALUES
+('שאלוט'),
+('יין לבן יבש'),
+('סוכר לבן'),
+('סוכר אבקה'),
+('קמח לבן'),
+('קמח פנקייק'),
+('גבינת ריקוטה'),
+('גבינת בופלה'),
+('ריקוטה סלטה'),
+('גבינת עזים'),
+('יוגורט'),
+('מי ורדים'),
+('מים'),
+('ציר עגל'),
+('עצמות עוף'),
+('נקניק עוף'),
+('בשר חזיר טחון'),
+('עצמות מח'),
+('שומן אווז'),
+('דלעת'),
+('מנגולד'),
+('תרד טרי'),
+('עגבניות ירוקות'),
+('ריחן'),
+('עלי מרווה'),
+('עלי בזיליקום טרי'),
+('בצל מטוגן'),
+('בצל מקורמל'),
+('שקדים פרוסים'),
+('אגסים'),
+('ריבת משמש'),
+('פסיפלורה'),
+('קרוטונים'),
+('שמן כמהין'),
+('חריסה'),
+('גהי'),
+('מים ורד'),
+('חוט זעפרן'),
+('בצק'),
+('יריעות ספרינג רולס'),
+('מיונז'),
+('סריראצ׳ה'),
+('מלפפון פרסי'),
+('שמיר'),
+('עלי נאנה'),
+('כוכבי תיבול'),
+('גרגרי פלפל'),
+('עגבניות מרוסקות'),
+('אבקת סוכר'),
+('קורנפלור'),
+('פולי וניל'),
+('שוקולד מריר'),
+('קמח תופח'),
+('שמן עמוק'),
+('מים חמים');
+INSERT IGNORE INTO ingredients (name) VALUES ('שורש פטרוזיליה');
+INSERT IGNORE INTO ingredients (name) VALUES ('פלפל חריף');
+INSERT IGNORE INTO ingredients (name) VALUES
+('עלי גפן'),
+('בשר כבש טחון');
+INSERT IGNORE INTO ingredients (name) VALUES
+('סינטה'),
+('מייפל'),
+('אגס');
+INSERT IGNORE INTO ingredients (name) VALUES
+('ארטישוק'),
+('פלפל'),
+('תה שחור'),
+('לב עוף'),
+('כבד עוף'),
+('עדשים ירוקות'),
+('אפונה'),
+('פילה מוסר'),
+('חיטה'),
+('בייקון'),
+('חומץ יין'),
+('שמן'),
+('ביצה'),
+('קמח כוסמת'),
+('חלב שקדים'),
+('פטריות שמפיניון'),
+('גבינת גרוייר'),
+('דניס'),
+('ג׳ינג׳ר');
+
+INSERT IGNORE INTO ingredients (name) VALUES
+('פילה בקר'),
+('קורנישונים'),
+('אוכמניות'),
+('צ׳ילי'),
+('נקניקיות'),
+('קנלוני'),
+('דג'),
+('ציר דגים'),
+('פקאנים'),
+('סויה'),
+('דיונון'),
+('פורטובלו'),
+('קמח שיפון'),
+('שמרים'),
+('בגט'),
+('תפוזים'),
+('אשכולית'),
+('שומר'),
+('שמנת מתוקה'),
+('פילה דג');
+INSERT IGNORE INTO ingredients (name) VALUES
+('דפי אורז'),
+('אטריות אורז'),
+('לוביה'),
+('סולת'),
+('תותים'),
+('אגוזי פקאן'),
+('עדשים'),
+('עגל'),
+('עירית'),
+('בצק ספרינג רול');
+INSERT IGNORE INTO ingredients (name) VALUES
+('גינגר'),
+('שמנת מתוקה'),
+('עלי לזניה'),
+('וניל'),
+('וודקה');
+INSERT IGNORE INTO ingredients (name) VALUES ('בשר טחון');
 
 -- מנה 1: שניצל עוף קלאסי
 INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
@@ -2544,6 +2672,923 @@ INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
 (100, (SELECT id FROM ingredients WHERE name='ליים'), 1, 'units'),
 (100, (SELECT id FROM ingredients WHERE name='שומשום'), 1, 'tsp');
 
+-- מנה 101: מרק עגבניות שורש קרמי
+INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
+(101, (SELECT id FROM ingredients WHERE name='עגבניות'), 1200, 'grams'),
+(101, (SELECT id FROM ingredients WHERE name='שום'), 1, 'head'),
+(101, (SELECT id FROM ingredients WHERE name='בצל'), 2, 'units'),
+(101, (SELECT id FROM ingredients WHERE name='גזר'), 2, 'units'),
+(101, (SELECT id FROM ingredients WHERE name='שורש פטרוזיליה'), 1, 'units'),
+(101, (SELECT id FROM ingredients WHERE name='שמן זית'), 4, 'tbsp'),
+(101, (SELECT id FROM ingredients WHERE name='מלח'), 1, 'tsp'),
+(101, (SELECT id FROM ingredients WHERE name='פלפל שחור'), 0.5, 'tsp'),
+(101, (SELECT id FROM ingredients WHERE name='ציר ירקות'), 400, 'ml'),
+(101, (SELECT id FROM ingredients WHERE name='בזיליקום'), 1, 'handful'),
+(101, (SELECT id FROM ingredients WHERE name='פפריקה מעושנת'), 1, 'tsp'),
+(101, (SELECT id FROM ingredients WHERE name='פלפל חריף'), 0.25, 'tsp'),
+(101, (SELECT id FROM ingredients WHERE name='לימון'), 0.5, 'units');
+
+-- מנה 102: ממולאים עלי גפן
+INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
+(102, (SELECT id FROM ingredients WHERE name='עלי גפן'), 300, 'grams'),
+(102, (SELECT id FROM ingredients WHERE name='בשר כבש טחון'), 400, 'grams'),
+(102, (SELECT id FROM ingredients WHERE name='אורז'), 150, 'grams'),
+(102, (SELECT id FROM ingredients WHERE name='בצל'), 1, 'units'),
+(102, (SELECT id FROM ingredients WHERE name='שום'), 3, 'cloves'),
+(102, (SELECT id FROM ingredients WHERE name='פטרוזיליה'), 3, 'tbsp'),
+(102, (SELECT id FROM ingredients WHERE name='כוסברה'), 2, 'tbsp'),
+(102, (SELECT id FROM ingredients WHERE name='כמון'), 1, 'tsp'),
+(102, (SELECT id FROM ingredients WHERE name='בהרת'), 1, 'tsp'),
+(102, (SELECT id FROM ingredients WHERE name='קינמון'), 0.5, 'tsp'),
+(102, (SELECT id FROM ingredients WHERE name='מלח'), 1, 'tsp'),
+(102, (SELECT id FROM ingredients WHERE name='פלפל שחור'), 0.5, 'tsp'),
+(102, (SELECT id FROM ingredients WHERE name='לימון'), 2, 'units'),
+(102, (SELECT id FROM ingredients WHERE name='שמן זית'), 2, 'tbsp');
+
+-- מנה 103: מח עצם בתנור
+INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
+(103, (SELECT id FROM ingredients WHERE name='עצמות בקר'), 8, 'units'),
+(103, (SELECT id FROM ingredients WHERE name='מלח'), 1, 'tsp'),
+(103, (SELECT id FROM ingredients WHERE name='פלפל שחור'), 0.5, 'tsp'),
+(103, (SELECT id FROM ingredients WHERE name='פפריקה'), 0.5, 'tsp'),
+(103, (SELECT id FROM ingredients WHERE name='פטרוזיליה'), 3, 'tbsp'),
+(103, (SELECT id FROM ingredients WHERE name='שום'), 2, 'cloves'),
+(103, (SELECT id FROM ingredients WHERE name='לימון'), 1, 'units');
+
+-- מנה 104: קסרול עוף וירקות
+INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
+(104, (SELECT id FROM ingredients WHERE name='חזה עוף'), 8, 'units'),
+(104, (SELECT id FROM ingredients WHERE name='שמן זית'), 3, 'tbsp'),
+(104, (SELECT id FROM ingredients WHERE name='בצל'), 2, 'units'),
+(104, (SELECT id FROM ingredients WHERE name='גזר'), 3, 'units'),
+(104, (SELECT id FROM ingredients WHERE name='סלרי'), 3, 'units'),
+(104, (SELECT id FROM ingredients WHERE name='שום'), 5, 'cloves'),
+(104, (SELECT id FROM ingredients WHERE name='רסק עגבניות'), 2, 'tbsp'),
+(104, (SELECT id FROM ingredients WHERE name='יין לבן'), 300, 'ml'),
+(104, (SELECT id FROM ingredients WHERE name='ציר עוף'), 400, 'ml'),
+(104, (SELECT id FROM ingredients WHERE name='עגבניות'), 2, 'units'),
+(104, (SELECT id FROM ingredients WHERE name='טימין'), 1, 'tsp'),
+(104, (SELECT id FROM ingredients WHERE name='עלה דפנה'), 1, 'units'),
+(104, (SELECT id FROM ingredients WHERE name='זיתים ירוקים'), 150, 'grams'),
+(104, (SELECT id FROM ingredients WHERE name='צלפים'), 2, 'tbsp'),
+(104, (SELECT id FROM ingredients WHERE name='פטרוזיליה'), 2, 'tbsp');
+
+INSERT IGNORE INTO ingredients (name) VALUES
+('סינטה'),
+('מייפל'),
+('אגס');
+INSERT IGNORE INTO ingredients (name) VALUES ('ג׳ינג׳ר');
+
+-- מנה 105: בולגוגי קוריאני
+INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
+(105, (SELECT id FROM ingredients WHERE name='סינטה'), 600, 'grams'),
+(105, (SELECT id FROM ingredients WHERE name='רוטב סויה'), 4, 'tbsp'),
+(105, (SELECT id FROM ingredients WHERE name='שמן שומשום'), 2, 'tbsp'),
+(105, (SELECT id FROM ingredients WHERE name='מייפל'), 2, 'tbsp'),
+(105, (SELECT id FROM ingredients WHERE name='שום'), 2, 'cloves'),
+(105, (SELECT id FROM ingredients WHERE name='ג׳ינג׳ר'), 1, 'tbsp'),
+(105, (SELECT id FROM ingredients WHERE name='אגס'), 0.5, 'units'),
+(105, (SELECT id FROM ingredients WHERE name='פלפל שחור'), 0.5, 'tsp'),
+(105, (SELECT id FROM ingredients WHERE name='שומשום'), 1, 'tbsp'),
+(105, (SELECT id FROM ingredients WHERE name='בצל ירוק'), 2, 'units');
+
+
+INSERT IGNORE INTO ingredients (name) VALUES
+('ירכי עוף'),
+('חרדל גרגירים'),
+('חרדל'),
+('תפוחי אדמה'),
+('בצל שאלוט');
+
+-- מנה 106: עוף בחרדל גרגירים
+INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
+(106, (SELECT id FROM ingredients WHERE name='ירכי עוף'), 4, 'units'),
+(106, (SELECT id FROM ingredients WHERE name='חרדל גרגירים'), 3, 'tbsp'),
+(106, (SELECT id FROM ingredients WHERE name='חרדל'), 2, 'tbsp'),
+(106, (SELECT id FROM ingredients WHERE name='דבש'), 2, 'tbsp'),
+(106, (SELECT id FROM ingredients WHERE name='שמן זית'), 2, 'tbsp'),
+(106, (SELECT id FROM ingredients WHERE name='שום'), 2, 'cloves'),
+(106, (SELECT id FROM ingredients WHERE name='טימין'), 1, 'tsp'),
+(106, (SELECT id FROM ingredients WHERE name='מלח'), 1, 'tsp'),
+(106, (SELECT id FROM ingredients WHERE name='פלפל שחור'), 0.5, 'tsp'),
+(106, (SELECT id FROM ingredients WHERE name='תפוחי אדמה'), 200, 'grams'),
+(106, (SELECT id FROM ingredients WHERE name='בצל שאלוט'), 2, 'units'),
+(106, (SELECT id FROM ingredients WHERE name='רוזמרין'), 1, 'tsp');
+
+INSERT IGNORE INTO ingredients (name) VALUES
+('כתף בקר'),
+('ציר'),
+('שזיפים יבשים');
+
+-- מנה 107: בשר מרוקאי עם שזיפים
+INSERT INTO meal_ingredients VALUES
+(107,(SELECT id FROM ingredients WHERE name='כתף בקר'),800,'grams'),
+(107,(SELECT id FROM ingredients WHERE name='בצל'),3,'units'),
+(107,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(107,(SELECT id FROM ingredients WHERE name='כורכום'),1,'tsp'),
+(107,(SELECT id FROM ingredients WHERE name='ג׳ינג׳ר'),1,'tsp'),
+(107,(SELECT id FROM ingredients WHERE name='קינמון'),0.5,'tsp'),
+(107,(SELECT id FROM ingredients WHERE name='פלפל שחור'),0.5,'tsp'),
+(107,(SELECT id FROM ingredients WHERE name='אגוז מוסקט'),0.25,'tsp'),
+(107,(SELECT id FROM ingredients WHERE name='ציר'),400,'ml'),
+(107,(SELECT id FROM ingredients WHERE name='שזיפים יבשים'),150,'grams'),
+(107,(SELECT id FROM ingredients WHERE name='שקדים'),80,'grams'),
+(107,(SELECT id FROM ingredients WHERE name='דבש'),2,'tbsp');
+
+-- מנה 108: סלט ניצנים ושרימפס
+INSERT INTO meal_ingredients VALUES
+(108,(SELECT id FROM ingredients WHERE name='שרימפס'),300,'grams'),
+(108,(SELECT id FROM ingredients WHERE name='שמן זית'),3,'tbsp'),
+(108,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves'),
+(108,(SELECT id FROM ingredients WHERE name='פפריקה'),1,'tsp'),
+(108,(SELECT id FROM ingredients WHERE name='ליים'),1,'units'),
+(108,(SELECT id FROM ingredients WHERE name='רוקט'),100,'grams'),
+(108,(SELECT id FROM ingredients WHERE name='תרד'),100,'grams'),
+(108,(SELECT id FROM ingredients WHERE name='עגבניות שרי'),150,'grams'),
+(108,(SELECT id FROM ingredients WHERE name='אבוקדו'),1,'units'),
+(108,(SELECT id FROM ingredients WHERE name='מלפפון'),1,'units'),
+(108,(SELECT id FROM ingredients WHERE name='בצל אדום'),1,'units'),
+(108,(SELECT id FROM ingredients WHERE name='חרדל'),1,'tsp'),
+(108,(SELECT id FROM ingredients WHERE name='דבש'),1,'tbsp');
+
+-- מנה 109: פסטה עם ארטישוק ולימון
+INSERT INTO meal_ingredients VALUES
+(109,(SELECT id FROM ingredients WHERE name='פסטה'),400,'grams'),
+(109,(SELECT id FROM ingredients WHERE name='ארטישוק'),300,'grams'),
+(109,(SELECT id FROM ingredients WHERE name='חמאה'),50,'grams'),
+(109,(SELECT id FROM ingredients WHERE name='שאלוט'),2,'units'),
+(109,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves'),
+(109,(SELECT id FROM ingredients WHERE name='יין לבן'),250,'ml'),
+(109,(SELECT id FROM ingredients WHERE name='שמנת'),300,'ml'),
+(109,(SELECT id FROM ingredients WHERE name='לימון'),1,'units'),
+(109,(SELECT id FROM ingredients WHERE name='פרמזן'),80,'grams');
+
+-- מנה 110: מוקפץ עוף וירקות
+INSERT INTO meal_ingredients VALUES
+(110,(SELECT id FROM ingredients WHERE name='חזה עוף'),400,'grams'),
+(110,(SELECT id FROM ingredients WHERE name='רוטב סויה'),4,'tbsp'),
+(110,(SELECT id FROM ingredients WHERE name='שמן שומשום'),2,'tbsp'),
+(110,(SELECT id FROM ingredients WHERE name='קורנפלור'),2,'tbsp'),
+(110,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(110,(SELECT id FROM ingredients WHERE name='ג׳ינג׳ר'),1,'tbsp'),
+(110,(SELECT id FROM ingredients WHERE name='גזר'),1,'units'),
+(110,(SELECT id FROM ingredients WHERE name='ברוקולי'),150,'grams'),
+(110,(SELECT id FROM ingredients WHERE name='פלפל'),1,'units'),
+(110,(SELECT id FROM ingredients WHERE name='שעועית ירוקה'),100,'grams');
+
+-- מנה 111: ביצים בתה סיני
+INSERT INTO meal_ingredients VALUES
+(111,(SELECT id FROM ingredients WHERE name='ביצים'),8,'units'),
+(111,(SELECT id FROM ingredients WHERE name='תה שחור'),4,'units'),
+(111,(SELECT id FROM ingredients WHERE name='רוטב סויה'),3,'tbsp'),
+(111,(SELECT id FROM ingredients WHERE name='סוכר'),2,'tbsp'),
+(111,(SELECT id FROM ingredients WHERE name='כוכב אניס'),1,'units'),
+(111,(SELECT id FROM ingredients WHERE name='קינמון'),0.5,'tsp');
+
+-- מנה 112: ירושלמי מיקס
+INSERT INTO meal_ingredients VALUES
+(112,(SELECT id FROM ingredients WHERE name='לב עוף'),300,'grams'),
+(112,(SELECT id FROM ingredients WHERE name='כבד עוף'),300,'grams'),
+(112,(SELECT id FROM ingredients WHERE name='בצל'),2,'units'),
+(112,(SELECT id FROM ingredients WHERE name='פטריות'),200,'grams'),
+(112,(SELECT id FROM ingredients WHERE name='שמן זית'),3,'tbsp'),
+(112,(SELECT id FROM ingredients WHERE name='כמון'),1,'tsp'),
+(112,(SELECT id FROM ingredients WHERE name='פלפל שחור'),1,'tsp');
+
+-- מנה 113: קארי עדשים ירוקות
+INSERT INTO meal_ingredients VALUES
+(113,(SELECT id FROM ingredients WHERE name='עדשים ירוקות'),300,'grams'),
+(113,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(113,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(113,(SELECT id FROM ingredients WHERE name='ג׳ינג׳ר'),1,'tbsp'),
+(113,(SELECT id FROM ingredients WHERE name='חלב קוקוס'),400,'ml'),
+(113,(SELECT id FROM ingredients WHERE name='עגבניות מרוסקות'),400,'grams'),
+(113,(SELECT id FROM ingredients WHERE name='תרד'),200,'grams');
+
+-- מנה 114: ריזוטו ירוק
+INSERT INTO meal_ingredients VALUES
+(114,(SELECT id FROM ingredients WHERE name='אורז ארבוריו'),300,'grams'),
+(114,(SELECT id FROM ingredients WHERE name='תרד'),200,'grams'),
+(114,(SELECT id FROM ingredients WHERE name='בזיליקום'),50,'grams'),
+(114,(SELECT id FROM ingredients WHERE name='ציר'),800,'ml'),
+(114,(SELECT id FROM ingredients WHERE name='אפונה'),150,'grams'),
+(114,(SELECT id FROM ingredients WHERE name='חמאה'),50,'grams'),
+(114,(SELECT id FROM ingredients WHERE name='פרמזן'),80,'grams');
+
+-- מנה 115: פילה מוסר
+INSERT INTO meal_ingredients VALUES
+(115,(SELECT id FROM ingredients WHERE name='פילה מוסר'),4,'units'),
+(115,(SELECT id FROM ingredients WHERE name='שמן זית'),2,'tbsp'),
+(115,(SELECT id FROM ingredients WHERE name='יין לבן'),100,'ml'),
+(115,(SELECT id FROM ingredients WHERE name='חומץ יין'),2,'tbsp'),
+(115,(SELECT id FROM ingredients WHERE name='חמאה'),100,'grams'),
+(115,(SELECT id FROM ingredients WHERE name='לימון'),1,'units');
+
+-- מנה 116: ראגו כבש
+INSERT INTO meal_ingredients VALUES
+(116,(SELECT id FROM ingredients WHERE name='כתף כבש'),700,'grams'),
+(116,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(116,(SELECT id FROM ingredients WHERE name='גזר'),1,'units'),
+(116,(SELECT id FROM ingredients WHERE name='סלרי'),1,'units'),
+(116,(SELECT id FROM ingredients WHERE name='יין אדום'),300,'ml'),
+(116,(SELECT id FROM ingredients WHERE name='עגבניות מרוסקות'),400,'grams');
+
+-- מנה 117: חמין חיטה
+INSERT INTO meal_ingredients VALUES
+(117,(SELECT id FROM ingredients WHERE name='חיטה'),300,'grams'),
+(117,(SELECT id FROM ingredients WHERE name='שעועית לבנה'),200,'grams'),
+(117,(SELECT id FROM ingredients WHERE name='חומוס'),200,'grams');
+
+-- מנה 118: פסטה בייקון ואפונה
+INSERT INTO meal_ingredients VALUES
+(118,(SELECT id FROM ingredients WHERE name='פסטה'),400,'grams'),
+(118,(SELECT id FROM ingredients WHERE name='בייקון'),200,'grams'),
+(118,(SELECT id FROM ingredients WHERE name='אפונה'),200,'grams'),
+(118,(SELECT id FROM ingredients WHERE name='שמנת'),250,'ml'),
+(118,(SELECT id FROM ingredients WHERE name='פרמזן'),80,'grams');
+
+-- מנה 119: עוף לימון וצלפים
+INSERT INTO meal_ingredients VALUES
+(119,(SELECT id FROM ingredients WHERE name='חזה עוף'),4,'units'),
+(119,(SELECT id FROM ingredients WHERE name='קמח'),100,'grams'),
+(119,(SELECT id FROM ingredients WHERE name='חמאה'),50,'grams'),
+(119,(SELECT id FROM ingredients WHERE name='לימון'),1,'units'),
+(119,(SELECT id FROM ingredients WHERE name='צלפים'),3,'tbsp');
+
+-- מנה 120: בורקס בשר
+INSERT INTO meal_ingredients VALUES
+(120,(SELECT id FROM ingredients WHERE name='קמח'),500,'grams'),
+(120,(SELECT id FROM ingredients WHERE name='שמן'),100,'ml'),
+(120,(SELECT id FROM ingredients WHERE name='בשר טחון'),500,'grams'),
+(120,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(120,(SELECT id FROM ingredients WHERE name='ביצה'),2,'units');
+
+-- מנה 121: מרק פטריות
+INSERT INTO meal_ingredients VALUES
+(121,(SELECT id FROM ingredients WHERE name='פטריות'),600,'grams'),
+(121,(SELECT id FROM ingredients WHERE name='חמאה'),50,'grams'),
+(121,(SELECT id FROM ingredients WHERE name='שום'),4,'cloves'),
+(121,(SELECT id FROM ingredients WHERE name='ציר ירקות'),800,'ml'),
+(121,(SELECT id FROM ingredients WHERE name='שמנת'),150,'ml');
+
+-- מנה 122: פנקייק דגנים מלאים
+INSERT INTO meal_ingredients VALUES
+(122,(SELECT id FROM ingredients WHERE name='קמח שיבולת שועל'),150,'grams'),
+(122,(SELECT id FROM ingredients WHERE name='קמח כוסמת'),100,'grams'),
+(122,(SELECT id FROM ingredients WHERE name='חלב שקדים'),300,'ml'),
+(122,(SELECT id FROM ingredients WHERE name='מייפל'),2,'tbsp'),
+(122,(SELECT id FROM ingredients WHERE name='שמן קוקוס'),2,'tbsp');
+
+-- מנה 123: בולגוגי טופו
+INSERT INTO meal_ingredients VALUES
+(123,(SELECT id FROM ingredients WHERE name='טופו'),400,'grams'),
+(123,(SELECT id FROM ingredients WHERE name='רוטב סויה'),3,'tbsp'),
+(123,(SELECT id FROM ingredients WHERE name='שמן שומשום'),2,'tbsp'),
+(123,(SELECT id FROM ingredients WHERE name='מייפל'),2,'tbsp'),
+(123,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves');
+
+-- מנה 124: קיש שמפיניון
+INSERT INTO meal_ingredients VALUES
+(124,(SELECT id FROM ingredients WHERE name='פטריות שמפיניון'),400,'grams'),
+(124,(SELECT id FROM ingredients WHERE name='ביצים'),4,'units'),
+(124,(SELECT id FROM ingredients WHERE name='שמנת'),250,'ml'),
+(124,(SELECT id FROM ingredients WHERE name='פרמזן'),50,'grams'),
+(124,(SELECT id FROM ingredients WHERE name='גבינת גרוייר'),50,'grams');
+
+-- מנה 125: מרג׳ חמר
+INSERT INTO meal_ingredients VALUES
+(125,(SELECT id FROM ingredients WHERE name='כתף כבש'),1000,'grams'),
+(125,(SELECT id FROM ingredients WHERE name='בצל'),4,'units'),
+(125,(SELECT id FROM ingredients WHERE name='שום'),4,'cloves'),
+(125,(SELECT id FROM ingredients WHERE name='כורכום'),1,'tsp'),
+(125,(SELECT id FROM ingredients WHERE name='ג׳ינג׳ר'),1,'tsp'),
+(125,(SELECT id FROM ingredients WHERE name='בהרת'),1,'tsp'),
+(125,(SELECT id FROM ingredients WHERE name='שקדים'),100,'grams'),
+(125,(SELECT id FROM ingredients WHERE name='דבש'),2,'tbsp');
+
+-- מנה 126: פסטה עשבים ירוקה
+INSERT INTO meal_ingredients VALUES
+(126,(SELECT id FROM ingredients WHERE name='פסטה'),400,'grams'),
+(126,(SELECT id FROM ingredients WHERE name='בזיליקום'),50,'grams'),
+(126,(SELECT id FROM ingredients WHERE name='פטרוזיליה'),50,'grams'),
+(126,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(126,(SELECT id FROM ingredients WHERE name='שמן זית'),4,'tbsp'),
+(126,(SELECT id FROM ingredients WHERE name='צנוברים'),2,'tbsp'),
+(126,(SELECT id FROM ingredients WHERE name='לימון'),1,'units'),
+(126,(SELECT id FROM ingredients WHERE name='אפונה'),150,'grams'),
+(126,(SELECT id FROM ingredients WHERE name='אגוזי מלך'),50,'grams');
+
+-- מנה 127: ממולאים חומוס
+INSERT INTO meal_ingredients VALUES
+(127,(SELECT id FROM ingredients WHERE name='חומוס'),300,'grams'),
+(127,(SELECT id FROM ingredients WHERE name='קישוא'),4,'units'),
+(127,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(127,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(127,(SELECT id FROM ingredients WHERE name='עגבניות'),2,'units'),
+(127,(SELECT id FROM ingredients WHERE name='כמון'),1,'tsp'),
+(127,(SELECT id FROM ingredients WHERE name='כורכום'),1,'tsp'),
+(127,(SELECT id FROM ingredients WHERE name='פפריקה'),1,'tsp'),
+(127,(SELECT id FROM ingredients WHERE name='כוסברה'),2,'tbsp'),
+(127,(SELECT id FROM ingredients WHERE name='ציר ירקות'),400,'ml');
+
+-- מנה 128: חביתת עשבים ופטה
+INSERT INTO meal_ingredients VALUES
+(128,(SELECT id FROM ingredients WHERE name='ביצים'),5,'units'),
+(128,(SELECT id FROM ingredients WHERE name='חלב'),2,'tbsp'),
+(128,(SELECT id FROM ingredients WHERE name='שמן זית'),2,'tbsp'),
+(128,(SELECT id FROM ingredients WHERE name='פטרוזיליה'),3,'tbsp'),
+(128,(SELECT id FROM ingredients WHERE name='כוסברה'),2,'tbsp'),
+(128,(SELECT id FROM ingredients WHERE name='נענע'),2,'tbsp'),
+(128,(SELECT id FROM ingredients WHERE name='גבינת פטה'),80,'grams'),
+(128,(SELECT id FROM ingredients WHERE name='עגבניות שרי'),100,'grams');
+
+-- מנה 129: דג דניס בתנור
+INSERT INTO meal_ingredients VALUES
+(129,(SELECT id FROM ingredients WHERE name='דניס'),1,'units'),
+(129,(SELECT id FROM ingredients WHERE name='לימון'),1,'units'),
+(129,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(129,(SELECT id FROM ingredients WHERE name='שמיר'),1,'tbsp'),
+(129,(SELECT id FROM ingredients WHERE name='בצל שאלוט'),2,'units'),
+(129,(SELECT id FROM ingredients WHERE name='פלפל ירוק'),1,'units'),
+(129,(SELECT id FROM ingredients WHERE name='שמן זית'),3,'tbsp');
+
+-- מנה 130: תבשיל שעועית שחורה
+INSERT INTO meal_ingredients VALUES
+(130,(SELECT id FROM ingredients WHERE name='שעועית שחורה'),600,'grams'),
+(130,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(130,(SELECT id FROM ingredients WHERE name='שום'),4,'cloves'),
+(130,(SELECT id FROM ingredients WHERE name='פלפל חריף'),1,'units'),
+(130,(SELECT id FROM ingredients WHERE name='כמון'),2,'tsp'),
+(130,(SELECT id FROM ingredients WHERE name='פפריקה מעושנת'),1,'tsp'),
+(130,(SELECT id FROM ingredients WHERE name='אורגנו'),1,'tsp'),
+(130,(SELECT id FROM ingredients WHERE name='עגבניות מרוסקות'),400,'grams'),
+(130,(SELECT id FROM ingredients WHERE name='ציר'),400,'ml'),
+(130,(SELECT id FROM ingredients WHERE name='ליים'),1,'units'),
+(130,(SELECT id FROM ingredients WHERE name='כוסברה'),2,'tbsp');
+
+-- מנה 131: טרטר בקר
+INSERT INTO meal_ingredients VALUES
+(131,(SELECT id FROM ingredients WHERE name='פילה בקר'),400,'grams'),
+(131,(SELECT id FROM ingredients WHERE name='חרדל'),1,'tbsp'),
+(131,(SELECT id FROM ingredients WHERE name='חלמון ביצה'),2,'units'),
+(131,(SELECT id FROM ingredients WHERE name='שמן זית'),1,'tbsp'),
+(131,(SELECT id FROM ingredients WHERE name='צלפים'),2,'tbsp'),
+(131,(SELECT id FROM ingredients WHERE name='קורנישונים'),2,'tbsp'),
+(131,(SELECT id FROM ingredients WHERE name='בצל אדום'),1,'units');
+
+-- מנה 132: פנקייק אוכמניות
+INSERT INTO meal_ingredients VALUES
+(132,(SELECT id FROM ingredients WHERE name='אוכמניות'),200,'grams'),
+(132,(SELECT id FROM ingredients WHERE name='לימון'),1,'units'),
+(132,(SELECT id FROM ingredients WHERE name='שמנת'),200,'ml'),
+(132,(SELECT id FROM ingredients WHERE name='אבקת סוכר'),2,'tbsp');
+
+-- מנה 133: אגליו אוליו
+INSERT INTO meal_ingredients VALUES
+(133,(SELECT id FROM ingredients WHERE name='ספגטי'),400,'grams'),
+(133,(SELECT id FROM ingredients WHERE name='שום'),8,'cloves'),
+(133,(SELECT id FROM ingredients WHERE name='שמן זית'),6,'tbsp'),
+(133,(SELECT id FROM ingredients WHERE name='צ׳ילי'),1,'tsp'),
+(133,(SELECT id FROM ingredients WHERE name='פטרוזיליה'),1,'handful');
+
+-- מנה 134: קאסולה
+INSERT INTO meal_ingredients VALUES
+(134,(SELECT id FROM ingredients WHERE name='עוף'),4,'units'),
+(134,(SELECT id FROM ingredients WHERE name='נקניקיות'),2,'units'),
+(134,(SELECT id FROM ingredients WHERE name='בייקון'),200,'grams'),
+(134,(SELECT id FROM ingredients WHERE name='שעועית לבנה'),600,'grams'),
+(134,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(134,(SELECT id FROM ingredients WHERE name='גזר'),1,'units'),
+(134,(SELECT id FROM ingredients WHERE name='סלרי'),1,'units'),
+(134,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves');
+
+-- מנה 135: פריטאטה ירקות
+INSERT INTO meal_ingredients VALUES
+(135,(SELECT id FROM ingredients WHERE name='ביצים'),8,'units'),
+(135,(SELECT id FROM ingredients WHERE name='חלב'),3,'tbsp'),
+(135,(SELECT id FROM ingredients WHERE name='פרמזן'),80,'grams'),
+(135,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(135,(SELECT id FROM ingredients WHERE name='פלפל'),2,'units'),
+(135,(SELECT id FROM ingredients WHERE name='קישוא'),1,'units'),
+(135,(SELECT id FROM ingredients WHERE name='פטריות'),150,'grams');
+
+-- מנה 136: עוף טריאקי
+INSERT INTO meal_ingredients VALUES
+(136,(SELECT id FROM ingredients WHERE name='ירכי עוף'),4,'units'),
+(136,(SELECT id FROM ingredients WHERE name='רוטב סויה'),4,'tbsp'),
+(136,(SELECT id FROM ingredients WHERE name='מירין'),3,'tbsp'),
+(136,(SELECT id FROM ingredients WHERE name='סאקה'),2,'tbsp'),
+(136,(SELECT id FROM ingredients WHERE name='סוכר'),1,'tbsp');
+
+-- מנה 137: מרק גזר בטטה
+INSERT INTO meal_ingredients VALUES
+(137,(SELECT id FROM ingredients WHERE name='גזר'),400,'grams'),
+(137,(SELECT id FROM ingredients WHERE name='בטטה'),400,'grams'),
+(137,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(137,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves'),
+(137,(SELECT id FROM ingredients WHERE name='ג׳ינג׳ר'),1,'tbsp'),
+(137,(SELECT id FROM ingredients WHERE name='חלב קוקוס'),200,'ml');
+
+-- מנה 138: קנלוני ריקוטה
+INSERT INTO meal_ingredients VALUES
+(138,(SELECT id FROM ingredients WHERE name='קנלוני'),200,'grams'),
+(138,(SELECT id FROM ingredients WHERE name='תרד'),400,'grams'),
+(138,(SELECT id FROM ingredients WHERE name='ריקוטה'),400,'grams'),
+(138,(SELECT id FROM ingredients WHERE name='ביצים'),2,'units'),
+(138,(SELECT id FROM ingredients WHERE name='פרמזן'),100,'grams');
+
+-- מנה 139: סביצ׳ה שרימפס
+INSERT INTO meal_ingredients VALUES
+(139,(SELECT id FROM ingredients WHERE name='שרימפס'),400,'grams'),
+(139,(SELECT id FROM ingredients WHERE name='ליים'),3,'units'),
+(139,(SELECT id FROM ingredients WHERE name='בצל אדום'),1,'units'),
+(139,(SELECT id FROM ingredients WHERE name='כוסברה'),2,'tbsp'),
+(139,(SELECT id FROM ingredients WHERE name='תירס'),100,'grams');
+
+-- מנה 140: מרק בורידה
+INSERT INTO meal_ingredients VALUES
+(140,(SELECT id FROM ingredients WHERE name='דג'),500,'grams'),
+(140,(SELECT id FROM ingredients WHERE name='שרימפס'),200,'grams'),
+(140,(SELECT id FROM ingredients WHERE name='עגבניות'),3,'units'),
+(140,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(140,(SELECT id FROM ingredients WHERE name='יין לבן'),200,'ml'),
+(140,(SELECT id FROM ingredients WHERE name='ציר דגים'),1500,'ml');
+
+-- מנה 141: פשטידת בטטה
+INSERT INTO meal_ingredients VALUES
+(141,(SELECT id FROM ingredients WHERE name='בטטה'),600,'grams'),
+(141,(SELECT id FROM ingredients WHERE name='שיבולת שועל'),100,'grams'),
+(141,(SELECT id FROM ingredients WHERE name='פקאנים'),60,'grams'),
+(141,(SELECT id FROM ingredients WHERE name='מייפל'),3,'tbsp'),
+(141,(SELECT id FROM ingredients WHERE name='שמן קוקוס'),2,'tbsp');
+
+-- מנה 142: קימצ׳י
+INSERT INTO meal_ingredients VALUES
+(142,(SELECT id FROM ingredients WHERE name='כרוב'),1,'units'),
+(142,(SELECT id FROM ingredients WHERE name='מלח'),2,'tbsp'),
+(142,(SELECT id FROM ingredients WHERE name='שום'),4,'cloves'),
+(142,(SELECT id FROM ingredients WHERE name='ג׳ינג׳ר'),1,'tbsp'),
+(142,(SELECT id FROM ingredients WHERE name='סויה'),2,'tbsp');
+
+-- מנה 143: ריזוטו שחור
+INSERT INTO meal_ingredients VALUES
+(143,(SELECT id FROM ingredients WHERE name='אורז ארבוריו'),300,'grams'),
+(143,(SELECT id FROM ingredients WHERE name='דיונון'),400,'grams'),
+(143,(SELECT id FROM ingredients WHERE name='יין לבן'),150,'ml'),
+(143,(SELECT id FROM ingredients WHERE name='ציר דגים'),800,'ml'),
+(143,(SELECT id FROM ingredients WHERE name='חמאה'),50,'grams');
+
+-- מנה 144: פאי בטטה
+INSERT INTO meal_ingredients VALUES
+(144,(SELECT id FROM ingredients WHERE name='בטטה'),500,'grams'),
+(144,(SELECT id FROM ingredients WHERE name='חלב קוקוס'),200,'ml'),
+(144,(SELECT id FROM ingredients WHERE name='מייפל'),3,'tbsp'),
+(144,(SELECT id FROM ingredients WHERE name='קמח'),200,'grams');
+
+-- מנה 145: שניצל פטריות
+INSERT INTO meal_ingredients VALUES
+(145,(SELECT id FROM ingredients WHERE name='פורטובלו'),4,'units'),
+(145,(SELECT id FROM ingredients WHERE name='פנקו'),150,'grams'),
+(145,(SELECT id FROM ingredients WHERE name='קמח'),100,'grams'),
+(145,(SELECT id FROM ingredients WHERE name='שמן'),500,'ml');
+
+-- מנה 146: לחם שיפון
+INSERT INTO meal_ingredients VALUES
+(146,(SELECT id FROM ingredients WHERE name='קמח שיפון'),350,'grams'),
+(146,(SELECT id FROM ingredients WHERE name='קמח'),150,'grams'),
+(146,(SELECT id FROM ingredients WHERE name='שמרים'),7,'grams'),
+(146,(SELECT id FROM ingredients WHERE name='מים'),300,'ml');
+
+-- מנה 147: קרוסטיני
+INSERT INTO meal_ingredients VALUES
+(147,(SELECT id FROM ingredients WHERE name='בגט'),1,'units'),
+(147,(SELECT id FROM ingredients WHERE name='עגבניות'),400,'grams'),
+(147,(SELECT id FROM ingredients WHERE name='בזיליקום'),15,'units'),
+(147,(SELECT id FROM ingredients WHERE name='שמן זית'),3,'tbsp'),
+(147,(SELECT id FROM ingredients WHERE name='חומץ בלסמי'),1,'tbsp');
+
+-- מנה 148: חלה שום
+INSERT INTO meal_ingredients VALUES
+(148,(SELECT id FROM ingredients WHERE name='קמח'),500,'grams'),
+(148,(SELECT id FROM ingredients WHERE name='חמאה'),100,'grams'),
+(148,(SELECT id FROM ingredients WHERE name='שום'),5,'cloves'),
+(148,(SELECT id FROM ingredients WHERE name='פטרוזיליה'),2,'tbsp');
+
+-- מנה 149: סלט תפוזים ושומר
+INSERT INTO meal_ingredients VALUES
+(149,(SELECT id FROM ingredients WHERE name='תפוזים'),3,'units'),
+(149,(SELECT id FROM ingredients WHERE name='אשכולית'),2,'units'),
+(149,(SELECT id FROM ingredients WHERE name='שומר'),1,'units'),
+(149,(SELECT id FROM ingredients WHERE name='שקדים'),2,'tbsp'),
+(149,(SELECT id FROM ingredients WHERE name='שמן זית'),3,'tbsp');
+
+-- מנה 150: קשיו מוקפץ
+INSERT INTO meal_ingredients VALUES
+(150,(SELECT id FROM ingredients WHERE name='קשיו'),150,'grams'),
+(150,(SELECT id FROM ingredients WHERE name='ברוקולי'),150,'grams'),
+(150,(SELECT id FROM ingredients WHERE name='גזר'),1,'units'),
+(150,(SELECT id FROM ingredients WHERE name='פלפל'),1,'units'),
+(150,(SELECT id FROM ingredients WHERE name='רוטב סויה'),2,'tbsp');
+
+-- מנה 151: סלט יווני
+INSERT INTO meal_ingredients VALUES
+(151,(SELECT id FROM ingredients WHERE name='עגבניות'),3,'units'),
+(151,(SELECT id FROM ingredients WHERE name='מלפפון'),2,'units'),
+(151,(SELECT id FROM ingredients WHERE name='פלפל'),1,'units'),
+(151,(SELECT id FROM ingredients WHERE name='בצל אדום'),1,'units'),
+(151,(SELECT id FROM ingredients WHERE name='זיתים'),150,'grams'),
+(151,(SELECT id FROM ingredients WHERE name='גבינת פטה'),150,'grams');
+
+-- מנה 152: פלפלים ממולאים
+INSERT INTO meal_ingredients VALUES
+(152,(SELECT id FROM ingredients WHERE name='פלפל'),6,'units'),
+(152,(SELECT id FROM ingredients WHERE name='בשר טחון'),400,'grams'),
+(152,(SELECT id FROM ingredients WHERE name='אורז'),150,'grams'),
+(152,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(152,(SELECT id FROM ingredients WHERE name='עגבניות מרוסקות'),400,'grams');
+
+-- מנה 153: טום קה
+INSERT INTO meal_ingredients VALUES
+(153,(SELECT id FROM ingredients WHERE name='חזה עוף'),200,'grams'),
+(153,(SELECT id FROM ingredients WHERE name='חלב קוקוס'),400,'ml'),
+(153,(SELECT id FROM ingredients WHERE name='ליים'),2,'units'),
+(153,(SELECT id FROM ingredients WHERE name='פטריות'),200,'grams');
+
+-- מנה 154: עוף קצ׳יאטורה
+INSERT INTO meal_ingredients VALUES
+(154,(SELECT id FROM ingredients WHERE name='עוף'),8,'units'),
+(154,(SELECT id FROM ingredients WHERE name='עגבניות מרוסקות'),400,'grams'),
+(154,(SELECT id FROM ingredients WHERE name='יין אדום'),200,'ml'),
+(154,(SELECT id FROM ingredients WHERE name='זיתים'),80,'grams');
+
+-- מנה 155: פסטה פרימוורה
+INSERT INTO meal_ingredients VALUES
+(155,(SELECT id FROM ingredients WHERE name='פסטה'),400,'grams'),
+(155,(SELECT id FROM ingredients WHERE name='אספרגוס'),150,'grams'),
+(155,(SELECT id FROM ingredients WHERE name='קישוא'),1,'units'),
+(155,(SELECT id FROM ingredients WHERE name='אפונה'),100,'grams'),
+(155,(SELECT id FROM ingredients WHERE name='עגבניות שרי'),150,'grams');
+
+-- מנה 156: עוף עם פטריות שיטאקי ורוטב שמנת
+INSERT INTO meal_ingredients VALUES
+(156,(SELECT id FROM ingredients WHERE name='חזה עוף'),4,'units'),
+(156,(SELECT id FROM ingredients WHERE name='פטריות שיטאקי'),300,'grams'),
+(156,(SELECT id FROM ingredients WHERE name='שמנת מתוקה'),150,'ml'),
+(156,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves'),
+(156,(SELECT id FROM ingredients WHERE name='שמן זית'),2,'tbsp');
+
+-- מנה 157: שוורמה כבש ביתית
+INSERT INTO meal_ingredients VALUES
+(157,(SELECT id FROM ingredients WHERE name='כתף כבש'),700,'grams'),
+(157,(SELECT id FROM ingredients WHERE name='שום'),5,'cloves'),
+(157,(SELECT id FROM ingredients WHERE name='שמן זית'),5,'tbsp'),
+(157,(SELECT id FROM ingredients WHERE name='כמון'),1,'tsp'),
+(157,(SELECT id FROM ingredients WHERE name='כורכום'),1,'tsp');
+
+-- מנה 158: קיש גבינה ושמיר
+INSERT INTO meal_ingredients VALUES
+(158,(SELECT id FROM ingredients WHERE name='גבינת שמנת'),200,'grams'),
+(158,(SELECT id FROM ingredients WHERE name='קוטג'),200,'grams'),
+(158,(SELECT id FROM ingredients WHERE name='ביצים'),3,'units'),
+(158,(SELECT id FROM ingredients WHERE name='שמיר'),2,'tbsp'),
+(158,(SELECT id FROM ingredients WHERE name='ריקוטה'),60,'grams');
+
+-- מנה 159: טופו מוקפץ תאילנדי
+INSERT INTO meal_ingredients VALUES
+(159,(SELECT id FROM ingredients WHERE name='טופו'),400,'grams'),
+(159,(SELECT id FROM ingredients WHERE name='רוטב סויה'),3,'tbsp'),
+(159,(SELECT id FROM ingredients WHERE name='שמן שומשום'),1,'tbsp'),
+(159,(SELECT id FROM ingredients WHERE name='גזר'),2,'units'),
+(159,(SELECT id FROM ingredients WHERE name='שעועית ירוקה'),150,'grams');
+
+-- מנה 160: אניית דג בנבוט
+INSERT INTO meal_ingredients VALUES
+(160,(SELECT id FROM ingredients WHERE name='פילה דג'),4,'units'),
+(160,(SELECT id FROM ingredients WHERE name='אבוקדו'),2,'units'),
+(160,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves'),
+(160,(SELECT id FROM ingredients WHERE name='לימון'),1,'units'),
+(160,(SELECT id FROM ingredients WHERE name='שמן זית'),2,'tbsp');
+
+-- מנה 161: ספרינג רולס ויאטנמיים
+INSERT INTO meal_ingredients VALUES
+(161,(SELECT id FROM ingredients WHERE name='דפי אורז'),10,'units'),
+(161,(SELECT id FROM ingredients WHERE name='אטריות אורז'),100,'grams'),
+(161,(SELECT id FROM ingredients WHERE name='גזר'),2,'units'),
+(161,(SELECT id FROM ingredients WHERE name='מלפפון'),1,'units'),
+(161,(SELECT id FROM ingredients WHERE name='אבוקדו'),1,'units');
+
+-- מנה 162: מרק לוביה שחורה
+INSERT INTO meal_ingredients VALUES
+(162,(SELECT id FROM ingredients WHERE name='לוביה'),300,'grams'),
+(162,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(162,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(162,(SELECT id FROM ingredients WHERE name='כמון'),1,'tsp'),
+(162,(SELECT id FROM ingredients WHERE name='כוסברה'),2,'tbsp');
+
+-- מנה 163: פסטה ברוקולי ועגבניות שרי
+INSERT INTO meal_ingredients VALUES
+(163,(SELECT id FROM ingredients WHERE name='פסטה'),400,'grams'),
+(163,(SELECT id FROM ingredients WHERE name='ברוקולי'),1,'units'),
+(163,(SELECT id FROM ingredients WHERE name='עגבניות שרי'),200,'grams'),
+(163,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves'),
+(163,(SELECT id FROM ingredients WHERE name='שמן זית'),3,'tbsp');
+
+-- מנה 164: עוף סאטה
+INSERT INTO meal_ingredients VALUES
+(164,(SELECT id FROM ingredients WHERE name='חזה עוף'),500,'grams'),
+(164,(SELECT id FROM ingredients WHERE name='חמאת בוטנים'),3,'tbsp'),
+(164,(SELECT id FROM ingredients WHERE name='חלב קוקוס'),200,'ml'),
+(164,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves'),
+(164,(SELECT id FROM ingredients WHERE name='גינגר'),1,'tsp');
+
+-- מנה 165: תבשיל עדשים שחורות
+INSERT INTO meal_ingredients VALUES
+(165,(SELECT id FROM ingredients WHERE name='עדשים שחורות'),300,'grams'),
+(165,(SELECT id FROM ingredients WHERE name='בצל'),2,'units'),
+(165,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(165,(SELECT id FROM ingredients WHERE name='עגבניות מרוסקות'),400,'grams'),
+(165,(SELECT id FROM ingredients WHERE name='כמון'),1,'tsp');
+
+-- מנה 166: בסבוסה ביתית
+INSERT INTO meal_ingredients VALUES
+(166,(SELECT id FROM ingredients WHERE name='סולת'),300,'grams'),
+(166,(SELECT id FROM ingredients WHERE name='סוכר'),200,'grams'),
+(166,(SELECT id FROM ingredients WHERE name='יוגורט'),200,'grams'),
+(166,(SELECT id FROM ingredients WHERE name='חמאה'),150,'grams'),
+(166,(SELECT id FROM ingredients WHERE name='ביצים'),2,'units');
+
+-- מנה 167: מוחמרה
+INSERT INTO meal_ingredients VALUES
+(167,(SELECT id FROM ingredients WHERE name='פלפל אדום'),4,'units'),
+(167,(SELECT id FROM ingredients WHERE name='אגוזי מלך'),100,'grams'),
+(167,(SELECT id FROM ingredients WHERE name='שמן זית'),3,'tbsp'),
+(167,(SELECT id FROM ingredients WHERE name='לימון'),1,'units'),
+(167,(SELECT id FROM ingredients WHERE name='כמון'),1,'tsp');
+
+-- מנה 168: מרק עצמות בקר
+INSERT INTO meal_ingredients VALUES
+(168,(SELECT id FROM ingredients WHERE name='עצמות בקר'),2000,'grams'),
+(168,(SELECT id FROM ingredients WHERE name='בצל'),2,'units'),
+(168,(SELECT id FROM ingredients WHERE name='גזר'),3,'units'),
+(168,(SELECT id FROM ingredients WHERE name='סלרי'),3,'units'),
+(168,(SELECT id FROM ingredients WHERE name='שום'),1,'units');
+
+-- מנה 169: טארט לימון מרנג
+INSERT INTO meal_ingredients VALUES
+(169,(SELECT id FROM ingredients WHERE name='קמח'),250,'grams'),
+(169,(SELECT id FROM ingredients WHERE name='חמאה'),125,'grams'),
+(169,(SELECT id FROM ingredients WHERE name='ביצים'),4,'units'),
+(169,(SELECT id FROM ingredients WHERE name='לימון'),3,'units'),
+(169,(SELECT id FROM ingredients WHERE name='סוכר'),200,'grams');
+
+-- מנה 170: סלט תרד ותות שדה
+INSERT INTO meal_ingredients VALUES
+(170,(SELECT id FROM ingredients WHERE name='תרד'),150,'grams'),
+(170,(SELECT id FROM ingredients WHERE name='תותים'),200,'grams'),
+(170,(SELECT id FROM ingredients WHERE name='אגוזי פקאן'),50,'grams'),
+(170,(SELECT id FROM ingredients WHERE name='שמן זית'),3,'tbsp'),
+(170,(SELECT id FROM ingredients WHERE name='חומץ בלסמי'),2,'tbsp');
+
+-- מנה 171: ניוקי תרד בשמן חום
+INSERT INTO meal_ingredients VALUES
+(171,(SELECT id FROM ingredients WHERE name='תפוח אדמה'),600,'grams'),
+(171,(SELECT id FROM ingredients WHERE name='קמח'),150,'grams'),
+(171,(SELECT id FROM ingredients WHERE name='ביצים'),1,'units'),
+(171,(SELECT id FROM ingredients WHERE name='ריקוטה'),100,'grams'),
+(171,(SELECT id FROM ingredients WHERE name='פרמזן'),50,'grams');
+
+-- מנה 172: עוף מוקפץ ברוטב תמרינד
+INSERT INTO meal_ingredients VALUES
+(172,(SELECT id FROM ingredients WHERE name='חזה עוף'),500,'grams'),
+(172,(SELECT id FROM ingredients WHERE name='רוטב סויה'),2,'tbsp'),
+(172,(SELECT id FROM ingredients WHERE name='דבש'),2,'tbsp'),
+(172,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(172,(SELECT id FROM ingredients WHERE name='גינגר'),1,'tsp');
+
+-- מנה 173: מרק קרם תפוח אדמה כרישה
+INSERT INTO meal_ingredients VALUES
+(173,(SELECT id FROM ingredients WHERE name='תפוח אדמה'),4,'units'),
+(173,(SELECT id FROM ingredients WHERE name='כרישה'),3,'units'),
+(173,(SELECT id FROM ingredients WHERE name='שמנת מתוקה'),200,'ml'),
+(173,(SELECT id FROM ingredients WHERE name='חמאה'),3,'tbsp'),
+(173,(SELECT id FROM ingredients WHERE name='בצל'),1,'units');
+
+-- מנה 174: בורגר ירקות
+INSERT INTO meal_ingredients VALUES
+(174,(SELECT id FROM ingredients WHERE name='אורז חום'),200,'grams'),
+(174,(SELECT id FROM ingredients WHERE name='עדשים'),200,'grams'),
+(174,(SELECT id FROM ingredients WHERE name='גזר'),1,'units'),
+(174,(SELECT id FROM ingredients WHERE name='סלק'),1,'units'),
+(174,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves');
+
+-- מנה 175: עוגיות שוקולד צ׳יפס
+INSERT INTO meal_ingredients VALUES
+(175,(SELECT id FROM ingredients WHERE name='קמח'),300,'grams'),
+(175,(SELECT id FROM ingredients WHERE name='חמאה'),150,'grams'),
+(175,(SELECT id FROM ingredients WHERE name='סוכר'),200,'grams'),
+(175,(SELECT id FROM ingredients WHERE name='ביצים'),2,'units'),
+(175,(SELECT id FROM ingredients WHERE name='שוקולד מריר'),250,'grams');
+
+-- מנה 176: חציל פרמזן
+INSERT INTO meal_ingredients VALUES
+(176,(SELECT id FROM ingredients WHERE name='חציל'),2,'units'),
+(176,(SELECT id FROM ingredients WHERE name='ביצים'),2,'units'),
+(176,(SELECT id FROM ingredients WHERE name='פירורי לחם'),150,'grams'),
+(176,(SELECT id FROM ingredients WHERE name='מוצרלה'),150,'grams'),
+(176,(SELECT id FROM ingredients WHERE name='פרמזן'),50,'grams');
+
+-- מנה 177: עגל בלימון
+INSERT INTO meal_ingredients VALUES
+(177,(SELECT id FROM ingredients WHERE name='עגל'),4,'units'),
+(177,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(177,(SELECT id FROM ingredients WHERE name='גזר'),1,'units'),
+(177,(SELECT id FROM ingredients WHERE name='סלרי'),1,'units'),
+(177,(SELECT id FROM ingredients WHERE name='לימון'),1,'units');
+
+-- מנה 178: פריטאטה בטטה טבעונית
+INSERT INTO meal_ingredients VALUES
+(178,(SELECT id FROM ingredients WHERE name='בטטה'),300,'grams'),
+(178,(SELECT id FROM ingredients WHERE name='טופו'),400,'grams'),
+(178,(SELECT id FROM ingredients WHERE name='עגבניות שרי'),100,'grams'),
+(178,(SELECT id FROM ingredients WHERE name='עירית'),4,'tbsp'),
+(178,(SELECT id FROM ingredients WHERE name='שמן קוקוס'),2,'tbsp');
+
+-- מנה 179: מרק אסיאתי
+INSERT INTO meal_ingredients VALUES
+(179,(SELECT id FROM ingredients WHERE name='עצמות עוף'),500,'grams'),
+(179,(SELECT id FROM ingredients WHERE name='אטריות'),200,'grams'),
+(179,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves'),
+(179,(SELECT id FROM ingredients WHERE name='גינגר'),1,'tsp'),
+(179,(SELECT id FROM ingredients WHERE name='רוטב סויה'),2,'tbsp');
+
+-- מנה 180: מוס שוקולד
+INSERT INTO meal_ingredients VALUES
+(180,(SELECT id FROM ingredients WHERE name='שוקולד מריר'),200,'grams'),
+(180,(SELECT id FROM ingredients WHERE name='חמאה'),30,'grams'),
+(180,(SELECT id FROM ingredients WHERE name='ביצים'),4,'units'),
+(180,(SELECT id FROM ingredients WHERE name='סוכר'),2,'tbsp'),
+(180,(SELECT id FROM ingredients WHERE name='שמנת מתוקה'),100,'ml');
+
+-- מנה 181: ראגו ירקות
+INSERT INTO meal_ingredients VALUES
+(181,(SELECT id FROM ingredients WHERE name='חציל'),1,'units'),
+(181,(SELECT id FROM ingredients WHERE name='פטריות'),200,'grams'),
+(181,(SELECT id FROM ingredients WHERE name='גזר'),1,'units'),
+(181,(SELECT id FROM ingredients WHERE name='סלרי'),1,'units'),
+(181,(SELECT id FROM ingredients WHERE name='עגבניות מרוסקות'),400,'grams');
+
+-- מנה 182: ספרינג רולס מטוגנים
+INSERT INTO meal_ingredients VALUES
+(182,(SELECT id FROM ingredients WHERE name='כרוב'),200,'grams'),
+(182,(SELECT id FROM ingredients WHERE name='גזר'),1,'units'),
+(182,(SELECT id FROM ingredients WHERE name='בשר טחון'),200,'grams'),
+(182,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves'),
+(182,(SELECT id FROM ingredients WHERE name='בצק ספרינג רול'),10,'units');
+
+-- מנה 183: מרק בשמל ירקות
+INSERT INTO meal_ingredients VALUES
+(183,(SELECT id FROM ingredients WHERE name='גזר'),2,'units'),
+(183,(SELECT id FROM ingredients WHERE name='בטטה'),1,'units'),
+(183,(SELECT id FROM ingredients WHERE name='חלב'),300,'ml'),
+(183,(SELECT id FROM ingredients WHERE name='חמאה'),50,'grams'),
+(183,(SELECT id FROM ingredients WHERE name='קמח'),50,'grams');
+
+-- מנה 184: סלט לבנה ומלפפון
+INSERT INTO meal_ingredients VALUES
+(184,(SELECT id FROM ingredients WHERE name='יוגורט'),400,'grams'),
+(184,(SELECT id FROM ingredients WHERE name='מלפפון'),3,'units'),
+(184,(SELECT id FROM ingredients WHERE name='שום'),1,'cloves'),
+(184,(SELECT id FROM ingredients WHERE name='לימון'),1,'units'),
+(184,(SELECT id FROM ingredients WHERE name='שמן זית'),2,'tbsp');
+
+-- מנה 185: עוגת גזר
+INSERT INTO meal_ingredients VALUES
+(185,(SELECT id FROM ingredients WHERE name='קמח'),250,'grams'),
+(185,(SELECT id FROM ingredients WHERE name='גזר'),300,'grams'),
+(185,(SELECT id FROM ingredients WHERE name='סוכר'),200,'grams'),
+(185,(SELECT id FROM ingredients WHERE name='ביצים'),4,'units'),
+(185,(SELECT id FROM ingredients WHERE name='שמן'),200,'ml');
+
+-- מנה 186: שרימפס בחמאה
+INSERT INTO meal_ingredients VALUES
+(186,(SELECT id FROM ingredients WHERE name='שרימפס'),600,'grams'),
+(186,(SELECT id FROM ingredients WHERE name='חמאה'),100,'grams'),
+(186,(SELECT id FROM ingredients WHERE name='שום'),5,'cloves'),
+(186,(SELECT id FROM ingredients WHERE name='לימון'),1,'units'),
+(186,(SELECT id FROM ingredients WHERE name='פפריקה'),1,'tsp');
+
+-- מנה 187: לחם זיתים
+INSERT INTO meal_ingredients VALUES
+(187,(SELECT id FROM ingredients WHERE name='קמח'),500,'grams'),
+(187,(SELECT id FROM ingredients WHERE name='שמרים'),7,'grams'),
+(187,(SELECT id FROM ingredients WHERE name='זיתים'),150,'grams'),
+(187,(SELECT id FROM ingredients WHERE name='שמן זית'),3,'tbsp'),
+(187,(SELECT id FROM ingredients WHERE name='מים'),330,'ml');
+
+-- מנה 188: טארט שקדים ואגסים
+INSERT INTO meal_ingredients VALUES
+(188,(SELECT id FROM ingredients WHERE name='קמח'),200,'grams'),
+(188,(SELECT id FROM ingredients WHERE name='חמאה'),100,'grams'),
+(188,(SELECT id FROM ingredients WHERE name='סוכר'),100,'grams'),
+(188,(SELECT id FROM ingredients WHERE name='שקדים'),100,'grams'),
+(188,(SELECT id FROM ingredients WHERE name='אגס'),3,'units');
+
+-- מנה 189: חמין חיטה
+INSERT INTO meal_ingredients VALUES
+(189,(SELECT id FROM ingredients WHERE name='חיטה'),200,'grams'),
+(189,(SELECT id FROM ingredients WHERE name='בשר בקר'),500,'grams'),
+(189,(SELECT id FROM ingredients WHERE name='בצל'),2,'units'),
+(189,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
+(189,(SELECT id FROM ingredients WHERE name='תפוח אדמה'),3,'units');
+
+-- מנה 190: ניוקי בטטה
+INSERT INTO meal_ingredients VALUES
+(190,(SELECT id FROM ingredients WHERE name='בטטה'),600,'grams'),
+(190,(SELECT id FROM ingredients WHERE name='קמח'),200,'grams'),
+(190,(SELECT id FROM ingredients WHERE name='אגוזי מלך'),50,'grams'),
+(190,(SELECT id FROM ingredients WHERE name='לימון'),1,'units'),
+(190,(SELECT id FROM ingredients WHERE name='חמאה'),80,'grams');
+
+-- מנה 191: מרק דלעת ושיבולת שועל
+INSERT INTO meal_ingredients VALUES
+(191,(SELECT id FROM ingredients WHERE name='דלעת'),500,'grams'),
+(191,(SELECT id FROM ingredients WHERE name='שיבולת שועל'),80,'grams'),
+(191,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(191,(SELECT id FROM ingredients WHERE name='חלב קוקוס'),200,'ml'),
+(191,(SELECT id FROM ingredients WHERE name='גינגר'),1,'tsp');
+
+-- מנה 192: סלט קפרזה
+INSERT INTO meal_ingredients VALUES
+(192,(SELECT id FROM ingredients WHERE name='עגבניות'),4,'units'),
+(192,(SELECT id FROM ingredients WHERE name='מוצרלה'),250,'grams'),
+(192,(SELECT id FROM ingredients WHERE name='בזיליקום'),10,'units'),
+(192,(SELECT id FROM ingredients WHERE name='שמן זית'),5,'tbsp'),
+(192,(SELECT id FROM ingredients WHERE name='חומץ בלסמי'),1,'tbsp');
+
+-- מנה 193: פנה וודקה
+INSERT INTO meal_ingredients VALUES
+(193,(SELECT id FROM ingredients WHERE name='פסטה'),400,'grams'),
+(193,(SELECT id FROM ingredients WHERE name='שמנת מתוקה'),200,'ml'),
+(193,(SELECT id FROM ingredients WHERE name='עגבניות מרוסקות'),400,'grams'),
+(193,(SELECT id FROM ingredients WHERE name='שום'),2,'cloves'),
+(193,(SELECT id FROM ingredients WHERE name='וודקה'),60,'ml');
+
+-- מנה 194: מרק עוף ואורז
+INSERT INTO meal_ingredients VALUES
+(194,(SELECT id FROM ingredients WHERE name='עוף'),500,'grams'),
+(194,(SELECT id FROM ingredients WHERE name='אורז'),150,'grams'),
+(194,(SELECT id FROM ingredients WHERE name='גזר'),2,'units'),
+(194,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(194,(SELECT id FROM ingredients WHERE name='סלרי'),1,'units');
+
+-- מנה 195: שקשוקה ירוקה טבעונית
+INSERT INTO meal_ingredients VALUES
+(195,(SELECT id FROM ingredients WHERE name='תרד'),200,'grams'),
+(195,(SELECT id FROM ingredients WHERE name='מנגולד'),200,'grams'),
+(195,(SELECT id FROM ingredients WHERE name='טופו'),300,'grams'),
+(195,(SELECT id FROM ingredients WHERE name='בצל'),1,'units'),
+(195,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves');
+
+-- מנה 196: לזניה ירקות
+INSERT INTO meal_ingredients VALUES
+(196,(SELECT id FROM ingredients WHERE name='עלי לזניה'),250,'grams'),
+(196,(SELECT id FROM ingredients WHERE name='חציל'),1,'units'),
+(196,(SELECT id FROM ingredients WHERE name='קישוא'),1,'units'),
+(196,(SELECT id FROM ingredients WHERE name='מוצרלה'),200,'grams'),
+(196,(SELECT id FROM ingredients WHERE name='עגבניות מרוסקות'),400,'grams');
+
+-- מנה 197: אבוקדו עם שרימפס
+INSERT INTO meal_ingredients VALUES
+(197,(SELECT id FROM ingredients WHERE name='אבוקדו'),3,'units'),
+(197,(SELECT id FROM ingredients WHERE name='שרימפס'),300,'grams'),
+(197,(SELECT id FROM ingredients WHERE name='מלפפון'),1,'units'),
+(197,(SELECT id FROM ingredients WHERE name='מיונז'),3,'tbsp'),
+(197,(SELECT id FROM ingredients WHERE name='לימון'),1,'units');
+
+-- מנה 198: קוסקוס מרוקאי
+INSERT INTO meal_ingredients VALUES
+(198,(SELECT id FROM ingredients WHERE name='קוסקוס'),400,'grams'),
+(198,(SELECT id FROM ingredients WHERE name='עוף'),500,'grams'),
+(198,(SELECT id FROM ingredients WHERE name='חומוס'),200,'grams'),
+(198,(SELECT id FROM ingredients WHERE name='גזר'),2,'units'),
+(198,(SELECT id FROM ingredients WHERE name='קישוא'),2,'units');
+
+-- מנה 199: ג׳לטו וניל
+INSERT INTO meal_ingredients VALUES
+(199,(SELECT id FROM ingredients WHERE name='חלב'),500,'ml'),
+(199,(SELECT id FROM ingredients WHERE name='שמנת מתוקה'),250,'ml'),
+(199,(SELECT id FROM ingredients WHERE name='ביצים'),6,'units'),
+(199,(SELECT id FROM ingredients WHERE name='סוכר'),150,'grams'),
+(199,(SELECT id FROM ingredients WHERE name='וניל'),1,'units');
+
+-- מנה 200: ביריאני עוף
+INSERT INTO meal_ingredients VALUES
+(200,(SELECT id FROM ingredients WHERE name='עוף'),1000,'grams'),
+(200,(SELECT id FROM ingredients WHERE name='אורז בסמטי'),500,'grams'),
+(200,(SELECT id FROM ingredients WHERE name='יוגורט'),200,'grams'),
+(200,(SELECT id FROM ingredients WHERE name='שום'),4,'cloves'),
+(200,(SELECT id FROM ingredients WHERE name='גינגר'),2,'tsp');
+
 
 CREATE VIEW meal_full_view AS
 SELECT 
@@ -2580,13 +3625,27 @@ JOIN (
 ) sub ON m.id = sub.meal_id
 
 GROUP BY m.id;
+
+
 UPDATE meal_ingredients
 SET unit = CASE unit
     WHEN 'grams' THEN 'גרם'
+    WHEN 'kg' THEN 'ק״ג'
+    WHEN 'ml' THEN 'מ״ל'
+    WHEN 'l' THEN 'ליטר'
+
     WHEN 'tbsp' THEN 'כף'
     WHEN 'tsp' THEN 'כפית'
+    WHEN 'cup' THEN 'כוס'
+
     WHEN 'units' THEN 'יחידות'
-    WHEN 'ml' THEN 'מ״ל'
+    WHEN 'cloves' THEN 'שיניים'
+    WHEN 'slices' THEN 'פרוסות'
+    WHEN 'pieces' THEN 'חתיכות'
+
+    WHEN 'pinch' THEN 'קורט'
+    WHEN 'handful' THEN 'חופן'
+
     ELSE unit
 END;
 
