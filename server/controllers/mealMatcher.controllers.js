@@ -4,8 +4,11 @@ import {
   checkDB,
   checkFrontBody,
 } from "../services/checkReqRes.services.js";
+import "dotenv/config";
 import { getMealsByID } from "../dal/mysqlQuery.dal.js";
-
+const HOST = process.env.ANALYZE_HOST;
+const PORT = process.env.ANALYZE_PORT;
+const ROUTE = process.env.ANALYZE_ROUTE;
 export default async function mealMatcher(req, res) {
   try {
     const { type, weights } = req.body;
@@ -13,7 +16,10 @@ export default async function mealMatcher(req, res) {
       res.status(404).json({ error: "Body must contain only two fields." });
     }
     checkFrontBody(type, weights);
-    const { data: resDataService } = await axios.post("/", req.body);
+    const { data: resDataService } = await axios.post(
+      `http://${HOST}:${PORT}/${ROUTE}`,
+      req.body
+    );
     if (
       !Array.isArray(resDataService.result) ||
       resDataService.result.length !== 3
