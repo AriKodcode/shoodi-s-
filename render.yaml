@@ -1,0 +1,66 @@
+services:
+  - type: web
+    name: dal-service
+    env: docker
+    dockerContext: ./dal_service
+    dockerfilePath: ./dal_service/Dockerfile
+    plan: free
+    envVars:
+      - key: DB_URI
+        sync: false
+      - key: MYSQL_HOST
+        sync: false
+      - key: MYSQL_PORT
+        sync: false
+      - key: MYSQL_USER
+        sync: false
+      - key: MYSQL_PASSWORD
+        sync: false
+      - key: MYSQL_DB
+        sync: false
+      - key: DAL_ROUTE
+        sync: false
+
+  - type: web
+    name: analyze-service
+    env: docker
+    dockerContext: ./data-analyze
+    dockerfilePath: ./data-analyze/Dockerfile
+    plan: free
+    envVars:
+      - key: DAL_HOST
+        value: dal-service.onrender.com
+      - key: DAL_PORT
+        value: 80
+      - key: DAL_ROUTE
+        sync: false
+
+  - type: web
+    name: backend
+    env: docker
+    dockerContext: ./server
+    dockerfilePath: ./server/Dockerfile
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ANALYZE_HOST
+        value: analyze-service.onrender.com
+      - key: ANALYZE_PORT
+        value: 80
+      - key: ANALYZE_ROUTE
+        sync: false
+
+  - type: web
+    name: frontend
+    env: docker
+    dockerContext: ./client
+    dockerfilePath: ./client/Dockerfile
+    plan: free
+    envVars:
+      - key: VITE_BACKEND_HOST
+        value: backend.onrender.com
+      - key: VITE_BACKEND_PORT
+        value: 80
+      - key: VITE_BACKEND_ROUTE
+        sync: false

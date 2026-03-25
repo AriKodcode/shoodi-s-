@@ -26,6 +26,8 @@ export default async function mealMatcher(req, res) {
     ) {
       return res.status(500).json({ error: "Service did not return 3 meals." });
     }
+    console.log("log before connect db");
+
     resDataService.result.map((meal) => {
       checkDataService(meal.recipy_ids, meal.match, meal.tags);
     });
@@ -64,7 +66,7 @@ export default async function mealMatcher(req, res) {
       tags: meals[2].tags,
     };
     const allMeals = [firstMeal, secondMeal, thirdMeal];
-
+    console.log("log after connect db");
     res.status(200).json({ meals: allMeals });
   } catch (err) {
     res.status(500).json({ error: err.message });
