@@ -3591,46 +3591,6 @@ INSERT INTO meal_ingredients VALUES
 (200,(SELECT id FROM ingredients WHERE name='גינגר'),2,'tsp');
 
 
-CREATE VIEW meal_full_view AS
-SELECT 
-    m.id,
-
-    JSON_OBJECT(
-        'id', m.id,
-        'name', m.name,
-        'type', m.type,
-        'category', m.category,
-        'style', m.style,
-        'recipe', m.recipe,
-        'image', m.image,
-        'prep_time_minutes', m.prep_time_minutes,
-        'calories', m.calories,
-        'description', m.description,
-        'difficulty', m.difficulty,
-
-        'ingredients', (
-            SELECT JSON_ARRAYAGG(
-                JSON_OBJECT(
-                    'ingredient', i.name,
-                    'quantity', mi.quantity,
-                    'unit', mi.unit
-                )
-            )
-            FROM meal_ingredients mi
-            JOIN ingredients i ON i.id = mi.ingredient_id
-            WHERE mi.meal_id = m.id
-        ),
-
-        'tags', (
-            SELECT JSON_ARRAYAGG(t.name)
-            FROM meal_tags mt
-            JOIN tags t ON t.id = mt.tag_id
-            WHERE mt.meal_id = m.id
-        )
-
-    ) AS meal
-
-FROM meals m;
 
 
 UPDATE meal_ingredients
@@ -5454,3 +5414,44 @@ SELECT 199, id FROM tags WHERE name IN ('קינוחים');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
 SELECT 200, id FROM tags WHERE name IN ('סיר אחד','מנות אורז','לכל המשפחה');
+
+CREATE VIEW meal_full_view AS
+SELECT 
+    m.id,
+
+    JSON_OBJECT(
+        'id', m.id,
+        'name', m.name,
+        'type', m.type,
+        'category', m.category,
+        'style', m.style,
+        'recipe', m.recipe,
+        'image', m.image,
+        'prep_time_minutes', m.prep_time_minutes,
+        'calories', m.calories,
+        'description', m.description,
+        'difficulty', m.difficulty,
+
+        'ingredients', (
+            SELECT JSON_ARRAYAGG(
+                JSON_OBJECT(
+                    'ingredient', i.name,
+                    'quantity', mi.quantity,
+                    'unit', mi.unit
+                )
+            )
+            FROM meal_ingredients mi
+            JOIN ingredients i ON i.id = mi.ingredient_id
+            WHERE mi.meal_id = m.id
+        ),
+
+        'tags', (
+            SELECT JSON_ARRAYAGG(t.name)
+            FROM meal_tags mt
+            JOIN tags t ON t.id = mt.tag_id
+            WHERE mt.meal_id = m.id
+        )
+
+    ) AS meal
+
+FROM meals m;
