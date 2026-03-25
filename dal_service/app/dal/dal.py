@@ -16,7 +16,7 @@ class MealsDAL:
         query = build_query(request, category)
         cur.execute(query)
 
-        rows = cur.fetchone()
+        rows = cur.fetchall()
 
         cur.close()
 

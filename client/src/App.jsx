@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MainPage from './Pages/MainPage'
 import RecipesPage from './Pages/RecipesPage'
 import RecipeDetailsPage from './Pages/RecipeDetails'
+
 import './App.css'
 import ErrorPage from './Pages/ErrorPage'
 
@@ -19,6 +20,7 @@ function App() {
     </Routes>
     </BrowserRouter>
 
+    
     </>
   )
 }
