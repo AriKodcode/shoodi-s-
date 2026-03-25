@@ -34,7 +34,11 @@ def build_query(request, category):
         FROM meal_ingredients mi
         JOIN ingredients i ON i.id = mi.ingredient_id
         WHERE mi.meal_id = m.id
-        AND i.name LIKE '%שרימפס%'
+        AND (
+            i.name LIKE '%שרימפס%'
+            OR i.name LIKE '%בייקון%'
+            OR i.name LIKE '%צלפות%'
+        )
     );"""
     if category not in ["salad", "side"] and request.type:
         query += f" AND m.type = '{request.type}'"
