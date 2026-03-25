@@ -21,6 +21,10 @@ def build_query(request, category):
     query = f"""
     SELECT 
         m.id,
+        m.light_score,
+        m.health_score,
+        m.complex_score,
+        m.popularity_score,
 
         (1 - LEAST(m.prep_time_minutes, 90) / 90.0) AS light_score,
         (1 - LEAST(m.calories, 800) / 800.0) AS health_score,
