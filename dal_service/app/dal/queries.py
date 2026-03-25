@@ -23,28 +23,12 @@ def build_query(request, category):
         m.health_score,
         m.complex_score,
         m.popularity_score,
-
         (
-            (1 - ABS((1 - m.prep_time_minutes / 120.0) - {t_time})) * {w_time}
-
-            +
-
-            -- בריאות (פחות קלוריות = יותר טוב)
-            (1 - ABS((1 - m.calories / 1000.0) - {t_health})) * {w_health}
-
-            +
-
-            (1 - ABS(
-                (1 - ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0))
-                - {t_complex}
-            )) * {w_complex}
-
-        ) / ({w_time} + {w_health} + {w_complex})
-
-        +
-
-        m.popularity_score * 0.1
-
+            (1 - ABS((1 - m.prep_time_minutes / 120.0) - {t_time})) * {w_time} +
+            (1 - ABS((1 - m.calories / 1000.0) - {t_health})) * {w_health} +
+            (1 - ABS((1 - ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0)) - {t_complex}
+            )) * {w_complex} ) / ({w_time} + {w_health} + {w_complex}) +
+            m.popularity_score * 0.1
         AS score
 
     FROM meals m
