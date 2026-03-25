@@ -1,10 +1,9 @@
 import express from "express";
 import cors from "cors";
-import "dotenv/config";
 import router from "./routes/mealMatcher.routes.js";
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.FRONTEND_PORT;
 
 app.use(express.json());
 app.use(cors());
