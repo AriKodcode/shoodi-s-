@@ -25,8 +25,7 @@ def build_query(request, category):
             (1 - POW(m.light_score - {t_light}, 2)) * {w_light} +
             (1 - POW(m.health_score - {t_health}, 2)) * {w_health} +
             (1 - POW(m.complex_score - {t_complex}, 2)) * {w_complex} +
-            m.popularity_score * 0.2 +
-            ((RAND() - 0.5) * 0.04)
+            m.popularity_score * 0.2
         ) AS Score
     FROM meals m
     WHERE m.category = '{category}'
@@ -59,7 +58,7 @@ def build_query(request, category):
             )
             """
     query += """
-    ORDER BY score DESC
-    LIMIT 3
+    ORDER BY score + RAND() * 0.1 DESC
+    LIMIT 10
     """
     return query
