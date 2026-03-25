@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useMeals } from '../store/MealsStore'
+import { useMeals } from '../store/useStore'
 
 function usePostRequest() {
-    const { getMeals } = useMeals()
+    const setMeals = useMeals((state)=> state.recieveMeals)
     const navigate = useNavigate()
 
     async function getMeal(url, filters) {
+        
         try {
             const res = await fetch(url, {
                 method: "POST",
@@ -20,7 +21,11 @@ function usePostRequest() {
             }
             else {
                 const result = await res.json()
-                getMeals(result.meals)
+
+                
+
+                setMeals(result.meals)
+
                 
                 navigate('/recipes')
             }
@@ -31,7 +36,7 @@ function usePostRequest() {
         }
     }
 
-    return { getMeal, meals }
+    return { getMeal }
 }
 
 export default usePostRequest
