@@ -15,17 +15,17 @@ export const checkFrontBody = (type, weights) => {
     throw error;
   }
   const { lightness, health, complexity } = weights;
-  if (!lightness) {
+  if (lightness === null) {
     const error = new Error("missing lightness");
     error.status = 400;
     throw error;
   }
-  if (!health) {
+  if (health === null) {
     const error = new Error("missing health");
     error.status = 400;
     throw error;
   }
-  if (!complexity) {
+  if (complexity === null) {
     const error = new Error("missing complexity");
     error.status = 400;
     throw error;
@@ -43,18 +43,18 @@ export const checkFrontBody = (type, weights) => {
   }
 };
 export const checkDataService = (recipe_ids, match, tags) => {
-  if (!recipe_ids || recipe_ids.length !== 3) {
-    const error = new Error("missing recipy ids.");
+  if (!recipe_ids) {
+    const error = new Error("missing recipe ids.");
     error.status = 400;
     throw error;
   }
-  if (!match) {
+  if (match === null) {
     const error = new Error("missing match");
     error.status = 400;
     throw error;
   }
-  if (typeof tags !== "string") {
-    const error = new Error("match must be type array");
+  if (typeof match !== "number") {
+    const error = new Error("match must be type number");
     error.status = 400;
     throw error;
   }
