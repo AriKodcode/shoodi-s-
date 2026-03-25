@@ -4733,32 +4733,42 @@ WHERE id BETWEEN 151 AND 200;
 
 
 INSERT IGNORE INTO tags (name) VALUES
-('fried'), ('grilled'), ('baked'), ('stew'), ('slow_cooked'),
-('quick'), ('long_cooking'),
-('high_protein'), ('comfort_food'),
-('healthy'), ('low_carb'),
-('italian'), ('middle_eastern'), ('asian'),
-('one_pot'), ('bbq'), ('spicy');
+('מטוגן'),
+('על האש'),
+('אפוי'),
+('תבשיל'),
+('בישול איטי'),
+('מהיר להכנה'),
+('בישול ארוך'),
+('עשיר בחלבון'),
+('אוכל מנחם'),
+('בריא'),
+('דל פחמימות'),
+('איטלקי'),
+('מזרח תיכוני'),
+('אסייתי'),
+('סיר אחד'),
+('ברביקיו'),
+('חריף');
 
 INSERT IGNORE INTO tags (name) VALUES
-('vegetarian'),
-('vegan'),
-('salad'),
-('soup'),
-('dessert'),
-('creamy'),
-('street_food'),
-('brunch'),
-('fresh'),
-('high_fiber'),
-('dip'),
-('meal_prep'),
-('no_bake'),
-('bread'),
-('seafood'),
-('family'),
-('rice');
-
+('צמחוני'),
+('טבעוני'),
+('סלט'),
+('מרק'),
+('קינוחים'),
+('קרמי'),
+('אוכל רחוב'),
+('בראנץ׳'),
+('טרי'),
+('עשיר בסיבים'),
+('מטבלים'),
+('הכנה מראש'),
+('ללא אפייה'),
+('לחמים'),
+('דגים ופירות ים'),
+('לכל המשפחה'),
+('מנות אורז');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
 SELECT 1, id FROM tags WHERE name IN ('fried','comfort_food','high_protein');
