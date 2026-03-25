@@ -2,18 +2,16 @@ def map_preference(value):
     if value == 1:
         return 1, 1
     elif value == 0.5:
-        return 0.5, 0.5 
+        return 0.5, 0.5
     elif value == 0:
-        return 0.7, 0 
+        return 0.7, 0
 
 
 def build_query(request, category):
     weights = request.weights
 
     w_time, t_time = map_preference(weights.lightness)
-
     w_health, t_health = map_preference(weights.health)
-
     w_complex, t_complex = map_preference(weights.complexity)
 
     query = f"""
@@ -23,12 +21,57 @@ def build_query(request, category):
         m.health_score,
         m.complex_score,
         m.popularity_score,
+
+        (1 - LEAST(m.prep_time_minutes, 90) / 90.0) AS light_score,
+        (1 - m.calories / 1000.0) AS health_score,
+        ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0) AS complex_score,
+
+        m.popularity_score,
+
         (
-            (1 - ABS((1 - m.prep_time_minutes / 120.0) - {t_time})) * {w_time} +
-            (1 - ABS((1 - m.calories / 1000.0) - {t_health})) * {w_health} +
-            (1 - ABS((1 - ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0)) - {t_complex}
-            )) * {w_complex} ) / ({w_time} + {w_health} + {w_complex}) +
-            m.popularity_score * 0.1
+            (1 - POW(ABS((1 - LEAST(m.prep_time_minutes, 90) / 90.0) - {t_time}), 2)) * {w_time}
+
+            +
+
+            (1 - ABS((1 - m.calories / 1000.0) - {t_health})) * {w_health}
+
+            +
+
+            (1 - ABS(
+                ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0)
+                - {t_complex}
+            )) * {w_complex}
+
+        ) / ({w_time} + {w_health} + {w_complex})
+
+        +
+
+        (
+            (
+                EXISTS (
+                    SELECT 1
+                    FROM meal_tags mt
+                    JOIN tags t ON t.id = mt.tag_id
+                    WHERE mt.meal_id = m.id
+                    AND t.name IN ('בריא','דל פחמימות','עשיר בסיבים','עשיר בחלבון')
+                )
+                -
+                EXISTS (
+                    SELECT 1
+                    FROM meal_tags mt
+                    JOIN tags t ON t.id = mt.tag_id
+                    WHERE mt.meal_id = m.id
+                    AND t.name IN ('מטוגן','קרמי','אוכל מנחם')
+                )
+            )
+            * (2 * {t_health} - 1)
+            * 0.1
+        )
+
+        +
+
+        m.popularity_score * 0.1
+
         AS score
 
     FROM meals m
@@ -78,9 +121,14 @@ def build_query(request, category):
             )
             """
 
+    if weights.lightness == 1:
+        query += " AND m.prep_time_minutes <= 45"
+    elif weights.lightness == 0.5:
+        query += " AND m.prep_time_minutes <= 90"
+
     query += """
-    ORDER BY score + RAND() * 0.1 DESC
-    LIMIT 10
+    ORDER BY score DESC, RAND()
+    LIMIT 5
     """
 
     return query
