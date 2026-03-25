@@ -3,7 +3,7 @@ services:
   - type: web
     name: dal-service
     runtime: docker # שיניתי מ-env: docker ל-runtime: docker
-    dockerContext: . # עדיף לתת קונטקסט מהשורש כדי לגשת לכל הקבצים
+    dockerContext: ./dal_service # עדיף לתת קונטקסט מהשורש כדי לגשת לכל הקבצים
     dockerfilePath: ./dal_service/Dockerfile
     plan: free
     envVars:
@@ -24,7 +24,7 @@ services:
   - type: web
     name: analyze-service
     runtime: docker
-    dockerContext: .
+    dockerContext: ./data-analyze
     dockerfilePath: ./data-analyze/Dockerfile
     plan: free
     envVars:
@@ -42,7 +42,7 @@ services:
   - type: web
     name: backend
     runtime: docker
-    dockerContext: .
+    dockerContext: ./server
     dockerfilePath: ./server/Dockerfile
     plan: free
     envVars:
@@ -62,7 +62,7 @@ services:
   - type: web
     name: frontend
     runtime: docker
-    dockerContext: .
+    dockerContext: ./client
     dockerfilePath: ./client/Dockerfile
     plan: free
     envVars:
