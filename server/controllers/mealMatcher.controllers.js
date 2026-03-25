@@ -19,7 +19,7 @@ export default async function mealMatcher(req, res) {
     }
     checkFrontBody(type, weights);
     const { data: resDataService } = await axios.post(
-      `http://${HOST}:${PORT}/${ROUTE}`,
+      `${HOST}/${ROUTE}`,
       req.body
     );
     if (

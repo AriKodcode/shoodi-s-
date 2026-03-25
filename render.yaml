@@ -6,6 +6,16 @@ services:
     dockerfilePath: ./dal_service/Dockerfile
     plan: free
     envVars:
+      - key: MYSQL_HOST # מעודכן לפי example.env [cite: 1]
+        sync: false
+      - key: MYSQL_PORT
+        sync: false
+      - key: MYSQL_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: MYSQL_DB
+        sync: false
       - key: DAL_ROUTE
         value: candidates
 
@@ -20,6 +30,7 @@ services:
         value: https://dal-service.onrender.com
       - key: DAL_ROUTE
         value: candidates
+      
 
   - type: web
     name: backend
@@ -34,6 +45,8 @@ services:
         value: https://analyze-service.onrender.com
       - key: ANALYZE_ROUTE
         value: analyze_client_choice
+      - key: DB_URI
+        sync: false
 
   - type: web
     name: frontend

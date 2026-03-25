@@ -39,7 +39,7 @@ function SelectFood() {
         complexity: complexity
       }
     }
-    console.log(HOST, PORT, ROUTE)
+    // console.log(HOST, PORT, ROUTE)
     await getMeal(`${HOST}/${ROUTE}`, filters)
   }
 
