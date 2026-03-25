@@ -5241,7 +5241,7 @@ INSERT IGNORE INTO meal_tags (meal_id, tag_id)
 SELECT 130, id FROM tags WHERE name IN ('טבעוני','סיר אחד','חריף');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 131, id FROM tags WHERE name IN ();
+SELECT 131, id FROM tags WHERE name IN ('טרי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
 SELECT 132, id FROM tags WHERE name IN ('קינוחים');
