@@ -29,7 +29,13 @@ services:
     environment:
       - NODE_ENV=production
   frontend:
-    build: ./client
+    build:
+      context: ./client
+      args:
+        # כאן אנחנו מושכים את הערכים מה-.env ומעבירים אותם ל-Dockerfile
+        - VITE_BACKEND_HOST=${VITE_BACKEND_HOST}
+        - VITE_BACKEND_PORT=${VITE_BACKEND_PORT}
+        - VITE_BACKEND_ROUTE=${VITE_BACKEND_ROUTE}
     container_name: frontend
     env_file:
       - .env
