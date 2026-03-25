@@ -1,14 +1,13 @@
 services:
+  # 1. שירות ה-DAL (מתחבר ל-Aiven)
   - type: web
     name: dal-service
-    env: docker
-    dockerContext: ./dal_service
+    runtime: docker # שיניתי מ-env: docker ל-runtime: docker
+    dockerContext: . # עדיף לתת קונטקסט מהשורש כדי לגשת לכל הקבצים
     dockerfilePath: ./dal_service/Dockerfile
     plan: free
     envVars:
-      - key: DB_URI
-        sync: false
-      - key: MYSQL_HOST
+      - key: MYSQL_HOST # הכתובת מ-Aiven
         sync: false
       - key: MYSQL_PORT
         sync: false
@@ -19,48 +18,60 @@ services:
       - key: MYSQL_DB
         sync: false
       - key: DAL_ROUTE
-        sync: false
+        value: candidates
 
+  # 2. שירות האנליזה (מתחבר ל-DAL)
   - type: web
     name: analyze-service
-    env: docker
-    dockerContext: ./data-analyze
+    runtime: docker
+    dockerContext: .
     dockerfilePath: ./data-analyze/Dockerfile
     plan: free
     envVars:
       - key: DAL_HOST
-        value: dal-service.onrender.com
+        fromService:
+          type: web
+          name: dal-service
+          property: host # משתמש בכתובת הפנימית של Render (חוסך זמן ויציב יותר)
       - key: DAL_PORT
-        value: 80
+        value: "80" # בתוך Render שירותים מדברים בפורט 80/10000
       - key: DAL_ROUTE
-        sync: false
+        value: candidates
 
+  # 3. ה-Backend (מתחבר ל-Analyze)
   - type: web
     name: backend
-    env: docker
-    dockerContext: ./server
+    runtime: docker
+    dockerContext: .
     dockerfilePath: ./server/Dockerfile
     plan: free
     envVars:
       - key: NODE_ENV
         value: production
       - key: ANALYZE_HOST
-        value: analyze-service.onrender.com
+        fromService:
+          type: web
+          name: analyze-service
+          property: host
       - key: ANALYZE_PORT
-        value: 80
+        value: "80"
       - key: ANALYZE_ROUTE
-        sync: false
+        value: analyze_client_choice
 
+  # 4. ה-Frontend
   - type: web
     name: frontend
-    env: docker
-    dockerContext: ./client
+    runtime: docker
+    dockerContext: .
     dockerfilePath: ./client/Dockerfile
     plan: free
     envVars:
       - key: VITE_BACKEND_HOST
-        value: backend.onrender.com
+        fromService:
+          type: web
+          name: backend
+          property: host
       - key: VITE_BACKEND_PORT
-        value: 80
+        value: "80"
       - key: VITE_BACKEND_ROUTE
-        sync: false
+        value: meals
