@@ -33,12 +33,13 @@ function SelectFood() {
   async function handleSubmit() {
     const filters = {
       type: type,
-      weight: {
+      weights: {
         lightness: lightness,
         health: health,
         complexity: complexity
       }
     }
+    console.log(HOST, PORT, ROUTE)
     await getMeal(`http://${HOST}:${PORT}/${ROUTE}`, filters)
   }
 
