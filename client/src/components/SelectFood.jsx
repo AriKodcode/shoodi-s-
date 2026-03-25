@@ -39,7 +39,6 @@ const complexityPrefer = [{ text: "קל", icon: "🥄", value: 1 },{ text: "רג
         complexity: complexity
       }
     }
-    console.log(HOST, PORT, ROUTE)
     await getMeal(`http://${HOST}:${PORT}/${ROUTE}`, filters)
   }
 

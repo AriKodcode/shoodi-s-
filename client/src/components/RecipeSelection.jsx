@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import "../style/RecipeSelection.css";
 import { useNavigate } from "react-router-dom";
-import mealsData from '../DB/example.json'
+import { useMeals } from "../store/useStore";
 
 const mealTypeLabel = (type) => {
   if (type === "dairy") return "חלבי";
-  if (type === "meat")  return "בשרי";
+  if (type === "meat") return "בשרי";
   return "פרווה";
 };
-const styleLabel    = (style)    => style === "heavy" ? "עשיר" : "קליל";
+const styleLabel = (style) => style === "heavy" ? "עשיר" : "קליל";
 const categoryLabel = (category) => category === "main" ? "מנה עיקרית" : "תוספת";
 
 const difficultyLabel = (d) => {
-  if (d === "easy")   return "קל";
+  if (d === "easy") return "קל";
   if (d === "medium") return "בינוני";
   return "קשה";
 };
@@ -22,22 +22,22 @@ const difficultyLabel = (d) => {
 
 function normalizeMeals(data) {
   return data.meals.map((group, i) => ({
-    id:     group.id,
-    name:   `ארוחה ${i + 1}`,
-    match:  group.match,
-    tags:   group.tags || [],
+    id: group.id,
+    name: `ארוחה ${i + 1}`,
+    match: group.match,
+    tags: group.tags || [],
     dishes: group.meals.map((item) => item.meal),
   }));
 }
 
 function RecipeSelection() {
   const navigate = useNavigate();
-  const meals = normalizeMeals(mealsData);
-
-  const [step,         setStep]         = useState("meals");
-  const [activeMeal,   setActiveMeal]   = useState(null);
+  const mealsData = useMeals((state) => state.mealsData)
+  const meals = mealsData && mealsData.length > 0 ? normalizeMeals({ meals: mealsData }) : [];
+  const [step, setStep] = useState("meals");
+  const [activeMeal, setActiveMeal] = useState(null);
   const [selectedDish, setSelectedDish] = useState(null);
-  const [isExiting,    setIsExiting]    = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
 
   if (!meals || meals.length === 0) {
     return (
@@ -174,7 +174,7 @@ function RecipeSelection() {
                 <div className="card-content">
 
 
-                  
+
 
                   {/* שם */}
                   <h3>{dish.name}</h3>
@@ -201,22 +201,22 @@ function RecipeSelection() {
 
                 {/* ── בר תחתון בתוך הקארד ── */}
                 <div className="card-footer">
-  <span className="tag-difficulty">
-    רמה: {difficultyLabel(dish.difficulty)}
-  </span>
-  <div className="footer-right">
-    {dish.calories && (
-      <span className="footer-item">
-        {dish.calories} קלוריות <span>🔥</span>
-      </span>
-    )}
-    {dish.prep_time_minutes && (
-      <span className="footer-item">
-        {dish.prep_time_minutes} דק׳ <span>⏱</span>
-      </span>
-    )}
-  </div>
-</div>
+                  <span className="tag-difficulty">
+                    רמה: {difficultyLabel(dish.difficulty)}
+                  </span>
+                  <div className="footer-right">
+                    {dish.calories && (
+                      <span className="footer-item">
+                        {dish.calories} קלוריות <span>🔥</span>
+                      </span>
+                    )}
+                    {dish.prep_time_minutes && (
+                      <span className="footer-item">
+                        {dish.prep_time_minutes} דק׳ <span>⏱</span>
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
             );
           })}
