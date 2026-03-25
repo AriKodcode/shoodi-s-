@@ -21,8 +21,8 @@ function SelectFood() {
   const typeMeal = [{ text: "חלבי", icon: "🍕", value: "dairy" }, { text: "פרווה", icon: "🥪", value: "vegan" }, { text: "בשרי", icon: "🍔", value: "meat" }]
   const preferTime = [{ text: "מהיר", icon: "⚡", value: 0 }, { text: "בינוני", icon: "🍳", value: 0.5 }, { text: "ארוך", icon: "⏳", value: 1 }]
   const foodHealth = [{ text: "בריא", icon: "🥦", value: 1 }, { text: "קלאסי", icon: "🍲", value: 0.5 }, { text: "ג'אנק", icon: "🍟", value: 0 }]
-  const complexityPrefer = [{ text: "קשה", icon: "🥣", value: 0 }, { text: "רגיל", icon: "🍳", value: 0.5 }, { text: "קל", icon: "👨‍🍳", value: 1 },]
-
+  const complexityPrefer = [{ text: "קשה", icon: "👨‍🍳", value: 0 }, { text: "רגיל", icon: "🍳", value: 0.5 }, { text: "קל", icon: "🥣", value: 1 },]
+  
   function isValid() {
     if (currentStep === 0) return type === null
     if (currentStep === 1) return lightness === null
@@ -33,7 +33,7 @@ function SelectFood() {
   async function handleSubmit() {
     const filters = {
       type: type,
-      weight: {
+      weights: {
         lightness: lightness,
         health: health,
         complexity: complexity
