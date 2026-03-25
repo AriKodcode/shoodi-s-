@@ -1,0 +1,71 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: meals-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: meals_db
+      MYSQL_USER: meals_user
+      MYSQL_PASSWORD: meals_password
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./schema_2.sql:/docker-entrypoint-initdb.d/schema.sql
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  dal-service:
+    build: ./dal_service
+    container_name: dal-service
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_USER: meals_user
+      MYSQL_PASSWORD: meals_password
+      MYSQL_DB: meals_db
+
+    ports:
+      - "8000:8000"
+  analyze-service:
+    build: ./data-analyze
+    container_name: analyze-service
+    depends_on:
+      db:
+        condition: service_healthy
+      dal-service:
+        condition: service_started
+    ports:
+      - "8001:8001"
+    environment:
+      - DAL_HOST=dal-service
+      - DAL_PORT=8000
+      - DAL_ROUTE=candidates
+
+  frontend:
+    build: ./client
+    container_name: frontend
+
+    depends_on:
+      dal-service:
+        condition: service_started
+
+    ports:
+      - "3000:80"
+
+volumes:
+  db_data:
