@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 // 1. שינוי שם ל-usePostRequest
 function usePostRequest() {
-    const [data, setData] = useState([]) 
+    const [meals, setMeals] = useState([]) 
     const navigate = useNavigate()
     
     // 2. הוספת פרמטרים לפונקציה כדי שתהיה גמישה
@@ -23,7 +23,7 @@ function usePostRequest() {
                 const result = await res.json()
                 
                 // עדכון ה-State המקומי (ליתר ביטחון)
-                setData(result.meals)
+                setMeals(result.meals)
                 
                 // 3. הניווט הקריטי: מעבירים את המידע לדף הבא
                 // שים לב: שיניתי את הניתוב ל- /recipe (או השם של דף התוצאה שלך)
@@ -35,7 +35,7 @@ function usePostRequest() {
         }
     }
 
-    return { getMeal, data }
+    return { getMeal, meals }
 }
 
 export default usePostRequest

@@ -1,59 +1,103 @@
-[
-  {
-    "id": 83,
-    "name": "פנקייק אמריקאי",
-    "type": "dairy",
-    "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/fluffyamericanpancak_74828_16x9.jpg",
-    "style": "heavy",
-    "category": "main",
-    "recipe": "**הסוד:** לא לערבב יתר על המידה! **הרטובים:** מערבבים: 2 ביצים + 300 מ\"ל חמאה (בוטרמילק) + 3 כפות חמאה מומסת + כפית תמצית וניל. **היבשים בנפרד:** 250 גרם קמח + כף אבקת אפייה + כפית סודה לשתייה + 2 כפות סוכר + קורט מלח — מערבבים. **השילוב (קריטי!):** מוסיפים הרטובים ליבשים. מערבבים **עד לייחוד בלבד** — גושים קטנים = בסדר גמור, ערבוב יתר = גומי. **הטיגון:** מחבת על בינונית עם טיפת חמאה. שופכים 1/3 כוס. כשמופיעות בועות ושוליים מתייצבים — הופכים פעם אחת. **לא ללחוץ!** **הגשה:** גבוה עם: חמאה, מייפל, פירות יער.",
-    "ingredients": [
-      { "unit": "כפית", "quantity": 1.0, "ingredient": "סודה לשתייה" },
-      { "unit": "כף", "quantity": 3.0, "ingredient": "חמאה" },
-      { "unit": "מ״ל", "quantity": 300.0, "ingredient": "לבן" },
-      { "unit": "יחידות", "quantity": 2.0, "ingredient": "ביצים" },
-      { "unit": "גרם", "quantity": 250.0, "ingredient": "קמח" },
-      { "unit": "כף", "quantity": 3.0, "ingredient": "סירופ מייפל" },
-      { "unit": "כפית", "quantity": 0.25, "ingredient": "מלח" },
-      { "unit": "כף", "quantity": 2.0, "ingredient": "סוכר" },
-      { "unit": "כפית", "quantity": 1.0, "ingredient": "תמצית וניל" },
-      { "unit": "כף", "quantity": 1.0, "ingredient": "אבקת אפייה" }
-    ]
-  },
-  {
-    "id": 84,
-    "name": "חלה ביתית",
-    "type": "dairy",
-    "image": "https://static01.nyt.com/images/2015/11/19/dining/19COOKING-CHALLAHLOAF2/19COOKING-CHALLAHLOAF2-jumbo.jpg",
-    "style": "heavy",
-    "category": "side",
-    "recipe": "**הבצק:** בקערה גדולה מחברים: 7 גרם שמרים יבשים + כף סוכר + 250 מ\"ל מים חמים (37 מעלות). מניחים 10 דקות לתפיחה. מוסיפים: 500 גרם קמח לבן + כפית מלח + 2 ביצים + 3 כפות שמן + 2 כפות דבש. לשים 10 דקות מלאות עד לבצק חלק ומגמיש. **תפיחה ראשונה:** מכסים ומניחים שעה ורבע — הבצק מכפיל. **האריגה:** מחלקים ל-3 גלילים שווים (40 ס\"מ). אורגים צמה רופפת. **תפיחה שנייה:** 45 דקות. **לפני אפייה:** מברישים בביצה טרופה. מפזרים שומשום. **האפייה:** ב-180 מעלות 30 דקות. הקשה על הגוף — צליל חלול = מוכן.",
-    "ingredients": [
-      { "unit": "גרם", "quantity": 500.0, "ingredient": "קמח" },
-      { "unit": "כף", "quantity": 3.0, "ingredient": "שמן צמחי" },
-      { "unit": "כפית", "quantity": 1.0, "ingredient": "סוכר" },
-      { "unit": "כף", "quantity": 2.0, "ingredient": "שומשום" },
-      { "unit": "כפית", "quantity": 1.0, "ingredient": "מלח" },
-      { "unit": "כף", "quantity": 2.0, "ingredient": "דבש" },
-      { "unit": "יחידות", "quantity": 2.0, "ingredient": "ביצים" },
-      { "unit": "גרם", "quantity": 7.0, "ingredient": "שמרים יבשים" }
-    ]
-  },
-  {
-    "id": 85,
-    "name": "בייגלה ירושלמי",
-    "type": "vegan",
-    "image": "https://jewishfood.wordpress.com/files/2009/12/img_1761.jpg",
-    "style": "heavy",
-    "category": "side",
-    "recipe": "**הבצק:** שמרים + מים חמים + סוכר — 10 דקות. מוסיפים: 500 גרם קמח + מלח + 2 כפות שמן זית. לשים 8 דקות. תפיחה שעה. **העיצוב:** מחלקים ל-8. מגלגלים לגלגלים ארוכים. מחברים לטבעות גדולות. **הציפוי:** מכינים תערובת: שומשום + זעתר (2:1). מניחים הטבעות בתערובת — לוחצים. **האפייה:** 15 דקות ב-210 מעלות — לא יותר! חייב להיות רך מבפנים, זהוב מבחוץ. **הגשה:** עם גבינת שמנת, שמן זית, פלפל.",
-    "ingredients": [
-      { "unit": "גרם", "quantity": 7.0, "ingredient": "שמרים יבשים" },
-      { "unit": "גרם", "quantity": 500.0, "ingredient": "קמח" },
-      { "unit": "כף", "quantity": 2.0, "ingredient": "שמן זית" },
-      { "unit": "כפית", "quantity": 1.0, "ingredient": "מלח" },
-      { "unit": "כף", "quantity": 4.0, "ingredient": "שומשום" },
-      { "unit": "כף", "quantity": 2.0, "ingredient": "זעתר" }
-    ]
-  }
-]
+{
+  "meals": [
+    {
+      "id": 1,
+      "meals": [
+        {
+          "id": 1,
+          "meal": {
+            "id": 1,
+            "name": "שניצל עוף קלאסי",
+            "tags": ["מטוגן", "עשיר בחלבון", "אוכל מנחם"],
+            "type": "meat",
+            "image": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/6/3/1/FNM_070111-Fried-Chicken-026_s4x3.jpg.rend.hgtvcom.1280.960.suffix/1382539796174.webp",
+            "style": "heavy",
+            "recipe": "**הכנת העוף:** לוקחים 2 חזות עוף גדולות...",
+            "calories": 650,
+            "category": "main",
+            "difficulty": "medium",
+            "description": "שניצל פריך וזהוב עם ציפוי קראנצ׳י קלאסי",
+            "ingredients": [
+              { "unit": "כפית",    "quantity": 0.5,  "ingredient": "פלפל שחור" },
+              { "unit": "מ״ל",     "quantity": 500.0, "ingredient": "שמן קנולה" },
+              { "unit": "גרם",     "quantity": 600.0, "ingredient": "חזה עוף" },
+              { "unit": "יחידות",  "quantity": 3.0,  "ingredient": "ביצים" },
+              { "unit": "גרם",     "quantity": 120.0, "ingredient": "קמח" },
+              { "unit": "יחידות",  "quantity": 1.0,  "ingredient": "לימון" },
+              { "unit": "גרם",     "quantity": 200.0, "ingredient": "פנקו" },
+              { "unit": "כפית",    "quantity": 1.0,  "ingredient": "פפריקה" },
+              { "unit": "כפית",    "quantity": 1.0,  "ingredient": "מלח" }
+            ],
+            "prep_time_minutes": 40
+          }
+        },
+        {
+          "id": 2,
+          "meal": {
+            "id": 2,
+            "name": "קציצות בשר ברוטב עגבניות",
+            "tags": ["תבשיל", "עשיר בחלבון", "אוכל מנחם", "סיר אחד"],
+            "type": "meat",
+            "image": "https://healthyrecipesblogs.com/wp-content/uploads/2013/10/meatballs-tomato-sauce-featured.jpg",
+            "style": "heavy",
+            "recipe": "**הכנת תערובת הקציצות:** מניחים בקערה גדולה...",
+            "calories": 550,
+            "category": "main",
+            "difficulty": "medium",
+            "description": "קציצות עסיסיות ברוטב עגבניות עשיר",
+            "ingredients": [
+              { "unit": "יחידות", "quantity": 1.0,  "ingredient": "עלה דפנה" },
+              { "unit": "כפית",   "quantity": 0.5,  "ingredient": "פלפל שחור" },
+              { "unit": "כף",     "quantity": 3.0,  "ingredient": "פירורי לחם פנקו" },
+              { "unit": "כפית",   "quantity": 0.25, "ingredient": "קינמון" },
+              { "unit": "כפית",   "quantity": 1.0,  "ingredient": "כמון" },
+              { "unit": "יחידות", "quantity": 1.0,  "ingredient": "ביצים" },
+              { "unit": "יחידות", "quantity": 5.0,  "ingredient": "שום" },
+              { "unit": "גרם",    "quantity": 500.0, "ingredient": "בשר בקר טחון" },
+              { "unit": "כף",     "quantity": 2.0,  "ingredient": "שמן זית" },
+              { "unit": "יחידות", "quantity": 1.0,  "ingredient": "בצל" },
+              { "unit": "כפית",   "quantity": 1.0,  "ingredient": "אורגנו" },
+              { "unit": "כפית",   "quantity": 1.0,  "ingredient": "פפריקה" },
+              { "unit": "גרם",    "quantity": 20.0, "ingredient": "פטרוזיליה" },
+              { "unit": "כפית",   "quantity": 1.5,  "ingredient": "מלח" },
+              { "unit": "כפית",   "quantity": 1.0,  "ingredient": "סוכר" },
+              { "unit": "כפית",   "quantity": 1.0,  "ingredient": "רסק עגבניות" },
+              { "unit": "יחידות", "quantity": 3.0,  "ingredient": "עגבניות" }
+            ],
+            "prep_time_minutes": 90
+          }
+        },
+        {
+          "id": 3,
+          "meal": {
+            "id": 3,
+            "name": "סטייק אנטריקוט עם חמאת עשבים",
+            "tags": ["על האש", "עשיר בחלבון", "דל פחמימות"],
+            "type": "meat",
+            "image": "https://recipecontent.fooby.ch/19216_3-2_1920-1280.jpg",
+            "style": "heavy",
+            "recipe": "**הכנת חמאת עשבים:** מרככים חמאה...",
+            "calories": 700,
+            "category": "main",
+            "difficulty": "medium",
+            "description": "סטייק אנטריקוט עסיסי עם חמאת עשבים",
+            "ingredients": [
+              { "unit": "גרם",    "quantity": 500.0, "ingredient": "סטייק בקר" },
+              { "unit": "כפית",   "quantity": 1.0,  "ingredient": "פלפל שחור" },
+              { "unit": "גרם",    "quantity": 100.0, "ingredient": "חמאה" },
+              { "unit": "כף",     "quantity": 1.0,  "ingredient": "שמן קנולה" },
+              { "unit": "יחידות", "quantity": 5.0,  "ingredient": "שום" },
+              { "unit": "יחידות", "quantity": 0.5,  "ingredient": "לימון" },
+              { "unit": "גרם",    "quantity": 10.0, "ingredient": "פטרוזיליה" },
+              { "unit": "כפית",   "quantity": 1.0,  "ingredient": "מלח" },
+              { "unit": "יחידות", "quantity": 3.0,  "ingredient": "טימין" }
+            ],
+            "prep_time_minutes": 60
+          }
+        }
+      ],
+      "match": 70.0,
+      "tags": ["עשיר בחלבון", "אוכל מנחם"]
+    }
+  ]
+}
