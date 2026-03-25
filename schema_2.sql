@@ -4733,710 +4733,719 @@ WHERE id BETWEEN 151 AND 200;
 
 
 INSERT IGNORE INTO tags (name) VALUES
-('fried'), ('grilled'), ('baked'), ('stew'), ('slow_cooked'),
-('quick'), ('long_cooking'),
-('high_protein'), ('comfort_food'),
-('healthy'), ('low_carb'),
-('italian'), ('middle_eastern'), ('asian'),
-('one_pot'), ('bbq'), ('spicy');
+('מטוגן'),
+('על האש'),
+('אפוי'),
+('תבשיל'),
+('בישול איטי'),
+('מהיר להכנה'),
+('בישול ארוך'),
+('עשיר בחלבון'),
+('אוכל מנחם'),
+('בריא'),
+('דל פחמימות'),
+('איטלקי'),
+('מזרח תיכוני'),
+('אסייתי'),
+('סיר אחד'),
+('ברביקיו'),
+('חריף');
 
 INSERT IGNORE INTO tags (name) VALUES
-('vegetarian'),
-('vegan'),
-('salad'),
-('soup'),
-('dessert'),
-('creamy'),
-('street_food'),
-('brunch'),
-('fresh'),
-('high_fiber'),
-('dip'),
-('meal_prep'),
-('no_bake'),
-('bread'),
-('seafood'),
-('family'),
-('rice');
-
-
-INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 1, id FROM tags WHERE name IN ('fried','comfort_food','high_protein');
+('צמחוני'),
+('טבעוני'),
+('סלט'),
+('מרק'),
+('קינוחים'),
+('קרמי'),
+('אוכל רחוב'),
+('בראנץ׳'),
+('טרי'),
+('עשיר בסיבים'),
+('מטבלים'),
+('הכנה מראש'),
+('ללא אפייה'),
+('לחמים'),
+('דגים ופירות ים'),
+('לכל המשפחה'),
+('מנות אורז');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 2, id FROM tags WHERE name IN ('stew','one_pot','comfort_food','high_protein');
+SELECT 1, id FROM tags WHERE name IN ('מטוגן','אוכל מנחם','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 3, id FROM tags WHERE name IN ('grilled','high_protein','low_carb');
+SELECT 2, id FROM tags WHERE name IN ('תבשיל','סיר אחד','אוכל מנחם','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 4, id FROM tags WHERE name IN ('baked','healthy','high_protein','one_pot');
+SELECT 3, id FROM tags WHERE name IN ('על האש','עשיר בחלבון','דל פחמימות');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 5, id FROM tags WHERE name IN ('bbq','grilled','middle_eastern','high_protein');
+SELECT 4, id FROM tags WHERE name IN ('אפוי','בריא','עשיר בחלבון','סיר אחד');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 6, id FROM tags WHERE name IN ('italian','stew','long_cooking','comfort_food');
+SELECT 5, id FROM tags WHERE name IN ('ברביקיו','על האש','מזרח תיכוני','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 7, id FROM tags WHERE name IN ('baked','italian','comfort_food');
+SELECT 6, id FROM tags WHERE name IN ('איטלקי','תבשיל','בישול ארוך','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 8, id FROM tags WHERE name IN ('stew','middle_eastern','one_pot');
+SELECT 7, id FROM tags WHERE name IN ('אפוי','איטלקי','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 9, id FROM tags WHERE name IN ('slow_cooked','one_pot','comfort_food','long_cooking');
+SELECT 8, id FROM tags WHERE name IN ('תבשיל','מזרח תיכוני','סיר אחד');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 10, id FROM tags WHERE name IN ('bbq','grilled','middle_eastern','high_protein');
-
-
-INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 11, id FROM tags WHERE name IN ('baked','slow_cooked','comfort_food');
+SELECT 9, id FROM tags WHERE name IN ('בישול איטי','סיר אחד','אוכל מנחם','בישול ארוך');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 12, id FROM tags WHERE name IN ('one_pot','healthy','high_protein');
+SELECT 10, id FROM tags WHERE name IN ('ברביקיו','על האש','מזרח תיכוני','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 13, id FROM tags WHERE name IN ('stew','healthy','high_protein');
+SELECT 11, id FROM tags WHERE name IN ('אפוי','בישול איטי','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 14, id FROM tags WHERE name IN ('asian','quick','healthy','high_protein');
+SELECT 12, id FROM tags WHERE name IN ('סיר אחד','בריא','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 15, id FROM tags WHERE name IN ('stew','middle_eastern','comfort_food','slow_cooked');
+SELECT 13, id FROM tags WHERE name IN ('תבשיל','בריא','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 16, id FROM tags WHERE name IN ('baked','comfort_food','high_protein');
+SELECT 14, id FROM tags WHERE name IN ('אסייתי','מהיר להכנה','בריא','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 17, id FROM tags WHERE name IN ('baked','comfort_food');
+SELECT 15, id FROM tags WHERE name IN ('תבשיל','מזרח תיכוני','אוכל מנחם','בישול איטי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 18, id FROM tags WHERE name IN ('slow_cooked','comfort_food','long_cooking');
+SELECT 16, id FROM tags WHERE name IN ('אפוי','אוכל מנחם','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 19, id FROM tags WHERE name IN ('italian','stew','comfort_food');
+SELECT 17, id FROM tags WHERE name IN ('אפוי','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 20, id FROM tags WHERE name IN ('bbq','middle_eastern','grilled','high_protein');
+SELECT 18, id FROM tags WHERE name IN ('בישול איטי','אוכל מנחם','בישול ארוך');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 19, id FROM tags WHERE name IN ('איטלקי','תבשיל','אוכל מנחם');
+
+INSERT IGNORE INTO meal_tags (meal_id, tag_id)
+SELECT 20, id FROM tags WHERE name IN ('ברביקיו','מזרח תיכוני','על האש','עשיר בחלבון');
 
 -- 21
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 21, id FROM tags WHERE name IN ('healthy','high_protein','salad','low_carb');
+SELECT 21, id FROM tags WHERE name IN ('בריא','עשיר בחלבון','סלט','דל פחמימות');
 
 -- 22
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 22, id FROM tags WHERE name IN ('healthy','asian','high_protein','rice_based');
+SELECT 22, id FROM tags WHERE name IN ('בריא','אסייתי','עשיר בחלבון','מנות אורז');
 
 -- 23
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 23, id FROM tags WHERE name IN ('healthy','high_protein','oven','low_carb');
+SELECT 23, id FROM tags WHERE name IN ('בריא','עשיר בחלבון','אפוי','דל פחמימות');
 
 -- 24
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 24, id FROM tags WHERE name IN ('healthy','soup','high_protein','one_pot');
+SELECT 24, id FROM tags WHERE name IN ('בריא','מרק','עשיר בחלבון','סיר אחד');
 
 -- 25
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 25, id FROM tags WHERE name IN ('healthy','high_protein','low_carb','asian');
+SELECT 25, id FROM tags WHERE name IN ('בריא','עשיר בחלבון','דל פחמימות','אסייתי');
 
 -- 26
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 26, id FROM tags WHERE name IN ('quick','high_protein','seafood');
+SELECT 26, id FROM tags WHERE name IN ('מהיר להכנה','עשיר בחלבון','דגים ופירות ים');
 
 -- 27
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 27, id FROM tags WHERE name IN ('healthy','high_protein','balanced','meal_prep');
+SELECT 27, id FROM tags WHERE name IN ('בריא','עשיר בחלבון','הכנה מראש');
 
 -- 28
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 28, id FROM tags WHERE name IN ('asian','high_protein','healthy');
+SELECT 28, id FROM tags WHERE name IN ('אסייתי','עשיר בחלבון','בריא');
 
 -- 29
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 29, id FROM tags WHERE name IN ('grill','sweet_savory','high_protein');
+SELECT 29, id FROM tags WHERE name IN ('על האש','עשיר בחלבון');
 
 -- 30
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 30, id FROM tags WHERE name IN ('pasta','quick','mediterranean');
+SELECT 30, id FROM tags WHERE name IN ('מהיר להכנה','איטלקי');
 
 -- 31
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 31, id FROM tags WHERE name IN ('one_pot','comfort_food','vegetarian');
+SELECT 31, id FROM tags WHERE name IN ('סיר אחד','אוכל מנחם','צמחוני');
 
 -- 32
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 32, id FROM tags WHERE name IN ('italian','comfort_food','rice_based');
+SELECT 32, id FROM tags WHERE name IN ('איטלקי','אוכל מנחם','מנות אורז');
 
 -- 33
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 33, id FROM tags WHERE name IN ('italian','oven','comfort_food');
+SELECT 33, id FROM tags WHERE name IN ('איטלקי','אפוי','אוכל מנחם');
 
 -- 34
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 34, id FROM tags WHERE name IN ('pasta','comfort_food','quick');
+SELECT 34, id FROM tags WHERE name IN ('אוכל מנחם','מהיר להכנה');
 
 -- 35
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 35, id FROM tags WHERE name IN ('oven','comfort_food','side');
+SELECT 35, id FROM tags WHERE name IN ('אפוי','אוכל מנחם');
 
 -- 36
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 36, id FROM tags WHERE name IN ('healthy','quick','vegetarian','low_carb');
+SELECT 36, id FROM tags WHERE name IN ('בריא','מהיר להכנה','צמחוני','דל פחמימות');
 
 -- 37
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 37, id FROM tags WHERE name IN ('vegetarian','oven','comfort_food');
+SELECT 37, id FROM tags WHERE name IN ('צמחוני','אפוי','אוכל מנחם');
 
 -- 38
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 38, id FROM tags WHERE name IN ('italian','comfort_food','rice_based');
+SELECT 38, id FROM tags WHERE name IN ('איטלקי','אוכל מנחם','מנות אורז');
 
 -- 39
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 39, id FROM tags WHERE name IN ('baked','comfort_food');
+SELECT 39, id FROM tags WHERE name IN ('אפוי','אוכל מנחם');
 
 -- 40
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 40, id FROM tags WHERE name IN ('dessert','baked','sweet');
+SELECT 40, id FROM tags WHERE name IN ('קינוחים','אפוי');
 
 -- 41
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 41, id FROM tags WHERE name IN ('vegan','healthy','high_protein','middle_eastern');
+SELECT 41, id FROM tags WHERE name IN ('טבעוני','בריא','עשיר בחלבון','מזרח תיכוני');
 
 -- 42
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 42, id FROM tags WHERE name IN ('vegan','healthy','asian','one_pot');
+SELECT 42, id FROM tags WHERE name IN ('טבעוני','בריא','אסייתי','סיר אחד');
 
 -- 43
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 43, id FROM tags WHERE name IN ('vegan','fried','street_food','middle_eastern');
+SELECT 43, id FROM tags WHERE name IN ('טבעוני','מטוגן','אוכל רחוב','מזרח תיכוני');
 
 -- 44
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 44, id FROM tags WHERE name IN ('vegan','healthy','one_pot','indian');
+SELECT 44, id FROM tags WHERE name IN ('טבעוני','בריא','סיר אחד');
 
 -- 45
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 45, id FROM tags WHERE name IN ('vegan','healthy','meal_prep','gluten_free');
+SELECT 45, id FROM tags WHERE name IN ('טבעוני','בריא','הכנה מראש');
 
 -- 46
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 46, id FROM tags WHERE name IN ('vegan','healthy','soup','one_pot');
+SELECT 46, id FROM tags WHERE name IN ('טבעוני','בריא','מרק','סיר אחד');
 
 -- 47
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 47, id FROM tags WHERE name IN ('vegan','salad','healthy','middle_eastern');
+SELECT 47, id FROM tags WHERE name IN ('טבעוני','סלט','בריא','מזרח תיכוני');
 
 -- 48
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 48, id FROM tags WHERE name IN ('vegan','healthy','one_pot','indian');
+SELECT 48, id FROM tags WHERE name IN ('טבעוני','בריא','סיר אחד');
 
 -- 49
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 49, id FROM tags WHERE name IN ('vegan','healthy','soup');
+SELECT 49, id FROM tags WHERE name IN ('טבעוני','בריא','מרק');
 
 -- 50
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 50, id FROM tags WHERE name IN ('vegan','healthy','cold','soup');
+SELECT 50, id FROM tags WHERE name IN ('טבעוני','בריא','מרק');
 
 -- 51
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 51, id FROM tags WHERE name IN ('vegan','high_protein','healthy','pan_fried');
+SELECT 51, id FROM tags WHERE name IN ('טבעוני','עשיר בחלבון','בריא','מטוגן');
 
 -- 52
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 52, id FROM tags WHERE name IN ('vegan','asian','stir_fry','noodles');
+SELECT 52, id FROM tags WHERE name IN ('טבעוני','אסייתי');
 
 -- 53
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 53, id FROM tags WHERE name IN ('vegan','one_pot','healthy','mediterranean');
+SELECT 53, id FROM tags WHERE name IN ('טבעוני','סיר אחד','בריא');
 
 -- 54
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 54, id FROM tags WHERE name IN ('vegan','soup','healthy','one_pot');
+SELECT 54, id FROM tags WHERE name IN ('טבעוני','מרק','בריא','סיר אחד');
 
 -- 55
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 55, id FROM tags WHERE name IN ('vegan','dip','mediterranean','smoky');
+SELECT 55, id FROM tags WHERE name IN ('טבעוני','מטבלים');
 
 -- 56
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 56, id FROM tags WHERE name IN ('vegan','soup','healthy','comfort_food');
+SELECT 56, id FROM tags WHERE name IN ('טבעוני','מרק','בריא','אוכל מנחם');
 
 -- 57
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 57, id FROM tags WHERE name IN ('vegan','salad','healthy','high_fiber');
+SELECT 57, id FROM tags WHERE name IN ('טבעוני','סלט','בריא','עשיר בסיבים');
 
 -- 58
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 58, id FROM tags WHERE name IN ('vegan','pasta','italian','spicy');
+SELECT 58, id FROM tags WHERE name IN ('טבעוני','איטלקי','חריף');
 
 -- 59
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 59, id FROM tags WHERE name IN ('vegan','dip','healthy','quick');
+SELECT 59, id FROM tags WHERE name IN ('טבעוני','מטבלים','בריא','מהיר להכנה');
 
 -- 60
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 60, id FROM tags WHERE name IN ('vegan','dip','mediterranean','slow_cooked');
+SELECT 60, id FROM tags WHERE name IN ('טבעוני','מטבלים','בישול איטי');
 
 -- 61
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 61, id FROM tags WHERE name IN ('vegan','soup','asian','comfort_food');
+SELECT 61, id FROM tags WHERE name IN ('טבעוני','מרק','אסייתי','אוכל מנחם');
 
 -- 62
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 62, id FROM tags WHERE name IN ('vegan','one_pot','healthy','mediterranean');
+SELECT 62, id FROM tags WHERE name IN ('טבעוני','סיר אחד','בריא');
 
 -- 63
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 63, id FROM tags WHERE name IN ('vegan','soup','asian','light');
+SELECT 63, id FROM tags WHERE name IN ('טבעוני','מרק','אסייתי');
 
 -- 64
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 64, id FROM tags WHERE name IN ('vegan','baked','comfort_food','vegetable_based');
+SELECT 64, id FROM tags WHERE name IN ('טבעוני','אפוי','אוכל מנחם');
 
 -- 65
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 65, id FROM tags WHERE name IN ('vegan','quick','healthy','breakfast');
+SELECT 65, id FROM tags WHERE name IN ('טבעוני','מהיר להכנה','בריא');
 
 -- 66
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 66, id FROM tags WHERE name IN ('vegan','roasted','healthy','side_dish');
+SELECT 66, id FROM tags WHERE name IN ('טבעוני','בריא');
 
 -- 67
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 67, id FROM tags WHERE name IN ('vegan','roasted','mediterranean','comfort_food');
+SELECT 67, id FROM tags WHERE name IN ('טבעוני','אוכל מנחם');
 
 -- 68
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 68, id FROM tags WHERE name IN ('vegan','roasted','showstopper','vegetable_based');
+SELECT 68, id FROM tags WHERE name IN ('טבעוני');
 
 -- 69
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 69, id FROM tags WHERE name IN ('vegan','quick','high_protein','snack');
+SELECT 69, id FROM tags WHERE name IN ('טבעוני','מהיר להכנה','עשיר בחלבון');
 
 -- 70
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 70, id FROM tags WHERE name IN ('vegan','mediterranean','snack','quick');
+SELECT 70, id FROM tags WHERE name IN ('טבעוני','מהיר להכנה');
 
 -- 71
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 71, id FROM tags WHERE name IN ('vegan','pasta','italian','rich');
+SELECT 71, id FROM tags WHERE name IN ('טבעוני','איטלקי');
 
 -- 72
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 72, id FROM tags WHERE name IN ('vegan','rice','middle_eastern','comfort_food');
+SELECT 72, id FROM tags WHERE name IN ('טבעוני','מזרח תיכוני','אוכל מנחם','מנות אורז');
 
 -- 73
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 73, id FROM tags WHERE name IN ('vegan','roasted','healthy','seasonal');
+SELECT 73, id FROM tags WHERE name IN ('טבעוני','בריא');
 
 -- 74
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 74, id FROM tags WHERE name IN ('vegan','soup','healthy','comfort_food');
+SELECT 74, id FROM tags WHERE name IN ('טבעוני','מרק','בריא','אוכל מנחם');
 
 -- 75
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 75, id FROM tags WHERE name IN ('vegan','salad','asian','healthy');
+SELECT 75, id FROM tags WHERE name IN ('טבעוני','סלט','אסייתי','בריא');
 
 -- 76
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 76, id FROM tags WHERE name IN ('meat','street_food','middle_eastern','grill');
+SELECT 76, id FROM tags WHERE name IN ('אוכל רחוב','מזרח תיכוני','על האש');
 
 -- 77
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 77, id FROM tags WHERE name IN ('meat','fried','traditional','comfort_food');
+SELECT 77, id FROM tags WHERE name IN ('מטוגן','אוכל מנחם');
 
 -- 78
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 78, id FROM tags WHERE name IN ('dairy','baked','french','comfort_food');
+SELECT 78, id FROM tags WHERE name IN ('אפוי','אוכל מנחם');
 
 -- 79
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 79, id FROM tags WHERE name IN ('vegan','breakfast','healthy','meal_prep');
+SELECT 79, id FROM tags WHERE name IN ('טבעוני','בריא','הכנה מראש');
 
 -- 80
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 80, id FROM tags WHERE name IN ('meat','pasta','italian','classic');
+SELECT 80, id FROM tags WHERE name IN ('איטלקי');
 
 -- 81
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 81, id FROM tags WHERE name IN ('dairy','pasta','italian','classic');
+SELECT 81, id FROM tags WHERE name IN ('איטלקי');
 
 -- 82
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 82, id FROM tags WHERE name IN ('dairy','street_food','comfort_food','quick');
+SELECT 82, id FROM tags WHERE name IN ('אוכל רחוב','אוכל מנחם','מהיר להכנה');
 
 -- 83
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 83, id FROM tags WHERE name IN ('dairy','breakfast','sweet','quick');
+SELECT 83, id FROM tags WHERE name IN ('מהיר להכנה');
 
 -- 84
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 84, id FROM tags WHERE name IN ('dairy','bread','baked','traditional');
+SELECT 84, id FROM tags WHERE name IN ('לחמים','אפוי');
 
 -- 85
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 85, id FROM tags WHERE name IN ('vegan','bread','street_food','baked');
+SELECT 85, id FROM tags WHERE name IN ('טבעוני','לחמים','אוכל רחוב','אפוי');
 
 -- 86
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 86, id FROM tags WHERE name IN ('dairy','dessert','baked','classic');
+SELECT 86, id FROM tags WHERE name IN ('קינוחים','אפוי');
 
 -- 87
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 87, id FROM tags WHERE name IN ('dairy','soup','french','comfort_food');
+SELECT 87, id FROM tags WHERE name IN ('מרק','אוכל מנחם');
 
 -- 88
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 88, id FROM tags WHERE name IN ('meat','asian','stir_fry','noodles');
+SELECT 88, id FROM tags WHERE name IN ('אסייתי');
 
 -- 89
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 89, id FROM tags WHERE name IN ('meat','asian','curry','spicy');
+SELECT 89, id FROM tags WHERE name IN ('אסייתי','חריף');
 
 -- 90
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 90, id FROM tags WHERE name IN ('vegan','pasta','mediterranean','light');
+SELECT 90, id FROM tags WHERE name IN ('טבעוני','אסייתי','טרי');
 
 -- 91
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 91, id FROM tags WHERE name IN ('meat','grill','middle_eastern','bbq');
+SELECT 91, id FROM tags WHERE name IN ('על האש','מזרח תיכוני','ברביקיו');
 
 -- 92
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 92, id FROM tags WHERE name IN ('meat','one_pot','comfort_food','home_cooking');
+SELECT 92, id FROM tags WHERE name IN ('סיר אחד','אוכל מנחם');
 
 -- 93
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 93, id FROM tags WHERE name IN ('dairy','pasta','light','quick');
+SELECT 93, id FROM tags WHERE name IN ('מהיר להכנה');
 
 -- 94
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 94, id FROM tags WHERE name IN ('meat','soup','asian','comfort_food');
+SELECT 94, id FROM tags WHERE name IN ('מרק','אסייתי','אוכל מנחם');
 
 -- 95
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 95, id FROM tags WHERE name IN ('meat','one_pot','traditional','comfort_food');
+SELECT 95, id FROM tags WHERE name IN ('סיר אחד','אוכל מנחם');
 
 -- 96
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 96, id FROM tags WHERE name IN ('dairy','pasta','italian','comfort_food');
+SELECT 96, id FROM tags WHERE name IN ('איטלקי','אוכל מנחם');
 
 -- 97
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 97, id FROM tags WHERE name IN ('dairy','breakfast','french','classic');
+SELECT 97, id FROM tags WHERE name IN ('בראנץ׳');
 
 -- 98
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 98, id FROM tags WHERE name IN ('meat','salad','french','healthy');
+SELECT 98, id FROM tags WHERE name IN ('סלט','בריא');
 
 -- 99
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 99, id FROM tags WHERE name IN ('dairy','dessert','french','classic');
+SELECT 99, id FROM tags WHERE name IN ('קינוחים');
 
 -- 100
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 100, id FROM tags WHERE name IN ('vegan','asian','light','fresh');
+SELECT 100, id FROM tags WHERE name IN ('טבעוני','אסייתי','טרי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 101, id FROM tags WHERE name IN ('soup','vegan','healthy','light');
+SELECT 101, id FROM tags WHERE name IN ('מרק','טבעוני','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 102, id FROM tags WHERE name IN ('meat','rice','one_pot','traditional');
+SELECT 102, id FROM tags WHERE name IN ('סיר אחד','מנות אורז');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 103, id FROM tags WHERE name IN ('meat','side','rich','quick');
+SELECT 103, id FROM tags WHERE name IN ('מהיר להכנה');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 104, id FROM tags WHERE name IN ('chicken','one_pot','comfort_food');
+SELECT 104, id FROM tags WHERE name IN ('סיר אחד','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 105, id FROM tags WHERE name IN ('meat','asian','quick','sweet_savory');
+SELECT 105, id FROM tags WHERE name IN ('אסייתי','מהיר להכנה');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 106, id FROM tags WHERE name IN ('chicken','oven','comfort_food');
+SELECT 106, id FROM tags WHERE name IN ('אפוי','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 107, id FROM tags WHERE name IN ('meat','sweet_savory','stew','traditional');
+SELECT 107, id FROM tags WHERE name IN ('תבשיל');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 108, id FROM tags WHERE name IN ('salad','seafood','healthy','light');
+SELECT 108, id FROM tags WHERE name IN ('סלט','דגים ופירות ים','בריא','טרי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 109, id FROM tags WHERE name IN ('pasta','dairy','comfort_food');
+SELECT 109, id FROM tags WHERE name IN ('אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 110, id FROM tags WHERE name IN ('chicken','asian','quick','healthy');
+SELECT 110, id FROM tags WHERE name IN ('אסייתי','מהיר להכנה','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 111, id FROM tags WHERE name IN ('eggs','side','asian','marinated');
+SELECT 111, id FROM tags WHERE name IN ('אסייתי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 112, id FROM tags WHERE name IN ('meat','street_food','quick','israeli');
+SELECT 112, id FROM tags WHERE name IN ('אוכל רחוב','מהיר להכנה','מזרח תיכוני');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 113, id FROM tags WHERE name IN ('vegan','curry','one_pot','protein_rich');
+SELECT 113, id FROM tags WHERE name IN ('טבעוני','סיר אחד','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 114, id FROM tags WHERE name IN ('rice','dairy','comfort_food');
+SELECT 114, id FROM tags WHERE name IN ('מנות אורז','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 115, id FROM tags WHERE name IN ('fish','gourmet','quick','light');
+SELECT 115, id FROM tags WHERE name IN ('מהיר להכנה','טרי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 116, id FROM tags WHERE name IN ('meat','stew','slow_cooked','italian');
+SELECT 116, id FROM tags WHERE name IN ('תבשיל','בישול איטי','איטלקי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 117, id FROM tags WHERE name IN ('meat','stew','slow_cooked','traditional');
+SELECT 117, id FROM tags WHERE name IN ('תבשיל','בישול איטי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 118, id FROM tags WHERE name IN ('pasta','meat','comfort_food');
+SELECT 118, id FROM tags WHERE name IN ('אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 119, id FROM tags WHERE name IN ('chicken','quick','light','lemon');
+SELECT 119, id FROM tags WHERE name IN ('מהיר להכנה','טרי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 120, id FROM tags WHERE name IN ('meat','baked','pastry','comfort_food');
+SELECT 120, id FROM tags WHERE name IN ('אפוי','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 121, id FROM tags WHERE name IN ('soup','dairy','comfort_food');
+SELECT 121, id FROM tags WHERE name IN ('מרק','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 122, id FROM tags WHERE name IN ('vegan','breakfast','healthy','sweet');
+SELECT 122, id FROM tags WHERE name IN ('טבעוני','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 123, id FROM tags WHERE name IN ('vegan','asian','protein_rich');
+SELECT 123, id FROM tags WHERE name IN ('טבעוני','אסייתי','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 124, id FROM tags WHERE name IN ('dairy','baked','comfort_food');
+SELECT 124, id FROM tags WHERE name IN ('אפוי','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 125, id FROM tags WHERE name IN ('meat','stew','sweet_savory','traditional');
+SELECT 125, id FROM tags WHERE name IN ('תבשיל');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 126, id FROM tags WHERE name IN ('vegan','pasta','healthy');
+SELECT 126, id FROM tags WHERE name IN ('טבעוני','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 127, id FROM tags WHERE name IN ('vegan','stuffed','one_pot');
+SELECT 127, id FROM tags WHERE name IN ('טבעוני','סיר אחד');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 128, id FROM tags WHERE name IN ('eggs','dairy','quick','breakfast');
+SELECT 128, id FROM tags WHERE name IN ('מהיר להכנה');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 129, id FROM tags WHERE name IN ('fish','oven','healthy','mediterranean');
+SELECT 129, id FROM tags WHERE name IN ('אפוי','בריא','דגים ופירות ים');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 130, id FROM tags WHERE name IN ('vegan','beans','one_pot','spicy');
+SELECT 130, id FROM tags WHERE name IN ('טבעוני','סיר אחד','חריף');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 131, id FROM tags WHERE name IN ('meat','raw','gourmet');
+SELECT 131, id FROM tags WHERE name IN ('טרי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 132, id FROM tags WHERE name IN ('dairy','sweet','dessert');
+SELECT 132, id FROM tags WHERE name IN ('קינוחים');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 133, id FROM tags WHERE name IN ('vegan','pasta','quick','classic');
+SELECT 133, id FROM tags WHERE name IN ('טבעוני','מהיר להכנה');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 134, id FROM tags WHERE name IN ('meat','stew','slow_cooked','french');
+SELECT 134, id FROM tags WHERE name IN ('תבשיל','בישול איטי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 135, id FROM tags WHERE name IN ('eggs','dairy','healthy','baked');
+SELECT 135, id FROM tags WHERE name IN ('בריא','אפוי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 136, id FROM tags WHERE name IN ('chicken','asian','sweet_savory');
+SELECT 136, id FROM tags WHERE name IN ('אסייתי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 137, id FROM tags WHERE name IN ('soup','vegan','healthy','light');
+SELECT 137, id FROM tags WHERE name IN ('מרק','טבעוני','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 138, id FROM tags WHERE name IN ('pasta','dairy','baked','comfort_food');
+SELECT 138, id FROM tags WHERE name IN ('אפוי','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 139, id FROM tags WHERE name IN ('seafood','raw','light','citrus');
+SELECT 139, id FROM tags WHERE name IN ('דגים ופירות ים','טרי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 140, id FROM tags WHERE name IN ('seafood','soup','mediterranean');
+SELECT 140, id FROM tags WHERE name IN ('דגים ופירות ים','מרק');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 141, id FROM tags WHERE name IN ('vegan','sweet','baked');
+SELECT 141, id FROM tags WHERE name IN ('טבעוני','אפוי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 142, id FROM tags WHERE name IN ('vegan','fermented','asian','side');
+SELECT 142, id FROM tags WHERE name IN ('טבעוני','אסייתי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 143, id FROM tags WHERE name IN ('rice','seafood','gourmet');
+SELECT 143, id FROM tags WHERE name IN ('מנות אורז','דגים ופירות ים');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 144, id FROM tags WHERE name IN ('vegan','dessert','sweet');
+SELECT 144, id FROM tags WHERE name IN ('טבעוני','קינוחים');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 145, id FROM tags WHERE name IN ('vegan','fried','comfort_food');
+SELECT 145, id FROM tags WHERE name IN ('טבעוני','מטוגן','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 146, id FROM tags WHERE name IN ('bread','vegan','baked');
+SELECT 146, id FROM tags WHERE name IN ('לחמים','טבעוני','אפוי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 147, id FROM tags WHERE name IN ('vegan','salad','light','mediterranean');
+SELECT 147, id FROM tags WHERE name IN ('טבעוני','סלט','טרי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 148, id FROM tags WHERE name IN ('bread','dairy','baked','garlic');
+SELECT 148, id FROM tags WHERE name IN ('לחמים','אפוי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 149, id FROM tags WHERE name IN ('salad','vegan','healthy','light');
+SELECT 149, id FROM tags WHERE name IN ('סלט','טבעוני','בריא','טרי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 150, id FROM tags WHERE name IN ('vegan','asian','stir_fry','healthy');
+SELECT 150, id FROM tags WHERE name IN ('טבעוני','אסייתי','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 151, id FROM tags WHERE name IN ('vegetarian','salad','healthy','quick');
+SELECT 151, id FROM tags WHERE name IN ('צמחוני','סלט','בריא','מהיר להכנה');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 152, id FROM tags WHERE name IN ('one_pot','high_protein','family');
+SELECT 152, id FROM tags WHERE name IN ('סיר אחד','עשיר בחלבון','לכל המשפחה');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 153, id FROM tags WHERE name IN ('soup','asian','high_protein');
+SELECT 153, id FROM tags WHERE name IN ('מרק','אסייתי','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 154, id FROM tags WHERE name IN ('one_pot','italian','high_protein');
+SELECT 154, id FROM tags WHERE name IN ('סיר אחד','איטלקי','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 155, id FROM tags WHERE name IN ('vegan','healthy','quick');
+SELECT 155, id FROM tags WHERE name IN ('טבעוני','בריא','מהיר להכנה');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 156, id FROM tags WHERE name IN ('creamy','high_protein');
+SELECT 156, id FROM tags WHERE name IN ('קרמי','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 157, id FROM tags WHERE name IN ('street_food','high_protein');
+SELECT 157, id FROM tags WHERE name IN ('אוכל רחוב','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 158, id FROM tags WHERE name IN ('baked','brunch');
+SELECT 158, id FROM tags WHERE name IN ('אפוי','בראנץ׳');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 159, id FROM tags WHERE name IN ('vegan','asian','healthy');
+SELECT 159, id FROM tags WHERE name IN ('טבעוני','אסייתי','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 160, id FROM tags WHERE name IN ('healthy','high_protein','quick');
+SELECT 160, id FROM tags WHERE name IN ('בריא','עשיר בחלבון','מהיר להכנה');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 161, id FROM tags WHERE name IN ('vegan','healthy','fresh');
+SELECT 161, id FROM tags WHERE name IN ('טבעוני','בריא','טרי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 162, id FROM tags WHERE name IN ('vegan','one_pot','high_fiber');
+SELECT 162, id FROM tags WHERE name IN ('טבעוני','סיר אחד','עשיר בסיבים');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 163, id FROM tags WHERE name IN ('vegan','quick','healthy');
+SELECT 163, id FROM tags WHERE name IN ('טבעוני','מהיר להכנה','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 164, id FROM tags WHERE name IN ('asian','high_protein','grill');
+SELECT 164, id FROM tags WHERE name IN ('אסייתי','עשיר בחלבון','על האש');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 165, id FROM tags WHERE name IN ('vegan','high_fiber','one_pot');
+SELECT 165, id FROM tags WHERE name IN ('טבעוני','עשיר בסיבים','סיר אחד');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 166, id FROM tags WHERE name IN ('dessert','baked');
+SELECT 166, id FROM tags WHERE name IN ('קינוחים','אפוי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 167, id FROM tags WHERE name IN ('vegan','dip','healthy');
+SELECT 167, id FROM tags WHERE name IN ('טבעוני','מטבלים','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 168, id FROM tags WHERE name IN ('soup','one_pot','high_protein');
+SELECT 168, id FROM tags WHERE name IN ('מרק','סיר אחד','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 169, id FROM tags WHERE name IN ('dessert','baked');
+SELECT 169, id FROM tags WHERE name IN ('קינוחים','אפוי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 170, id FROM tags WHERE name IN ('vegan','salad','healthy');
+SELECT 170, id FROM tags WHERE name IN ('טבעוני','סלט','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 171, id FROM tags WHERE name IN ('italian','comfort_food');
+SELECT 171, id FROM tags WHERE name IN ('איטלקי','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 172, id FROM tags WHERE name IN ('asian','quick','high_protein');
+SELECT 172, id FROM tags WHERE name IN ('אסייתי','מהיר להכנה','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 173, id FROM tags WHERE name IN ('soup','comfort_food');
+SELECT 173, id FROM tags WHERE name IN ('מרק','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 174, id FROM tags WHERE name IN ('vegan','high_fiber','meal_prep');
+SELECT 174, id FROM tags WHERE name IN ('טבעוני','עשיר בסיבים','הכנה מראש');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 175, id FROM tags WHERE name IN ('dessert','baked');
+SELECT 175, id FROM tags WHERE name IN ('קינוחים','אפוי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 176, id FROM tags WHERE name IN ('italian','baked','comfort_food');
+SELECT 176, id FROM tags WHERE name IN ('איטלקי','אפוי','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 177, id FROM tags WHERE name IN ('one_pot','high_protein');
+SELECT 177, id FROM tags WHERE name IN ('סיר אחד','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 178, id FROM tags WHERE name IN ('vegan','baked','healthy');
+SELECT 178, id FROM tags WHERE name IN ('טבעוני','אפוי','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 179, id FROM tags WHERE name IN ('soup','asian','high_protein');
+SELECT 179, id FROM tags WHERE name IN ('מרק','אסייתי','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 180, id FROM tags WHERE name IN ('dessert','no_bake');
+SELECT 180, id FROM tags WHERE name IN ('קינוחים','ללא אפייה');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 181, id FROM tags WHERE name IN ('vegan','one_pot','meal_prep');
+SELECT 181, id FROM tags WHERE name IN ('טבעוני','סיר אחד','הכנה מראש');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 182, id FROM tags WHERE name IN ('fried','asian');
+SELECT 182, id FROM tags WHERE name IN ('מטוגן','אסייתי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 183, id FROM tags WHERE name IN ('soup','creamy');
+SELECT 183, id FROM tags WHERE name IN ('מרק','קרמי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 184, id FROM tags WHERE name IN ('vegetarian','salad','healthy');
+SELECT 184, id FROM tags WHERE name IN ('צמחוני','סלט','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 185, id FROM tags WHERE name IN ('dessert','baked');
+SELECT 185, id FROM tags WHERE name IN ('קינוחים','אפוי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 186, id FROM tags WHERE name IN ('seafood','high_protein');
+SELECT 186, id FROM tags WHERE name IN ('דגים ופירות ים','עשיר בחלבון');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 187, id FROM tags WHERE name IN ('baked','bread');
+SELECT 187, id FROM tags WHERE name IN ('אפוי','לחמים');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 188, id FROM tags WHERE name IN ('dessert','baked');
+SELECT 188, id FROM tags WHERE name IN ('קינוחים','אפוי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 189, id FROM tags WHERE name IN ('one_pot','comfort_food');
+SELECT 189, id FROM tags WHERE name IN ('סיר אחד','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 190, id FROM tags WHERE name IN ('vegan','comfort_food');
+SELECT 190, id FROM tags WHERE name IN ('טבעוני','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 191, id FROM tags WHERE name IN ('vegan','healthy','soup');
+SELECT 191, id FROM tags WHERE name IN ('טבעוני','בריא','מרק');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 192, id FROM tags WHERE name IN ('vegetarian','salad','healthy');
+SELECT 192, id FROM tags WHERE name IN ('צמחוני','סלט','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 193, id FROM tags WHERE name IN ('italian','creamy');
+SELECT 193, id FROM tags WHERE name IN ('איטלקי','קרמי');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 194, id FROM tags WHERE name IN ('soup','healthy');
+SELECT 194, id FROM tags WHERE name IN ('מרק','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 195, id FROM tags WHERE name IN ('vegan','healthy');
+SELECT 195, id FROM tags WHERE name IN ('טבעוני','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 196, id FROM tags WHERE name IN ('baked','comfort_food');
+SELECT 196, id FROM tags WHERE name IN ('אפוי','אוכל מנחם');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 197, id FROM tags WHERE name IN ('seafood','healthy');
+SELECT 197, id FROM tags WHERE name IN ('דגים ופירות ים','בריא');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 198, id FROM tags WHERE name IN ('one_pot','family');
+SELECT 198, id FROM tags WHERE name IN ('סיר אחד','לכל המשפחה');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 199, id FROM tags WHERE name IN ('dessert');
+SELECT 199, id FROM tags WHERE name IN ('קינוחים');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
-SELECT 200, id FROM tags WHERE name IN ('one_pot','rice','family');
+SELECT 200, id FROM tags WHERE name IN ('סיר אחד','מנות אורז','לכל המשפחה');
