@@ -51,7 +51,7 @@ services:
       - key: DB_URI
         sync: false
       - key: VITE_BACKEND_PORT
-        value: 3000
+        value: "3000"
       - key: ANALYZE_HOST
         fromService:
           type: web
