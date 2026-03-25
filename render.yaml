@@ -1,72 +1,66 @@
-version: "3.9"
-
 services:
-  db:
-    image: mysql:8.0
-    container_name: meals-db
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: meals_db
-      MYSQL_USER: meals_user
-      MYSQL_PASSWORD: meals_password
+  - type: web
+    name: dal-service
+    env: docker
+    dockerContext: ./dal_service
+    dockerfilePath: ./dal_service/Dockerfile
+    plan: free
+    envVars:
+      - key: DB_URI
+        sync: false
+      - key: MYSQL_HOST
+        sync: false
+      - key: MYSQL_PORT
+        sync: false
+      - key: MYSQL_USER
+        sync: false
+      - key: MYSQL_PASSWORD
+        sync: false
+      - key: MYSQL_DB
+        sync: false
+      - key: DAL_ROUTE
+        sync: false
 
-    ports:
-      - "3307:3306"
+  - type: web
+    name: analyze-service
+    env: docker
+    dockerContext: ./data-analyze
+    dockerfilePath: ./data-analyze/Dockerfile
+    plan: free
+    envVars:
+      - key: DAL_HOST
+        value: dal-service.onrender.com
+      - key: DAL_PORT
+        value: 80
+      - key: DAL_ROUTE
+        sync: false
 
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./schema_2.sql:/docker-entrypoint-initdb.d/schema.sql
+  - type: web
+    name: backend
+    env: docker
+    dockerContext: ./server
+    dockerfilePath: ./server/Dockerfile
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ANALYZE_HOST
+        value: analyze-service.onrender.com
+      - key: ANALYZE_PORT
+        value: 80
+      - key: ANALYZE_ROUTE
+        sync: false
 
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpassword"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-
-  dal-service:
-    build: ./dal_service
-    container_name: dal-service
-
-    depends_on:
-      db:
-        condition: service_healthy
-
-    environment:
-      MYSQL_HOST: db
-      MYSQL_PORT: 3306
-      MYSQL_USER: meals_user
-      MYSQL_PASSWORD: meals_password
-      MYSQL_DB: meals_db
-
-    ports:
-      - "8000:8000"
-  analyze-service:
-    build: ./data-analyze
-    container_name: analyze-service
-    depends_on:
-      db:
-        condition: service_healthy
-      dal-service:
-        condition: service_started
-    ports:
-      - "8001:8001"
-    environment:
-      - DAL_HOST=dal-service
-      - DAL_PORT=8000
-      - DAL_ROUTE=candidates
-
-  frontend:
-    build: ./client
-    container_name: frontend
-
-    depends_on:
-      dal-service:
-        condition: service_started
-
-    ports:
-      - "3000:80"
-
-volumes:
-  db_data:
-
+  - type: web
+    name: frontend
+    env: docker
+    dockerContext: ./client
+    dockerfilePath: ./client/Dockerfile
+    plan: free
+    envVars:
+      - key: VITE_BACKEND_HOST
+        value: backend.onrender.com
+      - key: VITE_BACKEND_PORT
+        value: 80
+      - key: VITE_BACKEND_ROUTE
+        sync: false
