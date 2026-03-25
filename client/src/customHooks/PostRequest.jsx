@@ -6,6 +6,8 @@ function usePostRequest() {
     const navigate = useNavigate()
     
     async function getMeal(url, filters) {
+        console.log(url)
+        console.log(filters)
         try {
             const res = await fetch(url, {
                 method: "POST",
@@ -14,6 +16,7 @@ function usePostRequest() {
             })
 
             if (!res.ok) {
+                console.log("here")
                 console.log("Response error:", res)
                 navigate('/errorPage')
             }
@@ -22,7 +25,7 @@ function usePostRequest() {
                 
                 setData(result.meals)
                 
-                navigate('/recipe')
+                navigate('/recipes')
             }
         } catch (err) {
             console.log("Fetch error:", err)
