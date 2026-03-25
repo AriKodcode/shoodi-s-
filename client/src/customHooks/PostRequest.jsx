@@ -22,7 +22,7 @@ function usePostRequest() {
                 
                 setData(result.meals)
                 
-                navigate('/recipe')
+                navigate('/recipes')
             }
         } catch (err) {
             console.log("Fetch error:", err)
