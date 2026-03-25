@@ -1222,6 +1222,7 @@ INSERT IGNORE INTO ingredients (name) VALUES
 ('וניל'),
 ('וודקה');
 INSERT IGNORE INTO ingredients (name) VALUES ('בשר טחון');
+INSERT IGNORE INTO ingredients (name) VALUES ('עדשים שחורות');
 
 -- מנה 1: שניצל עוף קלאסי
 INSERT INTO meal_ingredients (meal_id, ingredient_id, quantity, unit) VALUES
@@ -3248,7 +3249,7 @@ INSERT INTO meal_ingredients VALUES
 -- מנה 158: קיש גבינה ושמיר
 INSERT INTO meal_ingredients VALUES
 (158,(SELECT id FROM ingredients WHERE name='גבינת שמנת'),200,'grams'),
-(158,(SELECT id FROM ingredients WHERE name='קוטג'),200,'grams'),
+(158,(SELECT id FROM ingredients WHERE name='קוטג'''),200,'grams'),
 (158,(SELECT id FROM ingredients WHERE name='ביצים'),3,'units'),
 (158,(SELECT id FROM ingredients WHERE name='שמיר'),2,'tbsp'),
 (158,(SELECT id FROM ingredients WHERE name='ריקוטה'),60,'grams');
@@ -3375,7 +3376,7 @@ INSERT INTO meal_ingredients VALUES
 
 -- מנה 174: בורגר ירקות
 INSERT INTO meal_ingredients VALUES
-(174,(SELECT id FROM ingredients WHERE name='אורז חום'),200,'grams'),
+(174,(SELECT id FROM ingredients WHERE name='אורז מלא'),200,'grams'),
 (174,(SELECT id FROM ingredients WHERE name='עדשים'),200,'grams'),
 (174,(SELECT id FROM ingredients WHERE name='גזר'),1,'units'),
 (174,(SELECT id FROM ingredients WHERE name='סלק'),1,'units'),
@@ -3496,7 +3497,7 @@ INSERT INTO meal_ingredients VALUES
 -- מנה 189: חמין חיטה
 INSERT INTO meal_ingredients VALUES
 (189,(SELECT id FROM ingredients WHERE name='חיטה'),200,'grams'),
-(189,(SELECT id FROM ingredients WHERE name='בשר בקר'),500,'grams'),
+(189,(SELECT id FROM ingredients WHERE name='בשר בקר טחון'),500,'grams'),
 (189,(SELECT id FROM ingredients WHERE name='בצל'),2,'units'),
 (189,(SELECT id FROM ingredients WHERE name='שום'),3,'cloves'),
 (189,(SELECT id FROM ingredients WHERE name='תפוח אדמה'),3,'units');
