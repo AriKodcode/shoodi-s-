@@ -3,7 +3,7 @@ import cors from "cors";
 import router from "./routes/mealMatcher.routes.js";
 
 const app = express();
-const PORT = process.env.VITE_BACKEND_PORT;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());

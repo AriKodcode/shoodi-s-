@@ -1,26 +1,14 @@
 services:
-  # 1. שירות ה-DAL (מתחבר ל-Aiven)
   - type: web
     name: dal-service
-    runtime: docker # שיניתי מ-env: docker ל-runtime: docker
-    dockerContext: ./dal_service # עדיף לתת קונטקסט מהשורש כדי לגשת לכל הקבצים
+    runtime: docker
+    dockerContext: ./dal_service
     dockerfilePath: ./dal_service/Dockerfile
     plan: free
     envVars:
-      - key: MYSQL_HOST # הכתובת מ-Aiven
-        sync: false
-      - key: MYSQL_PORT
-        sync: false
-      - key: MYSQL_USER
-        sync: false
-      - key: MYSQL_PASSWORD
-        sync: false
-      - key: MYSQL_DB
-        sync: false
       - key: DAL_ROUTE
         value: candidates
 
-  # 2. שירות האנליזה (מתחבר ל-DAL)
   - type: web
     name: analyze-service
     runtime: docker
@@ -29,16 +17,10 @@ services:
     plan: free
     envVars:
       - key: DAL_HOST
-        fromService:
-          type: web
-          name: dal-service
-          property: host # משתמש בכתובת הפנימית של Render (חוסך זמן ויציב יותר)
-      - key: DAL_PORT
-        value: "80" # בתוך Render שירותים מדברים בפורט 80/10000
+        value: https://dal-service.onrender.com
       - key: DAL_ROUTE
         value: candidates
 
-  # 3. ה-Backend (מתחבר ל-Analyze)
   - type: web
     name: backend
     runtime: docker
@@ -48,21 +30,11 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: DB_URI
-        sync: false
-      - key: VITE_BACKEND_PORT
-        value: "3000"
       - key: ANALYZE_HOST
-        fromService:
-          type: web
-          name: analyze-service
-          property: host
-      - key: ANALYZE_PORT
-        value: "80"
+        value: https://analyze-service.onrender.com
       - key: ANALYZE_ROUTE
         value: analyze_client_choice
 
-  # 4. ה-Frontend
   - type: web
     name: frontend
     runtime: docker
@@ -71,11 +43,6 @@ services:
     plan: free
     envVars:
       - key: VITE_BACKEND_HOST
-        fromService:
-          type: web
-          name: backend
-          property: host
-      - key: VITE_BACKEND_PORT
-        value: "80"
+        value: https://backend.onrender.com
       - key: VITE_BACKEND_ROUTE
         value: meals
