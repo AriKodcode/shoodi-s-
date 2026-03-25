@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useMeals } from '../store/MealsStore'
 
 function usePostRequest() {
+    const { getMeals } = useMeals()
     const [data, setData] = useState([])
     const navigate = useNavigate()
 
@@ -19,11 +21,10 @@ function usePostRequest() {
             }
             else {
                 const result = await res.json()
-
-                setData(result.meals)
-
-                navigate('/recipe', { state: { mealData: result.meals } })
+                getMeals(result.meals)
+                navigate('/recipes')
             }
+            
         } catch (err) {
             console.log("Fetch error:", err)
             navigate('/errorPage')

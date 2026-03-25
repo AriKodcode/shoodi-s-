@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import meals from "../DB/example.json";
 import "../style/RecipeSelection.css";
 import { useNavigate } from "react-router-dom";
+import { useMeals } from "../store/MealsStore";
 
 function RecipeSelection() {
   const [selectedMeal, setSelectedMeal] = useState(null);
   const navigate = useNavigate();
-
+  const {meals} = useMeals()
+  console.log(meals)
   const handleSelect = (meal) => {
    
     setSelectedMeal(meal);
