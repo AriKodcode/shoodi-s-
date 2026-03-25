@@ -3601,29 +3601,34 @@ SELECT
         'style', m.style,
         'recipe', m.recipe,
         'image', m.image,
+        'prep_time_minutes', m.prep_time_minutes,
+        'calories', m.calories,
+        'description', m.description,
+        'difficulty', m.difficulty,
 
-        'ingredients', JSON_ARRAYAGG(
-            JSON_OBJECT(
-                'ingredient', sub.name,
-                'quantity', sub.quantity,
-                'unit', sub.unit
+        'ingredients', (
+            SELECT JSON_ARRAYAGG(
+                JSON_OBJECT(
+                    'ingredient', i.name,
+                    'quantity', mi.quantity,
+                    'unit', mi.unit
+                )
             )
+            FROM meal_ingredients mi
+            JOIN ingredients i ON i.id = mi.ingredient_id
+            WHERE mi.meal_id = m.id
+        ),
+
+        'tags', (
+            SELECT JSON_ARRAYAGG(t.name)
+            FROM meal_tags mt
+            JOIN tags t ON t.id = mt.tag_id
+            WHERE mt.meal_id = m.id
         )
+
     ) AS meal
 
-FROM meals m
-
-JOIN (
-    SELECT DISTINCT
-        mi.meal_id,
-        i.name,
-        mi.quantity,
-        mi.unit
-    FROM meal_ingredients mi
-    JOIN ingredients i ON i.id = mi.ingredient_id
-) sub ON m.id = sub.meal_id
-
-GROUP BY m.id;
+FROM meals m;
 
 
 UPDATE meal_ingredients
