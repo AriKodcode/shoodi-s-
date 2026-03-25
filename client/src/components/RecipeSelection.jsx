@@ -1,72 +1,240 @@
 import React, { useState } from "react";
-import meals from "../DB/example.json";
 import "../style/RecipeSelection.css";
 import { useNavigate } from "react-router-dom";
+import mealsData from '../DB/example.json'
+
+const mealTypeLabel = (type) => {
+  if (type === "dairy") return "חלבי";
+  if (type === "meat")  return "בשרי";
+  return "פרווה";
+};
+const styleLabel    = (style)    => style === "heavy" ? "עשיר" : "קליל";
+const categoryLabel = (category) => category === "main" ? "מנה עיקרית" : "תוספת";
+
+const difficultyLabel = (d) => {
+  if (d === "easy")   return "קל";
+  if (d === "medium") return "בינוני";
+  return "קשה";
+};
+
+
+
+
+function normalizeMeals(data) {
+  return data.meals.map((group, i) => ({
+    id:     group.id,
+    name:   `ארוחה ${i + 1}`,
+    match:  group.match,
+    tags:   group.tags || [],
+    dishes: group.meals.map((item) => item.meal),
+  }));
+}
 
 function RecipeSelection() {
-  const [selectedMeal, setSelectedMeal] = useState(null);
   const navigate = useNavigate();
+  const meals = normalizeMeals(mealsData);
 
-  const handleSelect = (meal) => {
-   
-    setSelectedMeal(meal);
-   
+  const [step,         setStep]         = useState("meals");
+  const [activeMeal,   setActiveMeal]   = useState(null);
+  const [selectedDish, setSelectedDish] = useState(null);
+  const [isExiting,    setIsExiting]    = useState(false);
+
+  if (!meals || meals.length === 0) {
+    return (
+      <div className="page">
+        <div className="header">
+          <h1>לא נמצאו ארוחות</h1>
+          <p>חזור לדף הראשי ותנסה שוב</p>
+        </div>
+      </div>
+    );
+  }
+
+  const handleMealSelect = (meal) => {
+    setIsExiting(true);
+    setTimeout(() => {
+      setActiveMeal(meal);
+      setSelectedDish(null);
+      setStep("dishes");
+      setIsExiting(false);
+    }, 320);
+  };
+
+  const handleBack = () => {
+    setIsExiting(true);
+    setTimeout(() => {
+      setStep("meals");
+      setActiveMeal(null);
+      setSelectedDish(null);
+      setIsExiting(false);
+    }, 320);
   };
 
   const handleNavigate = () => {
-    if (selectedMeal) {
-      navigate(`/recipe/${selectedMeal.id}`);
-    }
+    if (selectedDish) navigate(`/recipe/${selectedDish.id}`);
   };
 
+  /* ════════════════════════════════════
+     STEP 1 — Meal Groups
+  ════════════════════════════════════ */
+  if (step === "meals") {
+    return (
+      <div className="page">
+        <div className="header">
+          <h1>מה תרצה לאכול היום?</h1>
+          <p>בחר ארוחה ונציג לך את האפשרויות</p>
+        </div>
+
+        <div className={`cards-wrapper ${isExiting ? "exit" : ""}`}>
+          <div className="meal-select-grid">
+            {meals.map((meal, i) => (
+              <div
+                key={meal.id}
+                className="meal-hero-card"
+                style={{ animationDelay: `${i * 0.12}s` }}
+                onClick={() => handleMealSelect(meal)}
+              >
+                <div className="meal-hero-img">
+                  {meal.dishes.slice(0, 3).map((dish, di) => (
+                    <div key={di} className="meal-hero-img-slice">
+                      <img src={dish.image} alt={dish.name} />
+                    </div>
+                  ))}
+                  <div className="meal-hero-overlay" />
+                </div>
+                <div className="meal-hero-body">
+                  <div className="meal-hero-num">{i + 1}</div>
+                  <div className="meal-hero-info">
+                    <h2>{meal.name}</h2>
+                    <div className="meal-tags-row">
+                      {meal.tags.map((tag, ti) => (
+                        <span key={ti} className="meal-group-badge">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="meal-hero-arrow">←</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ════════════════════════════════════
+     STEP 2 — Dish Cards (new design)
+  ════════════════════════════════════ */
   return (
     <div className="page">
-
-      {/* כותרת ימנית */}
-      <div className="header">
-        <h1>מצאנו לך 3 אפשרויות מעולות!</h1>
+      <div className={`header ${isExiting ? "exit" : ""}`}>
+        <button className="back-btn" onClick={handleBack}>
+          → חזרה לארוחות
+        </button>
+        <h1>{activeMeal?.name}</h1>
         <p>איזו מנה הכי עושה לך חשק עכשיו?</p>
       </div>
 
-      {/* כרטיסים באמצע */}
-      <div className="cards-wrapper">
+      <div className={`cards-wrapper ${isExiting ? "exit" : ""}`}>
         <div className="cards-container">
-          {meals.map((meal) => (
-            <div
-              key={meal.id}
-              className={`card ${selectedMeal?.id === meal.id ? "selected" : ""}`}
-              onClick={() => handleSelect(meal)}
-            >
-              {/* תמונה */}
-              <div className="card-image">
-                <img src={meal.image} alt={meal.name} />
-                {selectedMeal?.id === meal.id && <div className="check">✔</div>}
-              </div>
+          {activeMeal?.dishes?.map((dish, i) => {
+            const isSelected = selectedDish?.id === dish.id;
+            return (
+              <div
+                key={dish.id}
+                className={`card ${isSelected ? "selected" : ""}`}
+                style={{ animationDelay: `${i * 0.1}s` }}
+                onClick={() => setSelectedDish(dish)}
+              >
+                {/* ── תמונה ── */}
+                <div className="card-image">
+                  <img src={dish.image} alt={dish.name} />
 
-              {/* תוכן */}
-              <div className="card-content">
-                <h3>{meal.name}</h3>
-                <div className="tags">
-                  <span>{meal.type === 'dairy' ? 'חלבי': meal.type === 'meat' ? 'בשרי' : 'פרווה'  }</span>
-                  <span>{meal.style === 'heavy' ? 'כבד': 'קליל'  }</span>
-                  <span>{meal.category ==='main' ? 'מנה עיקרית' : 'מנה צדדית'}</span>
+                  {/* ✔ */}
+                  {isSelected && <div className="check">✔</div>}
+
+                  {/* קלוריות + זמן על התמונה */}
+                  <div className="card-img-badges">
+                    {dish.calories && (
+                      <span className="img-badge">
+                        <span className="badge-icon">🔥</span>
+                        {dish.calories} קלוריות
+                      </span>
+                    )}
+                    {dish.prep_time_minutes && (
+                      <span className="img-badge">
+                        <span className="badge-icon">⏱</span>
+                        {dish.prep_time_minutes} דק׳
+                      </span>
+                    )}
+                  </div>
                 </div>
+
+                {/* ── תוכן ── */}
+                <div className="card-content">
+
+
+                  
+
+                  {/* שם */}
+                  <h3>{dish.name}</h3>
+
+                  {/* תיאור */}
+                  {dish.description && (
+                    <p className="card-description">{dish.description}</p>
+                  )}
+
+                  {/* תגיות */}
+                  <div className="tags">
+                    {dish.tags?.map((tag, ti) => (
+                      <span key={ti}>{tag}</span>
+                    ))}
+                    {!dish.tags?.length && (
+                      <>
+                        <span>{mealTypeLabel(dish.type)}</span>
+                        <span>{styleLabel(dish.style)}</span>
+                        <span>{categoryLabel(dish.category)}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                {/* ── בר תחתון בתוך הקארד ── */}
+                <div className="card-footer">
+  <span className="tag-difficulty">
+    רמה: {difficultyLabel(dish.difficulty)}
+  </span>
+  <div className="footer-right">
+    {dish.calories && (
+      <span className="footer-item">
+        {dish.calories} קלוריות <span>🔥</span>
+      </span>
+    )}
+    {dish.prep_time_minutes && (
+      <span className="footer-item">
+        {dish.prep_time_minutes} דק׳ <span>⏱</span>
+      </span>
+    )}
+  </div>
+</div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
 
-      {selectedMeal && (
+      {selectedDish && (
         <div className="bottom-bar">
           <div className="bottom-content">
-            <span>🔥 בחירה מעולה</span>
+            <div className="name">
+              <span>{selectedDish.name}</span>
+              <span>🔥 בחירה מעולה</span>
+            </div>
             <button onClick={handleNavigate}>יאללה, בוא נבשל</button>
           </div>
         </div>
       )}
-
     </div>
   );
 }
