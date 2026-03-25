@@ -1,15 +1,15 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import mealsData from "../DB/example.json";
 import '../style/RecipeDetails.css'
+import { useMeals } from "../store/useStore";
 
 function RecipeDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-
+  const mealsData = useMeals((state) => state.mealsData)
 
   let meal = null;
-  for (const group of mealsData.meals) {
+  for (const group of mealsData) {
     const found = group.meals?.find((item) => item.meal?.id === parseInt(id));
     if (found) { meal = found.meal; break; }
   }
@@ -40,7 +40,7 @@ function RecipeDetail() {
         <div className="recipe-ingredients">
           <h2>מרכיבים:</h2>
           <ul>
-            {meal.ingredients.map((ing, i) => (
+            {meal.ingredients?.map((ing, i) => (
               <li key={i}>
                 • {ing.quantity} {ing.unit} {ing.ingredient}
               </li>

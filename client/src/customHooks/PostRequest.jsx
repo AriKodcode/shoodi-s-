@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useMeals } from '../store/useStore'
 
 function usePostRequest() {
-    const [meals, setMeals] = useState([]) 
+    const setMeals = useMeals((state)=> state.recieveMeals)
     const navigate = useNavigate()
     
     async function getMeal(url, filters) {
+        
         try {
             const res = await fetch(url, {
                 method: "POST",
@@ -21,7 +23,6 @@ function usePostRequest() {
                 const result = await res.json()
                 
 
-                // עדכון ה-State המקומי (ליתר ביטחון)
                 setMeals(result.meals)
 
                 
@@ -33,7 +34,7 @@ function usePostRequest() {
         }
     }
 
-    return { getMeal, meals }
+    return { getMeal }
 }
 
 export default usePostRequest
