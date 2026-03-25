@@ -2,7 +2,7 @@ import {create} from 'zustand'
 
 
 const useMeals = create((set)=>({
-    meals:[],
+    mealsData:[],
     getMeals:(mealsFromFetch) => set({meals:mealsFromFetch})
 }))
 

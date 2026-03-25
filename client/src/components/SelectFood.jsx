@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import  { useState } from 'react'
 import '../style/SelectFood.css'
 import foodImage from '../assets/hero-food.jpg'
 import Card from './Card';
@@ -17,12 +17,13 @@ function SelectFood() {
 
   const { getMeal } = usePostRequest()
 
-  const steps = ["סוג ארוחה", "זמן עשייה", "בריאות", "רמת מורכבות"];
-  const typeMeal = [{ text: "חלבי", icon: "🍕", value: "dairy" }, { text: "פרווה", icon: "🥪", value: "vegan" }, { text: "בשרי", icon: "🍔", value: "meat" }]
-  const preferTime = [{ text: "מהיר", icon: "⚡", value: 0 }, { text: "בינוני", icon: "🍳", value: 0.5 }, { text: "ארוך", icon: "⏳", value: 1 }]
-  const foodHealth = [{ text: "בריא", icon: "🥦", value: 1 }, { text: "קלאסי", icon: "🍲", value: 0.5 }, { text: "ג'אנק", icon: "🍟", value: 0 }]
-  const complexityPrefer = [{ text: "קשה", icon: "👨‍🍳", value: 0 }, { text: "רגיל", icon: "🍳", value: 0.5 }, { text: "קל", icon: "🥣", value: 1 },]
-  
+
+const steps = ["סוג ארוחה", "זמן עשייה", "בריאות", "רמת מורכבות"];
+const typeMeal = [{ text: "חלבי", icon: "🧀", value: "dairy" }, { text: "פרווה", icon: "🥗", value: "vegan" }, { text: "בשרי", icon: "🥩", value: "meat" }]
+const preferTime = [{ text: "מהיר", icon: "⚡", value: 0 }, { text: "בינוני", icon: "🕐", value: 0.5 }, { text: "ארוך", icon: "🔥", value: 1 }]
+const foodHealth = [{ text: "בריא", icon: "🥑", value: 1 }, { text: "קלאסי", icon: "🍽️", value: 0.5 }, { text: "ג'אנק", icon: "🍔", value: 0 }]
+const complexityPrefer = [{ text: "קל", icon: "🥄", value: 1 },{ text: "רגיל", icon: "🍳", value: 0.5 },{ text: "קשה", icon: "👨‍🍳", value: 0 }]
+
   function isValid() {
     if (currentStep === 0) return type === null
     if (currentStep === 1) return lightness === null

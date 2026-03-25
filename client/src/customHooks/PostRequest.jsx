@@ -4,7 +4,6 @@ import { useMeals } from '../store/MealsStore'
 
 function usePostRequest() {
     const { getMeals } = useMeals()
-    const [data, setData] = useState([])
     const navigate = useNavigate()
 
     async function getMeal(url, filters) {
@@ -22,6 +21,7 @@ function usePostRequest() {
             else {
                 const result = await res.json()
                 getMeals(result.meals)
+                
                 navigate('/recipes')
             }
             
@@ -31,7 +31,7 @@ function usePostRequest() {
         }
     }
 
-    return { getMeal, data }
+    return { getMeal, meals }
 }
 
 export default usePostRequest
