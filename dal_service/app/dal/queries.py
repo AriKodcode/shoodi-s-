@@ -25,7 +25,6 @@ def build_query(request, category):
         m.popularity_score,
 
         (
-            -- זמן (פחות זמן = יותר טוב)
             (1 - ABS((1 - m.prep_time_minutes / 120.0) - {t_time})) * {w_time}
 
             +
@@ -35,7 +34,6 @@ def build_query(request, category):
 
             +
 
-            -- מורכבות (easy=1, hard=0 בלי CASE)
             (1 - ABS(
                 (1 - ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0))
                 - {t_complex}
@@ -66,8 +64,13 @@ def build_query(request, category):
     )
     """
 
-    if category not in ["salad", "side"] and request.type:
-        query += f" AND m.type = '{request.type}'"
+    if request.type:
+        if request.type == "meat":
+            query += " AND m.type IN ('meat', 'vegan')"
+        elif request.type == "dairy":
+            query += " AND m.type IN ('dairy', 'vegan')"
+        elif request.type == "vegan":
+            query += " AND m.type = 'vegan'"
 
     if request.include:
         for ing in request.include:
