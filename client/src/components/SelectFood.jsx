@@ -40,7 +40,7 @@ function SelectFood() {
       }
     }
     console.log(HOST, PORT, ROUTE)
-    await getMeal(`${HOST}:${PORT}/${ROUTE}`, filters)
+    await getMeal(`${HOST}/${ROUTE}`, filters)
   }
 
 
