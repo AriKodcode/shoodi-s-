@@ -56,6 +56,6 @@ services:
     plan: free
     envVars:
       - key: VITE_BACKEND_HOST
-        value: https://backend.onrender.com
+        value: https://backend-z9oe.onrender.com
       - key: VITE_BACKEND_ROUTE
         value: meals
