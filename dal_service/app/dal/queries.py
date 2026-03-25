@@ -127,9 +127,9 @@ def build_query(request, category):
         query += " AND m.calories <= 700"
 
     if weights.lightness == 1:
-        query += " AND m.prep_time_minutes <= 45"
+        query += " AND m.prep_time_minutes <= 30"
     elif weights.lightness == 0.5:
-        query += " AND m.prep_time_minutes <= 90"
+        query += " AND m.prep_time_minutes <= 60"
 
     query += """
     ORDER BY score DESC, RAND()
