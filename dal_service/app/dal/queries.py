@@ -15,21 +15,27 @@ def build_query(request, category):
     w_complex, t_complex = map_preference(weights.complexity)
 
     query = f"""
-        SELECT 
-            m.id,
-            m.light_score,
-            m.health_score,
-            m.complex_score,
-            m.popularity_score,
-            (
-                (1 - POW(m.light_score - {t_light}, 2)) * {w_light} +
-                (1 - POW(m.health_score - {t_health}, 2)) * {w_health} +
-                (1 - POW(m.complex_score - {t_complex}, 2)) * {w_complex} +
-                m.popularity_score * 0.2
-            ) AS Score
-        FROM meals m
-        WHERE m.category = '{category}'
-        """
+            SELECT 
+        m.id,
+        m.light_score,
+        m.health_score,
+        m.complex_score,
+        m.popularity_score,
+        (
+            (1 - POW(m.light_score - {t_light}, 2)) * {w_light} +
+            (1 - POW(m.health_score - {t_health}, 2)) * {w_health} +
+            (1 - POW(m.complex_score - {t_complex}, 2)) * {w_complex} +
+            m.popularity_score * 0.2
+        ) AS Score
+    FROM meals m
+    WHERE m.category = '{category}'
+    AND NOT EXISTS (
+        SELECT 1
+        FROM meal_ingredients mi
+        JOIN ingredients i ON i.id = mi.ingredient_id
+        WHERE mi.meal_id = m.id
+        AND i.name LIKE '%שרימפס%'
+    );"""
     if category not in ["salad", "side"] and request.type:
         query += f" AND m.type = '{request.type}'"
 
@@ -52,7 +58,7 @@ def build_query(request, category):
             )
             """
     query += """
-    ORDER BY score DESC
-    LIMIT 3
+    ORDER BY score + RAND() * 0.1 DESC
+    LIMIT 10
     """
     return query
