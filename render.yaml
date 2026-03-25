@@ -48,6 +48,8 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: DB_URI
+        sync: false
       - key: ANALYZE_HOST
         fromService:
           type: web
