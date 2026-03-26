@@ -26,10 +26,6 @@ def build_query(request, category):
     query = f"""
     SELECT 
         m.id,
-        m.light_score,
-        m.health_score,
-        m.complex_score,
-        m.popularity_score,
 
         (1 - LEAST(m.prep_time_minutes, 90) / 90.0) AS light_score,
         (1 - LEAST(m.calories, 800) / 800.0) AS health_score,
@@ -37,6 +33,25 @@ def build_query(request, category):
 
         m.popularity_score,
 
+        (1 - POW(ABS((1 - LEAST(m.prep_time_minutes, 90) / 90.0) - {t_time}), 2)) AS time_fit,
+
+        (1 - POW(ABS((1 - LEAST(m.calories, 800) / 800.0) - {t_health}), 2)) AS health_fit,
+
+        (1 - POW(ABS(
+            ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0)
+            - {t_complex}
+        ), 2)) AS complexity_fit,
+
+        ROUND((1 - POW(ABS((1 - LEAST(m.prep_time_minutes, 90) / 90.0) - {t_time}), 2)) * 100) AS time_percent,
+
+        ROUND((1 - POW(ABS((1 - LEAST(m.calories, 800) / 800.0) - {t_health}), 2)) * 100) AS health_percent,
+
+        ROUND((1 - POW(ABS(
+            ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0)
+            - {t_complex}
+        ), 2)) * 100) AS complexity_percent,
+
+    
         (
             (1 - POW(ABS((1 - LEAST(m.prep_time_minutes, 90) / 90.0) - {t_time}), 2)) * {w_time}
             +
@@ -46,9 +61,22 @@ def build_query(request, category):
                 ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0)
                 - {t_complex}
             ), 2)) * {w_complex}
-        ) / ({w_time} + {w_health} + {w_complex})
+        ) / ({w_time} + {w_health} + {w_complex}) AS base_score,
 
-        +
+        ROUND(
+            (
+                (
+                    (1 - POW(ABS((1 - LEAST(m.prep_time_minutes, 90) / 90.0) - {t_time}), 2)) * {w_time}
+                    +
+                    (1 - POW(ABS((1 - LEAST(m.calories, 800) / 800.0) - {t_health}), 2)) * {w_health}
+                    +
+                    (1 - POW(ABS(
+                        ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0)
+                        - {t_complex}
+                    ), 2)) * {w_complex}
+                ) / ({w_time} + {w_health} + {w_complex})
+            ) * 100
+        ) AS match_percent,
 
         (
             EXISTS (
@@ -66,18 +94,46 @@ def build_query(request, category):
                 WHERE mt.meal_id = m.id
                 AND t.name IN ('מטוגן','קרמי','אוכל מנחם')
             )
-        ) * (2 * {t_health} - 1) * 0.1
+        ) * (2 * {t_health} - 1) * 0.1 AS tag_bonus,
 
-        +
-
-        m.popularity_score * 0.1
-
-        AS score
+        (
+            (
+                (1 - POW(ABS((1 - LEAST(m.prep_time_minutes, 90) / 90.0) - {t_time}), 2)) * {w_time}
+                +
+                (1 - POW(ABS((1 - LEAST(m.calories, 800) / 800.0) - {t_health}), 2)) * {w_health}
+                +
+                (1 - POW(ABS(
+                    ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0)
+                    - {t_complex}
+                ), 2)) * {w_complex}
+            ) / ({w_time} + {w_health} + {w_complex})
+            +
+            (
+                EXISTS (
+                    SELECT 1
+                    FROM meal_tags mt
+                    JOIN tags t ON t.id = mt.tag_id
+                    WHERE mt.meal_id = m.id
+                    AND t.name IN ('בריא','דל פחמימות','עשיר בסיבים','עשיר בחלבון')
+                )
+                -
+                EXISTS (
+                    SELECT 1
+                    FROM meal_tags mt
+                    JOIN tags t ON t.id = mt.tag_id
+                    WHERE mt.meal_id = m.id
+                    AND t.name IN ('מטוגן','קרמי','אוכל מנחם')
+                )
+            ) * (2 * {t_health} - 1) * 0.1
+            +
+            m.popularity_score * 0.1
+        ) AS score
 
     FROM meals m
 
     WHERE m.category = '{category}'
     AND m.prep_time_minutes <= 120
+    
 
     AND NOT EXISTS (
         SELECT 1
