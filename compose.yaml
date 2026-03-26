@@ -1,13 +1,7 @@
 version: "3.9"
 
 services:
-  # redis:
-  #   image: redis:8.0
-  #   container_name: redis
-  #   ports:
-  #     - "6379:6379"
-  #   volume
-  cache_service:
+  cache-service:
     build: ./cache-service
     container_name: cache
     ports:
