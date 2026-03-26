@@ -10,7 +10,7 @@ class MealsService:
             return None
 
         return {
-            "id": [0],
+            "id": row[0][0] if isinstance(row[0], (list, tuple)) else row[0],
 
             "scores": {
                 "light": row[1],
@@ -82,17 +82,18 @@ class MealsService:
     
     @staticmethod
     def _combine_meal(main, side, salad):
-        parts = [p for p in [main, side, salad] if p]
+        parts = [(main, 0.5), (side, 0.3), (salad, 0.2)]
+        parts = [(p, w) for p, w in parts if p]
 
-        if not parts:
-            return None
+        def weighted_avg(key):
+            return round(
+                sum(p["match"]["breakdown"][key] * w for p, w in parts) /
+                sum(w for _, w in parts)
+            )
 
-        def avg(key):
-            return round(sum(p["match"]["breakdown"][key] for p in parts) / len(parts))
-
-        time = avg("time")
-        health = avg("health")
-        complexity = avg("complexity")
+        time = weighted_avg("time")
+        health = weighted_avg("health")
+        complexity = weighted_avg("complexity")
 
         total = round((time + health + complexity) / 3)
 
