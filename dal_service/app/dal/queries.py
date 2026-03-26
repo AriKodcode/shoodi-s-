@@ -133,16 +133,19 @@ def build_query(request, category):
 
 
     if weights.lightness == 1:
-        query += " AND m.prep_time_minutes <= 30"
+        if weights.complexity == 1:
+            query += " AND m.prep_time_minutes <= 45"
+        else:
+            query += " AND m.prep_time_minutes <= 30"
     elif weights.lightness == 0.5:
         query += " AND m.prep_time_minutes <= 60"
 
-    
     if category != "salad":
-        if weights.complexity == 1:
-            query += " AND m.difficulty IN ('medium','hard')"
-        elif weights.complexity == 0:
-            query += " AND m.difficulty IN ('easy','medium')"
+        if not (weights.lightness == 1 and weights.complexity == 1):
+            if weights.complexity == 1:
+                query += " AND m.difficulty IN ('medium','hard')"
+            elif weights.complexity == 0:
+                query += " AND m.difficulty IN ('easy','medium')"
     else:
         query += " AND m.difficulty IN ('easy','medium')"
 
