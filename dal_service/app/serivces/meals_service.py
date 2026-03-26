@@ -72,3 +72,30 @@ class MealsService:
         elif p >= 60:
             return "התאמה סבירה"
         return "התאמה נמוכה"
+    
+    @staticmethod
+    def _combine_meal(main, side, salad):
+        parts = [p for p in [main, side, salad] if p]
+
+        if not parts:
+            return None
+
+        def avg(key):
+            return round(sum(p["match"]["breakdown"][key] for p in parts) / len(parts))
+
+        time = avg("time")
+        health = avg("health")
+        complexity = avg("complexity")
+
+        total = round((time + health + complexity) / 3)
+
+        return {
+            "match": {
+                "percent": total,
+                "breakdown": {
+                    "time": time,
+                    "health": health,
+                    "complexity": complexity
+                }
+            }
+        }
