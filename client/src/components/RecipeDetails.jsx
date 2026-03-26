@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import ReactMarkdown from 'react-markdown';
 import '../style/RecipeDetails.css'
 import { useMeals } from "../store/useStore";
 
@@ -76,7 +77,14 @@ function RecipeDetail() {
 
         <div className="recipe-instructions">
           <h2>אופן ההכנה:</h2>
-          <p>{meal.recipe}</p>
+
+          {/* 👇 כאן השינוי החשוב */}
+          <div className="markdown">
+            <ReactMarkdown>
+              {meal.recipe}
+            </ReactMarkdown>
+          </div>
+
         </div>
       </div>
     </div>
