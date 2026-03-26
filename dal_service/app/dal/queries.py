@@ -41,32 +41,27 @@ def build_query(request, category):
                 ((FIELD(m.difficulty, 'easy','medium','hard') - 1) / 2.0)
                 - {t_complex}
             ), 2)) * {w_complex}
-
         ) / ({w_time} + {w_health} + {w_complex})
 
         +
 
         (
-            (
-                EXISTS (
-                    SELECT 1
-                    FROM meal_tags mt
-                    JOIN tags t ON t.id = mt.tag_id
-                    WHERE mt.meal_id = m.id
-                    AND t.name IN ('בריא','דל פחמימות','עשיר בסיבים','עשיר בחלבון')
-                )
-                -
-                EXISTS (
-                    SELECT 1
-                    FROM meal_tags mt
-                    JOIN tags t ON t.id = mt.tag_id
-                    WHERE mt.meal_id = m.id
-                    AND t.name IN ('מטוגן','קרמי','אוכל מנחם')
-                )
+            EXISTS (
+                SELECT 1
+                FROM meal_tags mt
+                JOIN tags t ON t.id = mt.tag_id
+                WHERE mt.meal_id = m.id
+                AND t.name IN ('בריא','דל פחמימות','עשיר בסיבים','עשיר בחלבון')
             )
-            * (2 * {t_health} - 1)
-            * 0.1
-        )
+            -
+            EXISTS (
+                SELECT 1
+                FROM meal_tags mt
+                JOIN tags t ON t.id = mt.tag_id
+                WHERE mt.meal_id = m.id
+                AND t.name IN ('מטוגן','קרמי','אוכל מנחם')
+            )
+        ) * (2 * {t_health} - 1) * 0.1
 
         +
 
@@ -131,6 +126,10 @@ def build_query(request, category):
     elif weights.lightness == 0.5:
         query += " AND m.prep_time_minutes <= 60"
 
+    if weights.complexity == 1:
+        query += " AND m.difficulty IN ('medium','hard')"
+    elif weights.complexity == 0:
+        query += " AND m.difficulty IN ('easy','medium')"
     query += """
     ORDER BY score DESC, RAND()
     LIMIT 5
