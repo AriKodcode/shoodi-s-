@@ -117,6 +117,34 @@
 }
 
 /* ══════════════════════════════════════
+   HOME BUTTON
+══════════════════════════════════════ */
+.home-btn {
+  position: fixed;
+  top: 16px;
+  left: 20px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px 6px 12px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgba(255,92,26,.25);
+  background: rgba(255,92,26,.07);
+  color: var(--ember-deep);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, transform .15s;
+}
+.home-btn:hover {
+  background: rgba(255,92,26,.13);
+  border-color: rgba(255,92,26,.40);
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════
    ANIMATIONS
 ══════════════════════════════════════ */
 @keyframes fadeSlideDown {

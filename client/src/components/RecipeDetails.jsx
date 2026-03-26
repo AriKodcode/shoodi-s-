@@ -9,9 +9,18 @@ function RecipeDetail() {
   const mealsData = useMeals((state) => state.mealsData)
 
   let meal = null;
+  let nextMeal = null;
+  let prevMeal = null;
+
   for (const group of mealsData) {
-    const found = group.meals?.find((item) => item.meal?.id === parseInt(id));
-    if (found) { meal = found.meal; break; }
+    const dishes = group.meals || [];
+    const foundIndex = dishes.findIndex((item) => item.meal?.id === parseInt(id));
+    if (foundIndex !== -1) {
+      meal = dishes[foundIndex].meal;
+      if (dishes[foundIndex + 1]) nextMeal = dishes[foundIndex + 1].meal;
+      if (dishes[foundIndex - 1]) prevMeal = dishes[foundIndex - 1].meal;
+      break;
+    }
   }
 
   if (!meal) {
@@ -28,6 +37,23 @@ function RecipeDetail() {
       <div className="recipe-header">
         <img src={meal.image} alt={meal.name} />
         <h1>{meal.name}</h1>
+
+        {/* ── כפתורים בצד שמאל מתחת לתמונה ── */}
+        <div className="recipe-actions">
+          <button className="btn-secondary" onClick={() => navigate("/recipes")}>
+            → חזרה לכל הארוחות
+          </button>
+          {prevMeal && (
+            <button className="btn-outline" onClick={() => navigate(`/recipe/${prevMeal.id}`)}>
+              ← המנה הקודמת
+            </button>
+          )}
+          {nextMeal && (
+            <button className="btn-primary" onClick={() => navigate(`/recipe/${nextMeal.id}`)}>
+              המנה הבאה →
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="recipe-info">
@@ -42,7 +68,7 @@ function RecipeDetail() {
           <ul>
             {meal.ingredients?.map((ing, i) => (
               <li key={i}>
-                • {ing.quantity} {ing.unit} {ing.ingredient}
+                {ing.quantity} {ing.unit} {ing.ingredient}
               </li>
             ))}
           </ul>
