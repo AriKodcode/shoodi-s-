@@ -11,7 +11,7 @@ router = APIRouter()
 def get_manager(request:Request):
     return request.app.state.manager
 
-@router.post('/check_get',status_code=200)
+@router.post('/cache_get',status_code=200)
 def cache_cache(client_choice : ClientRequest, manager :Orchestrator = Depends(get_manager)):
     logger = logging.getLogger("get")
     try:
@@ -40,4 +40,4 @@ def get_data_for_cache(meals:Any =Body(...), data: ClientRequest = Body(...), ma
     except redis.ConnectionError:
         raise HTTPException(status_code=404, detail="Redis down")    
     except Exception:
-        raise HTTPException(status_code=404, detail="seer failed")    
+        raise HTTPException(status_code=404, detail="server failed")    
