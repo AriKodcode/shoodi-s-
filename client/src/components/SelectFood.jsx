@@ -18,11 +18,6 @@ function SelectFood() {
   const { getMeal } = usePostRequest()
 
 
-const steps = ["סוג ארוחה", "זמן עשייה", "בריאות", "רמת מורכבות"];
-const typeMeal = [{ text: "חלבי", icon: "🧀", value: "dairy" }, { text: "פרווה", icon: "🥗", value: "vegan" }, { text: "בשרי", icon: "🥩", value: "meat" }]
-const preferTime = [{ text: "מהיר", icon: "⚡", value: 1 }, { text: "בינוני", icon: "🕐", value: 0.5 }, { text: "ארוך", icon: "🔥", value: 0 }]
-const foodHealth = [{ text: "בריא", icon: "🥑", value: 1 }, { text: "קלאסי", icon: "🍽️", value: 0.5 }, { text: "ג'אנק", icon: "🍔", value: 0 }]
-const complexityPrefer = [{ text: "קל", icon: "🥄", value: 0 },{ text: "רגיל", icon: "🍳", value: 0.5 },{ text: "קשה", icon: "👨‍🍳", value: 1 }]
 
   const typeMeal = [
     { text: "חלבי",  icon: "🧀", value: "dairy" },
