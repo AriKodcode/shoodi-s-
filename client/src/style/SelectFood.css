@@ -161,7 +161,6 @@
   width: clamp(140px, 22vw, 240px);
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-card);
-  background: var(--card-bg);
   border: 1.5px solid rgba(255,92,26,.13);
   box-shadow: 0 6px 24px rgba(255,92,26,.08);
   cursor: pointer;
@@ -170,8 +169,7 @@
   transition:
     transform .32s cubic-bezier(.34,1.56,.64,1),
     box-shadow .28s ease,
-    border-color .22s ease,
-    background .22s ease;
+    border-color .22s ease;
   animation: cardIn .45s cubic-bezier(.22,1,.36,1) forwards;
   opacity: 0;
 }
@@ -198,12 +196,10 @@
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0 22px 52px rgba(217,64,16,.18);
   border-color: rgba(255,92,26,.32);
-  background: #fff;
 }
 
 .one-card.selected {
   border-color: var(--ember);
-  background: rgba(255,92,26,.05);
   box-shadow:
     0 0 0 3.5px rgba(255,92,26,.18),
     0 18px 48px rgba(217,64,16,.18);
@@ -266,18 +262,20 @@
 .btn-secondary {
   padding: 13px 32px;
   border-radius: 14px;
-  border: 1.5px solid rgba(255,92,26,.22);
-  background: rgba(255,92,26,.07);
-  color: var(--ember-deep);
+  border: none;
+  background: linear-gradient(135deg, var(--ember-glow) 0%, var(--ember) 55%, var(--ember-deep) 100%);
+  color: #e76634 !important;
   font-family: var(--font-body);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 800;
   cursor: pointer;
-  transition: background .2s, border-color .2s, transform .15s;
+  box-shadow: 0 4px 18px rgba(255,92,26,.30);
+  transition: background .2s, color .2s, transform .15s, box-shadow .2s;
 }
 .btn-secondary:hover {
-  background: rgba(255,92,26,.13);
-  border-color: rgba(255,92,26,.38);
+  background: #FF5C1A !important;
+  color: #fff !important;
+  box-shadow: 0 8px 26px rgba(255,92,26,.42);
   transform: translateY(-2px);
 }
 

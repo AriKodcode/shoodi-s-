@@ -82,6 +82,10 @@ function RecipeSelection() {
   if (step === "meals") {
     return (
       <div className="page">
+        <button className="home-btn" onClick={() => navigate("/")}>
+          🏠 ראשי
+        </button>
+
         <div className="header">
           <h1>מה תרצה לאכול היום?</h1>
           <p>בחר ארוחה ונציג לך את האפשרויות</p>
@@ -131,6 +135,10 @@ function RecipeSelection() {
   ════════════════════════════════════ */
   return (
     <div className="page">
+      <button className="home-btn" onClick={() => navigate("/")}>
+        🏠 ראשי
+      </button>
+
       <div className={`header ${isExiting ? "exit" : ""}`}>
         <button className="back-btn" onClick={handleBack}>
           → חזרה לארוחות
@@ -176,10 +184,6 @@ function RecipeSelection() {
 
                 {/* ── תוכן ── */}
                 <div className="card-content">
-
-
-
-
                   {/* שם */}
                   <h3>{dish.name}</h3>
 
