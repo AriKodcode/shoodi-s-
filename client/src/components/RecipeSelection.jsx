@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../style/RecipeSelection.css";
 import { useNavigate } from "react-router-dom";
-
 import { useMeals } from "../store/useStore";
 
 const mealTypeLabel = (type) => {
