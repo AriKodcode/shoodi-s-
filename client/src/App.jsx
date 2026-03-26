@@ -16,7 +16,7 @@ function App() {
       <Route path='/' element={<MainPage />} />
       <Route path='/recipes' element={<RecipesPage/>}/>
       <Route path="/recipe/:id" element={<RecipeDetailsPage />} />
-      <Route path='/errorPage' element={<ErrorPage />} />
+      <Route path='*' element={<ErrorPage />} />
     </Routes>
     </BrowserRouter>
 
