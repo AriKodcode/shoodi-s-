@@ -88,7 +88,7 @@ def build_query(request, category):
             i.name LIKE '%שרימפס%'
             OR i.name LIKE '%בייקון%'
             OR i.name LIKE '%צלפות%'
-            OR i.name LIKE '%ספרינג רולס ויאטנמיים%'
+            OR i.name LIKE '%ספרינג%'
         )
     )
     """
