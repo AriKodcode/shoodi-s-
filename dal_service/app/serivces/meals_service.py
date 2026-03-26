@@ -53,13 +53,20 @@ class MealsService:
         meals = []
 
         for i in range(3):
-            meal = {
-                "main": MealsService._format_row(mains[i]) if i < len(mains) else None,
-                "side": MealsService._format_row(sides[i]) if i < len(sides) else None,
-                "salad": MealsService._format_row(salads[i]) if i < len(salads) else None,
-            }
-            meals.append(meal)
+            main = MealsService._format_row(mains[i]) if i < len(mains) else None
+            side = MealsService._format_row(sides[i]) if i < len(sides) else None
+            salad = MealsService._format_row(salads[i]) if i < len(salads) else None
 
+            combined = MealsService._combine_meal(main, side, salad)
+
+            meals.append({
+                "meal": combined,
+                "items": {
+                    "main": main["id"] if main else None,
+                    "side": side["id"] if side else None,
+                    "salad": salad["id"] if salad else None,
+                }
+            })
         return meals
     
 
