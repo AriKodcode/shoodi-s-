@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request, Depends, HTTPException
+from fastapi import APIRouter, Request, Depends, HTTPException, Body
 from schemas import ClientRequest
 from orchestrator import Orchestrator
 import json 
@@ -27,7 +27,7 @@ def cache_cache(client_choice : ClientRequest, manager :Orchestrator = Depends(g
 
 
 @router.post('/cache_set',status_code=200)
-def get_data_for_cache(data:Any, client_choice: ClientRequest, manager:Orchestrator = Depends(get_manager)):
+def get_data_for_cache(meals:Any =Body(...), data: ClientRequest = Body(...), manager:Orchestrator = Depends(get_manager)):
     try:
         logger = logging.getLogger('set')
         key = manager.normalization_client_choice(data)
