@@ -49,3 +49,14 @@ class MealsService:
             meals.append(meal)
 
         return meals
+    
+
+    @staticmethod
+    def _label_match(p):
+        if p >= 90:
+            return "התאמה גבוהה מאוד"
+        elif p >= 75:
+            return "התאמה טובה"
+        elif p >= 60:
+            return "התאמה סבירה"
+        return "התאמה נמוכה"
