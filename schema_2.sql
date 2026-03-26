@@ -5453,3 +5453,15 @@ SELECT
     ) AS meal
 
 FROM meals m;
+
+
+UPDATE meals
+SET image = CASE id
+    WHEN 60 THEN 'https://www.thekitchencoach.co.il/wp-content/uploads/2015/09/RRR1.jpg'
+    WHEN 151 THEN 'https://hommyfood.co.il/wp-content/uploads/2024/01/%D7%90%D7%95%D7%9B%D7%9C-%D7%91%D7%99%D7%AA%D7%99-%D7%91%D7%A7%D7%9C%D7%95%D7%AA.webp'
+    WHEN 22 THEN 'https://batchen.cooking/wp-content/uploads/IMG_5763-Custom.jpg'
+    WHEN 1 THEN 'https://d3o5sihylz93ps.cloudfront.net/wp-content/uploads/2023/03/12105110/IMG_6577-%D7%91%D7%99%D7%A0%D7%95%D7%A0%D7%99-1024x683.jpg'
+    WHEN 122 THEN 'https://img.haarets.co.il/bs/0000018c-7d1a-d301-a3ac-ffdb368d0001/1f/2e/11824ff249d5a057489afd8f9caf/74467.jpg?&width=1100&height=1294&cmsprod'
+    WHEN 104 THEN 'https://d3o5sihylz93ps.cloudfront.net/wp-content/uploads/2025/12/17095540/chicken_sano_04-1024x682.jpg'
+END
+WHERE id IN (60, 151, 22, 1, 122, 104);
