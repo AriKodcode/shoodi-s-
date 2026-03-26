@@ -17,7 +17,7 @@ db = os.getenv("MYSQL_DB")
 
 class DatabaseConnection:
     MAX_RETRIES = 5
-    RETRY_DELAY = 2  # seconds
+    RETRY_DELAY = 2
 
     @staticmethod
     def get_connection():
@@ -37,13 +37,13 @@ class DatabaseConnection:
                 )
 
                 if conn.is_connected():
-                    logging.info("✅ Connected to MySQL")
+                    logging.info("Connected to MySQL")
                     return conn
 
             except Exception as e:
-                logging.error(f"❌ Connection failed: {e}")
+                logging.error(f"Connection failed: {e}")
 
             attempt += 1
             time.sleep(DatabaseConnection.RETRY_DELAY)
 
-        raise RuntimeError("🚨 Failed to connect to MySQL after retries")
+        raise RuntimeError("Failed to connect to MySQL after retries")

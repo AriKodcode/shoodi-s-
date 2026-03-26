@@ -32,6 +32,7 @@ function normalizeMeals(data) {
 
 function RecipeSelection() {
   const navigate = useNavigate();
+
   const mealsData = useMeals((state) => state.mealsData)
   const meals = mealsData && mealsData.length > 0 ? normalizeMeals({ meals: mealsData }) : [];
   const [step, setStep] = useState("meals");
@@ -39,6 +40,7 @@ function RecipeSelection() {
   const [selectedDish, setSelectedDish] = useState(null);
   const [isExiting, setIsExiting] = useState(false);
 
+  
   if (!meals || meals.length === 0) {
     return (
       <div className="page">
@@ -95,6 +97,8 @@ function RecipeSelection() {
                 onClick={() => handleMealSelect(meal)}
               >
                 <div className="meal-hero-img">
+                  {/* תוספת אחוזי התאמה */}
+                  <p className="meal-match-badge">{meal.match}% התאמה של</p>
                   {meal.dishes.slice(0, 3).map((dish, di) => (
                     <div key={di} className="meal-hero-img-slice">
                       <img src={dish.image} alt={dish.name} />
@@ -238,5 +242,4 @@ function RecipeSelection() {
     </div>
   );
 }
-
 export default RecipeSelection;
