@@ -5465,3 +5465,7 @@ SET image = CASE id
     WHEN 104 THEN 'https://d3o5sihylz93ps.cloudfront.net/wp-content/uploads/2025/12/17095540/chicken_sano_04-1024x682.jpg'
 END
 WHERE id IN (60, 151, 22, 1, 122, 104);
+
+UPDATE meals
+SET name = 'מרק עגבניות קלוי'
+WHERE id = 49
