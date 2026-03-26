@@ -292,3 +292,34 @@
   .buttons { padding: 12px 20px 20px; }
   .btn-primary, .btn-secondary { padding: 11px 24px; font-size: 14px; }
 }
+
+.loading-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--parchment); /* הצבע שבו השתמשת */
+  text-align: center;
+}
+
+.loader-content h2 {
+  font-size: 2rem;
+  color: var(--bark);
+  margin-top: 20px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.spinner {
+  font-size: 4rem;
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

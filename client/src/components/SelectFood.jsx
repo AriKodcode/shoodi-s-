@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+import { useState } from 'react'
 import '../style/SelectFood.css'
 import foodImage from '../assets/hero-food.jpg'
 import Card from './Card';
@@ -6,39 +6,41 @@ import usePostRequest from '../customHooks/PostRequest';
 
 function SelectFood() {
   const [currentStep, setCurrentStep] = useState(0);
-  const [type,        setType]        = useState(null)
-  const [lightness,   setLightness]   = useState(null)
-  const [health,      setHealth]      = useState(null)
-  const [complexity,  setComplexity]  = useState(null)
+  const [type, setType] = useState(null)
+  const [lightness, setLightness] = useState(null)
+  const [health, setHealth] = useState(null)
+  const [complexity, setComplexity] = useState(null)
+  const [isLoading, setIsLoading] = useState(false);
 
-  const HOST  = import.meta.env.VITE_BACKEND_HOST
-  const PORT  = import.meta.env.VITE_BACKEND_PORT
+
+  const HOST = import.meta.env.VITE_BACKEND_HOST
+  const PORT = import.meta.env.VITE_BACKEND_PORT
   const ROUTE = import.meta.env.VITE_BACKEND_ROUTE
 
   const { getMeal } = usePostRequest()
 
 
-const steps = ["סוג ארוחה", "זמן עשייה", "בריאות", "רמת מורכבות"];
+  const steps = ["סוג ארוחה", "זמן עשייה", "בריאות", "רמת מורכבות"];
 
   const typeMeal = [
-    { text: "חלבי",  icon: "🧀", value: "dairy" },
+    { text: "חלבי", icon: "🧀", value: "dairy" },
     { text: "פרווה", icon: "🥗", value: "vegan" },
-    { text: "בשרי",  icon: "🥩", value: "meat"  }
+    { text: "בשרי", icon: "🥩", value: "meat" }
   ]
   const preferTime = [
-    { text: "מהיר",  icon: "⚡", value: 1   },
+    { text: "מהיר", icon: "⚡", value: 1 },
     { text: "בינוני", icon: "🕐", value: 0.5 },
-    { text: "ארוך",  icon: "🔥", value: 0   }
+    { text: "ארוך", icon: "🔥", value: 0 }
   ]
   const foodHealth = [
-    { text: "בריא",  icon: "🥑",  value: 1   },
+    { text: "בריא", icon: "🥑", value: 1 },
     { text: "קלאסי", icon: "🍽️", value: 0.5 },
-    { text: "ג'אנק", icon: "🍔",  value: 0   }
+    { text: "ג'אנק", icon: "🍔", value: 0 }
   ]
   const complexityPrefer = [
-    { text: "קל",   icon: "🥄",   value: 0   },
-    { text: "רגיל", icon: "🍳",   value: 0.5 },
-    { text: "קשה",  icon: "👨‍🍳", value: 1   }
+    { text: "קל", icon: "🥄", value: 0 },
+    { text: "רגיל", icon: "🍳", value: 0.5 },
+    { text: "קשה", icon: "👨‍🍳", value: 1 }
   ]
 
   // בחירה אוטומטית — לוחצים על קארד ועוברים לשלב הבא
@@ -51,23 +53,55 @@ const steps = ["סוג ארוחה", "זמן עשייה", "בריאות", "רמת
     }, 280);
   }
 
+  // async function handleSubmit() {
+  //   const filters = {
+  //     type,
+  //     weights: { lightness, health, complexity }
+  //   }
+  //   await getMeal(`http://${HOST}:${PORT}/${ROUTE}`, filters)
+  // }
+
   async function handleSubmit() {
     const filters = {
       type,
       weights: { lightness, health, complexity }
+    };
+
+    setIsLoading(true); // מתחילים טעינה
+
+    try {
+      await getMeal(`http://${HOST}:${PORT}/${ROUTE}`, filters);
+      // הניווט לדף הבא יתבצע בדרך כלל בתוך usePostRequest 
+      // או מיד אחרי ה-await כאן אם הנתונים נשמרים ב-Store
+    } catch (error) {
+      console.error("Error fetching meal:", error);
+      setIsLoading(false); // במקרה של שגיאה, מפסיקים טעינה כדי שהמשתמש ינסה שוב
     }
-    await getMeal(`http://${HOST}:${PORT}/${ROUTE}`, filters)
   }
 
   const currentData = [
-    { item: typeMeal,         state: type,       set: (v) => handleSelect(setType,       v) },
-    { item: preferTime,       state: lightness,  set: (v) => handleSelect(setLightness,  v) },
-    { item: foodHealth,       state: health,     set: (v) => handleSelect(setHealth,     v) },
-    { item: complexityPrefer, state: complexity, set: (v) => {
+    { item: typeMeal, state: type, set: (v) => handleSelect(setType, v) },
+    { item: preferTime, state: lightness, set: (v) => handleSelect(setLightness, v) },
+    { item: foodHealth, state: health, set: (v) => handleSelect(setHealth, v) },
+    {
+      item: complexityPrefer, state: complexity, set: (v) => {
         setComplexity(v);
       }
     },
   ][currentStep];
+
+  if (isLoading) {
+    return (
+      <div className="loading-page">
+        <div className="loader-content">
+          <div className="spinner">🍳</div>
+          <h2>השף שלנו כבר מרכיב לך תפריט...</h2>
+          <p>זה ייקח רק כמה שניות</p>
+        </div>
+      </div>
+    );
+  }
+
 
   return (
     <div className='select-food'>
