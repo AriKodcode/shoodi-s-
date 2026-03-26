@@ -33,7 +33,7 @@ function RecipeDetail() {
       <div className="recipe-info">
         <span>{meal.type === 'dairy' ? 'חלבי' : meal.type === 'meat' ? 'בשרי' : 'פרווה'}</span> |
         <span>{meal.style === 'heavy' ? 'כבד' : 'קליל'}</span> |
-        <span>{meal.category === 'main' ? 'מנה עיקרית' : 'מנה צדדית'}</span>
+        <span>{meal.category === 'main' ? 'מנה עיקרית' : 'תוספת'}</span>
       </div>
 
       <div className="recipe-body">
