@@ -18,6 +18,7 @@ function SelectFood() {
   const { getMeal } = usePostRequest()
 
 
+const steps = ["סוג ארוחה", "זמן עשייה", "בריאות", "רמת מורכבות"];
 
   const typeMeal = [
     { text: "חלבי",  icon: "🧀", value: "dairy" },
