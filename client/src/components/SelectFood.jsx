@@ -20,7 +20,7 @@ function SelectFood() {
   const { getMeal } = usePostRequest()
 
 
-  const steps = ["סוג ארוחה", "זמן עשייה", "בריאות", "רמת מורכבות"];
+  const steps = ["מה בא לך?", "מה הקצב שלך היום?", "כמה בריא הולכים היום?", "כמה בא לך להשקיע?"];
 
   const typeMeal = [
     { text: "חלבי", icon: "🧀", value: "dairy" },
@@ -28,19 +28,19 @@ function SelectFood() {
     { text: "בשרי", icon: "🥩", value: "meat" }
   ]
   const preferTime = [
-    { text: "מהיר", icon: "⚡", value: 1 },
-    { text: "בינוני", icon: "🕐", value: 0.5 },
-    { text: "ארוך", icon: "🔥", value: 0 }
+    { text: "זריז", icon: "⚡", value: 1 },
+    { text: "בכיף", icon: "🕐", value: 0.5 },
+    { text: "כשיש זמן", icon: "🔥", value: 0 }
   ]
   const foodHealth = [
-    { text: "בריא", icon: "🥑", value: 1 },
-    { text: "קלאסי", icon: "🍽️", value: 0.5 },
-    { text: "ג'אנק", icon: "🍔", value: 0 }
+    { text: "קליל ובריא", icon: "🥑", value: 1 },
+    { text: "מאוזן", icon: "🍽️", value: 0.5 },
+    { text: "מתפנק עד הסוף", icon: "🍔", value: 0 }
   ]
   const complexityPrefer = [
-    { text: "קל", icon: "🥄", value: 0 },
-    { text: "רגיל", icon: "🍳", value: 0.5 },
-    { text: "קשה", icon: "👨‍🍳", value: 1 }
+    { text: "בקטנה", icon: "🥄", value: 0 },
+    { text: "זורם", icon: "🍳", value: 0.5 },
+    { text: "למתקדמים", icon: "👨‍🍳", value: 1 }
   ]
 
   // בחירה אוטומטית — לוחצים על קארד ועוברים לשלב הבא
@@ -109,8 +109,9 @@ function SelectFood() {
       {/* ── Hero ── */}
       <div className="title">
         <img src={foodImage} alt="photo" />
-        <h1>בחר את הארוחה שלך</h1>
-        <h3>ספרו לנו מה בא לכם ונמצא את ההתאמה המושלמת עבורכם</h3>
+        <h1>MEAL MATCHER</h1>
+        <h2>בחר את הארוחה שלך</h2>
+        <h3>מצא את המנה שמתאימה לך</h3>
         <div className="gradient-overlay" />
       </div>
 
