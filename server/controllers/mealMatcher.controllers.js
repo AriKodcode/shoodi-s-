@@ -24,7 +24,7 @@ export default async function mealMatcher(req, res) {
 
     try {
       const checkCache = await axios.post(
-        `http://${CACHE_HOST}:${CACHE_PORT}/${CACHE_ROUTE_GET}`,
+        `${CACHE_HOST}${CACHE_PORT}/${CACHE_ROUTE_GET}`,
         req.body
       );
       if (checkCache.data) {
@@ -92,7 +92,7 @@ export default async function mealMatcher(req, res) {
     const allMeals = [firstMeal, secondMeal, thirdMeal];
     try {
       await axios.post(
-        `http://${CACHE_HOST}:${CACHE_PORT}/${CACHE_ROUTE_POST}`,
+        `${CACHE_HOST}${CACHE_PORT}/${CACHE_ROUTE_POST}`,
         { meals: allMeals, data: req.body }
       );
     } catch (err) {
