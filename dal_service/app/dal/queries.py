@@ -14,9 +14,14 @@ def build_query(request, category):
     w_health, t_health = map_preference(weights.health)
     w_complex, t_complex = map_preference(weights.complexity)
 
-    w_time *= 1.3
-    w_health *= 1.0
-    w_complex *= 0.7
+    if category == "salad":
+        w_complex *= 0.1  
+        w_time *= 1.2     
+        w_health *= 1.3   
+    else:
+        w_time *= 1.3
+        w_health *= 1.0
+        w_complex *= 0.7
 
     query = f"""
     SELECT 
@@ -72,6 +77,7 @@ def build_query(request, category):
     FROM meals m
 
     WHERE m.category = '{category}'
+    AND m.prep_time_minutes <= 120
 
     AND NOT EXISTS (
         SELECT 1
@@ -82,6 +88,7 @@ def build_query(request, category):
             i.name LIKE '%שרימפס%'
             OR i.name LIKE '%בייקון%'
             OR i.name LIKE '%צלפות%'
+            OR i.name LIKE '%ספרינג%'
         )
     )
     """
@@ -94,6 +101,7 @@ def build_query(request, category):
         elif request.type == "vegan":
             query += " AND m.type = 'vegan'"
 
+
     if request.include:
         for ing in request.include:
             query += f"""
@@ -104,6 +112,7 @@ def build_query(request, category):
                 WHERE mi.meal_id = m.id AND i.name = '{ing}'
             )
             """
+
 
     if request.exclude:
         for ing in request.exclude:
@@ -116,20 +125,27 @@ def build_query(request, category):
             )
             """
 
+
     if weights.health == 1:
         query += " AND m.calories <= 500"
     elif weights.health == 0.5:
         query += " AND m.calories <= 700"
+
 
     if weights.lightness == 1:
         query += " AND m.prep_time_minutes <= 30"
     elif weights.lightness == 0.5:
         query += " AND m.prep_time_minutes <= 60"
 
-    if weights.complexity == 1:
-        query += " AND m.difficulty IN ('medium','hard')"
-    elif weights.complexity == 0:
+    
+    if category != "salad":
+        if weights.complexity == 1:
+            query += " AND m.difficulty IN ('medium','hard')"
+        elif weights.complexity == 0:
+            query += " AND m.difficulty IN ('easy','medium')"
+    else:
         query += " AND m.difficulty IN ('easy','medium')"
+
     query += """
     ORDER BY score DESC, RAND()
     LIMIT 5
