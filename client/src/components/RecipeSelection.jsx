@@ -41,7 +41,6 @@ function RecipeSelection() {
   const [selectedDish, setSelectedDish] = useState(null);
   const [isExiting, setIsExiting] = useState(false);
 
-  console.log(mealsData)
   
   if (!meals || meals.length === 0) {
     return (
