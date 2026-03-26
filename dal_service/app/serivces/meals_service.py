@@ -8,15 +8,27 @@ class MealsService:
     def _format_row(row):
         if not row:
             return None
-        
-        score = round(row[5] * 10, 1) 
+
         return {
-            "id": row[0],
-            "light_score": row[1],
-            "health_score": row[2],
-            "complex_score": row[3],
-            "popularity_score": row[4],
-            "score": score
+            "id": [0],
+
+            "scores": {
+                "light": row[1],
+                "health": row[2],
+                "complex": row[3],
+                "popularity": row[4],
+            },
+
+            "match": {
+                "percent": row[12],
+                "breakdown": {
+                    "time": row[8],
+                    "health": row[9],
+                    "complexity": row[10],
+                }
+            },
+
+            "final_score": round(row[14], 3)
         }
 
     @staticmethod
