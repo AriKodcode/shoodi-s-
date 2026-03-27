@@ -339,7 +339,6 @@
   box-shadow: 0 0 0 3.5px rgba(255,92,26,.18), 0 16px 48px rgba(217,64,16,.18);
 }
 
-/* ── תמונה ── */
 .card-image {
   position: relative;
   overflow: hidden;
@@ -354,7 +353,6 @@
 }
 .card:hover .card-image img { transform: scale(1.06); }
 
-/* ✔ */
 .check {
   position: absolute;
   top: 12px; right: 12px;
@@ -372,7 +370,6 @@
   animation: checkPop .35s cubic-bezier(.34,1.56,.64,1);
 }
 
-/* קלוריות + זמן על התמונה */
 .card-img-badges {
   position: absolute;
   bottom: 10px;
@@ -396,7 +393,6 @@
 }
 .badge-icon { font-size: 12px; }
 
-/* ── תוכן ── */
 .card-content {
   padding: 16px 18px 12px;
   display: flex;
@@ -405,7 +401,6 @@
   gap: 8px;
 }
 
-/* כוכבים */
 .card-rating {
   display: flex;
   align-items: center;
@@ -431,7 +426,6 @@
   line-height: 1.2;
 }
 
-/* תיאור */
 .card-description {
   font-size: 13px;
   color: var(--sand);
@@ -443,7 +437,6 @@
   overflow: hidden;
 }
 
-/* תגיות */
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -462,7 +455,6 @@
 .card:hover .tags span    { background: rgba(255,92,26,.15); }
 .card.selected .tags span { background: rgba(255,92,26,.18); }
 
-/* ── פוטר בתוך הקארד ── */
 .card-footer {
   display: flex;
   align-items: center;
@@ -496,9 +488,7 @@
   color: var(--sand);
 }
 
-/* ══════════════════════════════════════
-   BOTTOM BAR
-══════════════════════════════════════ */
+
 .bottom-bar {
   position: fixed;
   bottom: 0; left: 0; right: 0;
@@ -551,9 +541,7 @@
 .name { display: flex; flex-direction: column; }
 
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
+
 @media (max-width: 900px) {
   .cards-container { grid-template-columns: repeat(2, 1fr); }
 }

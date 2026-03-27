@@ -43,7 +43,6 @@ function SelectFood() {
     { text: "למתקדמים", icon: "👨‍🍳", value: 1 }
   ]
 
-  // בחירה אוטומטית — לוחצים על קארד ועוברים לשלב הבא
   function handleSelect(setter, value) {
     setter(value);
     setTimeout(() => {
@@ -53,13 +52,7 @@ function SelectFood() {
     }, 280);
   }
 
-  // async function handleSubmit() {
-  //   const filters = {
-  //     type,
-  //     weights: { lightness, health, complexity }
-  //   }
-  //   await getMeal(`http://${HOST}:${PORT}/${ROUTE}`, filters)
-  // }
+
 
   async function handleSubmit() {
     const filters = {
@@ -67,15 +60,13 @@ function SelectFood() {
       weights: { lightness, health, complexity }
     };
 
-    setIsLoading(true); // מתחילים טעינה
-
+    setIsLoading(true);
     try {
       await getMeal(`http://${HOST}:${PORT}/${ROUTE}`, filters);
-      // הניווט לדף הבא יתבצע בדרך כלל בתוך usePostRequest 
-      // או מיד אחרי ה-await כאן אם הנתונים נשמרים ב-Store
+     
     } catch (error) {
       console.error("Error fetching meal:", error);
-      setIsLoading(false); // במקרה של שגיאה, מפסיקים טעינה כדי שהמשתמש ינסה שוב
+      setIsLoading(false); 
     }
   }
 
@@ -106,7 +97,6 @@ function SelectFood() {
   return (
     <div className='select-food'>
 
-      {/* ── Hero ── */}
       <div className="title">
         <img src={foodImage} alt="photo" />
         <h1>MEAL MATCHER</h1>
@@ -115,7 +105,6 @@ function SelectFood() {
         <div className="gradient-overlay" />
       </div>
 
-      {/* ── Stepper ── */}
       <div className="stepper-container">
         <div className="stepper">
           {steps.map((step, index) => (
@@ -129,7 +118,6 @@ function SelectFood() {
         </div>
       </div>
 
-      {/* ── Cards ── */}
       <Card
         key={currentStep}
         item={currentData.item}
@@ -137,7 +125,6 @@ function SelectFood() {
         set={currentData.set}
       />
 
-      {/* ── Buttons ── */}
       <div className="buttons">
         {currentStep === 3 && (
           <button

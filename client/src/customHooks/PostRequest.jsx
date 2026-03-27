@@ -22,11 +22,8 @@ function usePostRequest() {
             else {
                 const result = await res.json()
 
-                
-
                 setMeals(result.meals)
 
-                
                 navigate('/recipes')
             }
             
