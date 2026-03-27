@@ -76,9 +76,7 @@ function RecipeSelection() {
     if (selectedDish) navigate(`/recipe/${selectedDish.id}`);
   };
 
-  /* ════════════════════════════════════
-     STEP 1 — Meal Groups
-  ════════════════════════════════════ */
+ 
   if (step === "meals") {
     return (
       <div className="page">
@@ -101,7 +99,6 @@ function RecipeSelection() {
                 onClick={() => handleMealSelect(meal)}
               >
                 <div className="meal-hero-img">
-                  {/* תוספת אחוזי התאמה */}
                   <p className="meal-match-badge">{meal.match}% התאמה של</p>
                   {meal.dishes.slice(0, 3).map((dish, di) => (
                     <div key={di} className="meal-hero-img-slice">
@@ -130,9 +127,7 @@ function RecipeSelection() {
     );
   }
 
-  /* ════════════════════════════════════
-     STEP 2 — Dish Cards (new design)
-  ════════════════════════════════════ */
+
   return (
     <div className="page">
       <button className="home-btn" onClick={() => navigate("/")}>
@@ -158,14 +153,11 @@ function RecipeSelection() {
                 style={{ animationDelay: `${i * 0.1}s` }}
                 onClick={() => setSelectedDish(dish)}
               >
-                {/* ── תמונה ── */}
                 <div className="card-image">
                   <img src={dish.image} alt={dish.name} />
 
-                  {/* ✔ */}
                   {isSelected && <div className="check">✔</div>}
 
-                  {/* קלוריות + זמן על התמונה */}
                   <div className="card-img-badges">
                     {dish.calories && (
                       <span className="img-badge">
@@ -182,17 +174,13 @@ function RecipeSelection() {
                   </div>
                 </div>
 
-                {/* ── תוכן ── */}
                 <div className="card-content">
-                  {/* שם */}
                   <h3>{dish.name}</h3>
 
-                  {/* תיאור */}
                   {dish.description && (
                     <p className="card-description">{dish.description}</p>
                   )}
 
-                  {/* תגיות */}
                   <div className="tags">
                     {dish.tags?.map((tag, ti) => (
                       <span key={ti}>{tag}</span>
@@ -207,7 +195,6 @@ function RecipeSelection() {
                   </div>
                 </div>
 
-                {/* ── בר תחתון בתוך הקארד ── */}
                 <div className="card-footer">
                   <span className="tag-difficulty">
                     רמה: {difficultyLabel(dish.difficulty)}

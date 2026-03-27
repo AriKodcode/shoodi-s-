@@ -39,7 +39,6 @@ function RecipeDetail() {
         <img src={meal.image} alt={meal.name} />
         <h1>{meal.name}</h1>
 
-        {/* ── כפתורים בצד שמאל מתחת לתמונה ── */}
         <div className="recipe-actions">
           <button className="btn-secondary" onClick={() => navigate("/recipes")}>
             → חזרה לכל הארוחות
@@ -78,7 +77,6 @@ function RecipeDetail() {
         <div className="recipe-instructions">
           <h2>אופן ההכנה:</h2>
 
-          {/* 👇 כאן השינוי החשוב */}
           <div className="markdown">
             <ReactMarkdown>
               {meal.recipe}
