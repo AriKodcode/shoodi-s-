@@ -33,7 +33,10 @@ function normalizeMeals(data) {
 function RecipeSelection() {
   const navigate = useNavigate();
 
-  const mealsData = useMeals((state) => state.mealsData)
+  // const mealsData = useMeals((state) => state.mealsData)
+  const mealsData = JSON.parse(localStorage.getItem("meals"))
+
+
   const meals = mealsData && mealsData.length > 0 ? normalizeMeals({ meals: mealsData }) : [];
   const [step, setStep] = useState("meals");
   const [activeMeal, setActiveMeal] = useState(null);
