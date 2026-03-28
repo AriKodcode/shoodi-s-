@@ -23,7 +23,8 @@ function usePostRequest() {
                 const result = await res.json()
 
                 setMeals(result.meals)
-
+                
+                localStorage.setItem("meals",JSON.stringify(result.meals))
                 navigate('/recipes')
             }
             
