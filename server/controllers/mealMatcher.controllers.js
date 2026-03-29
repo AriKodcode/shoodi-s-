@@ -17,8 +17,6 @@ export default async function mealMatcher(req, res) {
         .json({ error: "Body must contain only two fields." });
     }
     checkFrontBody(type, weights);
-    console.log("before get cahce");
-
     try {
       const checkCache = await axios.post(
         `${CACHE_HOST}${CACHE_PORT}/${CACHE_ROUTE_GET}`,
@@ -43,10 +41,6 @@ export default async function mealMatcher(req, res) {
       return res.status(500).json({ error: "dataService is down" });
     }
     const meals = resDataService.meals;
-    console.log(meals);
-    console.log(meals[0].meal);
-    console.log(meals[0].items);
-
     const dataMeal1 = await getMealsByID(
       meals[0].items.main,
       meals[0].items.side,
@@ -124,6 +118,8 @@ export default async function mealMatcher(req, res) {
     } catch (err) {
       console.log("cant post meals to cache");
     }
+    console.log(allMeals);
+
     res.status(200).json({ meals: allMeals });
   } catch (err) {
     res.status(502).json({ error: err.message });
