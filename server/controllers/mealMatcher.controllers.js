@@ -71,6 +71,21 @@ export default async function mealMatcher(req, res) {
       meals[2].recipe_ids.side,
       meals[2].recipe_ids.salad
     );
+    const dataMeal4 = await getMealsByID(
+      meals[3].recipe_ids.main,
+      meals[3].recipe_ids.side,
+      meals[3].recipe_ids.salad
+    );
+    const dataMeal5 = await getMealsByID(
+      meals[4].recipe_ids.main,
+      meals[4].recipe_ids.side,
+      meals[4].recipe_ids.salad
+    );
+    const dataMeal6 = await getMealsByID(
+      meals[5].recipe_ids.main,
+      meals[5].recipe_ids.side,
+      meals[5].recipe_ids.salad
+    );
     const firstMeal = {
       id: 1,
       meals: dataMeal1,
@@ -89,12 +104,37 @@ export default async function mealMatcher(req, res) {
       match: meals[2].match,
       tags: meals[2].tags,
     };
-    const allMeals = [firstMeal, secondMeal, thirdMeal];
+    const fourthMeal = {
+      id: 4,
+      meals: dataMeal3,
+      match: meals[3].match,
+      tags: meals[3].tags,
+    };
+    const fifthMeal = {
+      id: 5,
+      meals: dataMeal3,
+      match: meals[4].match,
+      tags: meals[4].tags,
+    };
+    const sixthMeal = {
+      id: 6,
+      meals: dataMeal3,
+      match: meals[5].match,
+      tags: meals[5].tags,
+    };
+    const allMeals = [
+      firstMeal,
+      secondMeal,
+      thirdMeal,
+      fourthMeal,
+      fifthMeal,
+      sixthMeal,
+    ];
     try {
-      await axios.post(
-        `${CACHE_HOST}${CACHE_PORT}/${CACHE_ROUTE_POST}`,
-        { meals: allMeals, data: req.body }
-      );
+      await axios.post(`${CACHE_HOST}${CACHE_PORT}/${CACHE_ROUTE_POST}`, {
+        meals: allMeals,
+        data: req.body,
+      });
     } catch (err) {
       console.log("cant post meals to cache");
     }
