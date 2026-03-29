@@ -32,9 +32,6 @@ export default async function mealMatcher(req, res) {
       console.log({ error: "cant connect to cache server" });
     }
     let resDataService;
-    console.log(1);
-    console.log(HOST, PORT, ROUTE);
-
     try {
       const { data } = await axios.post(
         `http://${HOST}:${PORT}/${ROUTE}`,
@@ -45,8 +42,6 @@ export default async function mealMatcher(req, res) {
       console.log("cant connect to dataService");
       return res.status(500).json({ error: "dataService is down" });
     }
-    console.log(2);
-
     const meals = resDataService.meals;
     console.log(meals);
     console.log(meals[0].meal);
