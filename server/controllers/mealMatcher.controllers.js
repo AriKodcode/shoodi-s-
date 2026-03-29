@@ -106,19 +106,19 @@ export default async function mealMatcher(req, res) {
     };
     const fourthMeal = {
       id: 4,
-      meals: dataMeal3,
+      meals: dataMeal4,
       match: meals[3].match,
       tags: meals[3].tags,
     };
     const fifthMeal = {
       id: 5,
-      meals: dataMeal3,
+      meals: dataMeal5,
       match: meals[4].match,
       tags: meals[4].tags,
     };
     const sixthMeal = {
       id: 6,
-      meals: dataMeal3,
+      meals: dataMeal6,
       match: meals[5].match,
       tags: meals[5].tags,
     };
