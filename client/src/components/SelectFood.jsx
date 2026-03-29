@@ -62,7 +62,7 @@ function SelectFood() {
 
     setIsLoading(true);
     try {
-      await getMeal(`http://${HOST}:${PORT}/${ROUTE}`, filters);
+      await getMeal(`${HOST}${PORT}/${ROUTE}`, filters);
      
     } catch (error) {
       console.error("Error fetching meal:", error);
