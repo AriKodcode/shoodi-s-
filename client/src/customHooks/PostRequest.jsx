@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useMeals } from '../store/useStore'
 
 function usePostRequest() {
-    const setMeals = useMeals((state)=> state.recieveMeals)
     const navigate = useNavigate()
 
     async function getMeal(url, filters) {
@@ -22,7 +20,6 @@ function usePostRequest() {
             else {
                 const result = await res.json()
 
-                setMeals(result.meals)
                 
                 localStorage.setItem("meals",JSON.stringify(result.meals))
                 navigate('/recipes')

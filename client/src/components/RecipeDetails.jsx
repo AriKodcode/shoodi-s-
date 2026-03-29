@@ -2,12 +2,10 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
 import '../style/RecipeDetails.css'
-import { useMeals } from "../store/useStore";
 
 function RecipeDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  // const mealsData = useMeals((state) => state.mealsData)
   const mealsData = JSON.parse(localStorage.getItem("meals"))
   let meal = null;
   let nextMeal = null;

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../style/RecipeSelection.css";
 import { useNavigate } from "react-router-dom";
-import { useMeals } from "../store/useStore";
 
 const mealTypeLabel = (type) => {
   if (type === "dairy") return "חלבי";
@@ -33,7 +32,6 @@ function normalizeMeals(data) {
 function RecipeSelection() {
   const navigate = useNavigate();
 
-  // const mealsData = useMeals((state) => state.mealsData)
   const mealsData = JSON.parse(localStorage.getItem("meals"))
 
 
