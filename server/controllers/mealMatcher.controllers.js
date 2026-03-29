@@ -36,6 +36,9 @@ export default async function mealMatcher(req, res) {
     }
     let resDataService;
     try {
+      console.log(`http://${HOST}:${PORT}/${ROUTE}`);
+      console.log(req.body);
+      
       const { data } = await axios.post(
         `http://${HOST}:${PORT}/${ROUTE}`,
         req.body
