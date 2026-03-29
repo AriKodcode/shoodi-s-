@@ -43,13 +43,16 @@ function RecipeSelection() {
   const [selectedDish, setSelectedDish] = useState(null);
   const [isExiting, setIsExiting] = useState(false);
 
-  
+
   if (!meals || meals.length === 0) {
     return (
       <div className="page">
         <div className="header">
           <h1>לא נמצאו ארוחות</h1>
           <p>חזור לדף הראשי ותנסה שוב</p>
+          <button className="home-btn" onClick={() => navigate("/")} >
+          לדף הראשי
+          </button>
         </div>
       </div>
     );
@@ -79,7 +82,7 @@ function RecipeSelection() {
     if (selectedDish) navigate(`/recipe/${selectedDish.id}`);
   };
 
- 
+
   if (step === "meals") {
     return (
       <div className="page">
