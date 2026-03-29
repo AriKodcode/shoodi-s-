@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import { useState } from 'react'
 import '../style/SelectFood.css'
 import foodImage from '../assets/hero-food.jpg'
 import Card from './Card';
@@ -10,6 +10,8 @@ function SelectFood() {
   const [lightness, setLightness] = useState(null)
   const [health, setHealth] = useState(null)
   const [complexity, setComplexity] = useState(null)
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const HOST = import.meta.env.VITE_BACKEND_HOST
   const PORT = import.meta.env.VITE_BACKEND_PORT
@@ -17,62 +19,134 @@ function SelectFood() {
 
   const { getMeal } = usePostRequest()
 
-  const steps = ["סוג ארוחה", "זמן עשייה", "בריאות", "רמת מורכבות"];
-  const typeMeal = [{ text: "חלבי", icon: "🍕", value: "dairy" }, { text: "פרווה", icon: "🥪", value: "vegan" }, { text: "בשרי", icon: "🍔", value: "meat" }]
-  const preferTime = [{ text: "מהיר", icon: "⚡", value: 0 }, { text: "בינוני", icon: "🍳", value: 0.5 }, { text: "ארוך", icon: "⏳", value: 1 }]
-  const foodHealth = [{ text: "בריא", icon: "🥦", value: 1 }, { text: "קלאסי", icon: "🍲", value: 0.5 }, { text: "ג'אנק", icon: "🍟", value: 0 }]
-  const complexityPrefer = [{ text: "קשה", icon: "🥣", value: 0 }, { text: "רגיל", icon: "🍳", value: 0.5 }, { text: "קל", icon: "👨‍🍳", value: 1 },]
 
-  function isValid() {
-    if (currentStep === 0) return type === null
-    if (currentStep === 1) return lightness === null
-    if (currentStep === 2) return health === null
-    if (currentStep === 3) return complexity === null
+  const steps = ["מה בא לך?", "מה הקצב שלך היום?", "כמה בריא הולכים היום?", "כמה בא לך להשקיע?"];
+
+  const typeMeal = [
+    { text: "חלבי", icon: "🧀", value: "dairy" },
+    { text: "פרווה", icon: "🥗", value: "vegan" },
+    { text: "בשרי", icon: "🥩", value: "meat" }
+  ]
+  const preferTime = [
+    { text: "זריז", icon: "⚡", value: 1 },
+    { text: "בכיף", icon: "🕐", value: 0.5 },
+    { text: "כשיש זמן", icon: "🔥", value: 0 }
+  ]
+  const foodHealth = [
+    { text: "קליל ובריא", icon: "🥑", value: 1 },
+    { text: "מאוזן", icon: "🍽️", value: 0.5 },
+    { text: "מתפנק עד הסוף", icon: "🍔", value: 0 }
+  ]
+  const complexityPrefer = [
+    { text: "בקטנה", icon: "🥄", value: 0 },
+    { text: "זורם", icon: "🍳", value: 0.5 },
+    { text: "למתקדמים", icon: "👨‍🍳", value: 1 }
+  ]
+
+  function handleSelect(setter, value) {
+    setter(value);
+    setTimeout(() => {
+      if (currentStep < 3) {
+        setCurrentStep(prev => prev + 1);
+      }
+    }, 280);
   }
+
+
 
   async function handleSubmit() {
     const filters = {
-      type: type,
-      weight: {
-        lightness: lightness,
-        health: health,
-        complexity: complexity
-      }
+      type,
+      weights: { lightness, health, complexity }
+    };
+
+    setIsLoading(true);
+    try {
+      await getMeal(`http://${HOST}:${PORT}/${ROUTE}`, filters);
+     
+    } catch (error) {
+      console.error("Error fetching meal:", error);
+      setIsLoading(false); 
     }
-    await getMeal(`http://${HOST}:${PORT}/${ROUTE}`, filters)
+  }
+
+  const currentData = [
+    { item: typeMeal, state: type, set: (v) => handleSelect(setType, v) },
+    { item: preferTime, state: lightness, set: (v) => handleSelect(setLightness, v) },
+    { item: foodHealth, state: health, set: (v) => handleSelect(setHealth, v) },
+    {
+      item: complexityPrefer, state: complexity, set: (v) => {
+        setComplexity(v);
+      }
+    },
+  ][currentStep];
+
+  if (isLoading) {
+    return (
+      <div className="loading-page">
+        <div className="loader-content">
+          <div className="spinner">🍳</div>
+          <h2>השף שלנו כבר מרכיב לך תפריט...</h2>
+          <p>זה ייקח רק כמה שניות</p>
+        </div>
+      </div>
+    );
   }
 
 
-return (
-  <div className='select-food'>
-    <div className="title">
-      <img src={foodImage} alt="photo" />
-      <h1>בחר את הארוחה שלך</h1>
-      <h3>ספרו לנו מה בא לכם ונמצא את ההתאמה המושלמת עבורכם</h3>
-      <div className="gradient-overlay"></div>
+  return (
+    <div className='select-food'>
+
+      <div className="title">
+        <img src={foodImage} alt="photo" />
+        <h1>MEAL MATCHER</h1>
+        <h2>בחר את הארוחה שלך</h2>
+        <h3>מצא את המנה שמתאימה לך</h3>
+        <div className="gradient-overlay" />
+      </div>
+
+      <div className="stepper-container">
+        <div className="stepper">
+          {steps.map((step, index) => (
+            <div key={index} className="step-item">
+              <div className={`step-line ${index <= currentStep ? 'active' : ''}`} />
+              <span className={`step-text ${index === currentStep ? 'active-text' : ''}`}>
+                {step}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <Card
+        key={currentStep}
+        item={currentData.item}
+        state={currentData.state}
+        set={currentData.set}
+      />
+
+      <div className="buttons">
+        {currentStep === 3 && (
+          <button
+            disabled={complexity === null}
+            onClick={handleSubmit}
+            className="btn-primary"
+          >
+            מצאו לי מנה 🍽️
+          </button>
+        )}
+        {currentStep !== 0 && (
+          <button
+            className="btn-secondary"
+            onClick={() => setCurrentStep(currentStep - 1)}
+          >
+            חזרה
+          </button>
+        )}
+      </div>
 
     </div>
-    <div className="stepper-container">
-      <div className="stepper">
-        {steps.map((step, index) => (
-          <div key={index} className="step-item">
-            <div className={`step-line ${index === currentStep ? 'active' : ''}`}></div>
-            <span className={`step-text ${index === currentStep ? 'active-text' : ''}`}>
-              {step}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-    {currentStep === 0 ? <Card item={typeMeal} state={type} set={setType} /> : currentStep === 1 ? <Card item={preferTime} state={lightness} set={setLightness} />
-      : currentStep === 2 ? <Card item={foodHealth} state={health} set={setHealth} /> : <Card item={complexityPrefer} state={complexity} set={setComplexity} />}
-    <div className="buttons">
-      {currentStep !== 3 && <button disabled={isValid()} onClick={() => setCurrentStep(currentStep + 1)}>המשך</button>}
-      {currentStep === 3 && <button disabled={isValid()} onClick={handleSubmit}>מצאו לי מנה</button>}
-      {currentStep !== 0 && <button onClick={() => setCurrentStep(currentStep - 1)}>חזרה</button>}
-    </div>
-  </div>
-)
+  )
 }
 
 export default SelectFood

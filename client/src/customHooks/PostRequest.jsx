@@ -1,16 +1,18 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useMeals } from '../store/useStore'
 
 function usePostRequest() {
-    const [data, setData] = useState([]) 
+    const setMeals = useMeals((state)=> state.recieveMeals)
     const navigate = useNavigate()
-    
+
     async function getMeal(url, filters) {
+        
         try {
             const res = await fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(filters) 
+                body: JSON.stringify(filters)
             })
 
             if (!res.ok) {
@@ -19,18 +21,20 @@ function usePostRequest() {
             }
             else {
                 const result = await res.json()
+
+                setMeals(result.meals)
                 
-                setData(result.meals)
-                
-                navigate('/recipe')
+                localStorage.setItem("meals",JSON.stringify(result.meals))
+                navigate('/recipes')
             }
+            
         } catch (err) {
             console.log("Fetch error:", err)
             navigate('/errorPage')
         }
     }
 
-    return { getMeal, data }
+    return { getMeal }
 }
 
 export default usePostRequest

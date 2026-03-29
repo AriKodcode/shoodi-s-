@@ -404,13 +404,11 @@ INSERT INTO meals (id, name, type, category, style, recipe, complex_score, light
 0.32, 0.65, 0.68, 0.80),
 
 (80, 'פסטה קארבונרה', 'meat', 'main', 'heavy',
-'**הסוד המוחלט של קארבונרה אמיתית — אין שמנת!** **הגוונצ׳לה:** חותכים 150 גרם גוונצ׳לה (או פנצ׳טה, לא בייקון!) לקוביות 5 מ"מ. מטגנים בסיר **ללא שמן** — השומן שלהם מספיק — על בינונית 8 דקות עד לפריכות. מסירים 1/3 מהשומן שנוצר. **הקסטרד:** טורפים בקערה: 4 חלמונים + ביצה שלמה + 80 גרם פקורינו מגורד + 30 גרם פרמזן + **כמות נדיבה של פלפל שחור גרוס טרי** (קארבונרה = פחם). **הפסטה:** מבשלים 400 גרם ספגטי. שומרים 2 כוסות מי בישול מומלחות. **הסיום (קריטי!):** מכבים האש לחלוטין. מוסיפים הפסטה לסיר הגוונצ׳לה. יוצקים הקסטרד + כוס מי בישול — מערבבים בעוצמה ומהירות 60 שניות. הביצים מתבשלות מחום הפסטה בלבד. מוסיפים מי בישול נוספים לסמיכות קרמית. **פחות חום = קסטרד, יותר חום = ביצה מקושקשת!**',
+'**הסוד המוחלט של קארבונרה אמיתית — אין שמנת!** **הגוונצ׳לה:** חותכים 150 גרם גוונצ׳לה (או פנצ׳טה, לא בייקון!) לקוביות 5 ממ. מטגנים בסיר **ללא שמן** — השומן שלהם מספיק — על בינונית 8 דקות עד לפריכות. מסירים 1/3 מהשומן שנוצר. **הקסטרד:** טורפים בקערה: 4 חלמונים + ביצה שלמה + 80 גרם פקורינו מגורד + 30 גרם פרמזן + **כמות נדיבה של פלפל שחור גרוס טרי** (קארבונרה = פחם). **הפסטה:** מבשלים 400 גרם ספגטי. שומרים 2 כוסות מי בישול מומלחות. **הסיום (קריטי!):** מכבים האש לחלוטין. מוסיפים הפסטה לסיר הגוונצ׳לה. יוצקים הקסטרד + כוס מי בישול — מערבבים בעוצמה ומהירות 60 שניות. הביצים מתבשלות מחום הפסטה בלבד. מוסיפים מי בישול נוספים לסמיכות קרמית. **פחות חום = קסטרד, יותר חום = ביצה מקושקשת!**',
 0.65, 0.30, 0.42, 0.90),
 
--- המשך 81–100
-
 (81, 'ספגטי קאצ׳ו א פיפה', 'dairy', 'main', 'heavy',
-'**הפלפל:** קולים 2 כפיות פלפל שחור גרוס (גרוס גס, לא טחון!) במחבת יבשה 2 דקות עד לריחניות. מסירים לקערה. **הגבינה:** מגררים 150 גרם פקורינו רומנו טרי (לא מוכן!). מוסיפים 50 מ"ל מי בישול חמים + הפלפל הקלוי — מערבבים לקרם. **הפסטה:** מבשלים 400 גרם ספגטי במים עם **חצי הכמות הרגילה של מלח** — הגבינה מלוחה. שומרים 2 כוסות מי בישול עמילניים. **הסיום:** מכבים האש. מניחים הפסטה בסיר. יוצקים קרם הגבינה + 3/4 כוס מי בישול — מנערים הסיר בתנועות מעגליות (לא מערבבים) תוך הוספת מי בישול בהדרגה. **ממשיכים** עד לרוטב קרמי, מבריק, שמצפה כל ספגטי. **אין שמן זית! אין חמאה! אין שמנת!** רק גבינה, פלפל ועמילן.',
+'**הפלפל:** קולים 2 כפיות פלפל שחור גרוס (גרוס גס, לא טחון!) במחבת יבשה 2 דקות עד לריחניות. מסירים לקערה. **הגבינה:** מגררים 150 גרם פקורינו רומנו טרי (לא מוכן!). מוסיפים 50 ל מי בישול חמים + הפלפל הקלוי — מערבבים לקרם. **הפסטה:** מבשלים 400 גרם ספגטי במים עם **חצי הכמות הרגילה של מלח** — הגבינה מלוחה. שומרים 2 כוסות מי בישול עמילניים. **הסיום:** מכבים האש. מניחים הפסטה בסיר. יוצקים קרם הגבינה + 3/4 כוס מי בישול — מנערים הסיר בתנועות מעגליות (לא מערבבים) תוך הוספת מי בישול בהדרגה. **ממשיכים** עד לרוטב קרמי, מבריק, שמצפה כל ספגטי. **אין שמן זית! אין חמאה! אין שמנת!** רק גבינה, פלפל ועמילן',
 0.42, 0.35, 0.42, 0.85),
 
 (82, 'מלאווח עם גבינה וביצה', 'dairy', 'main', 'heavy',
@@ -3591,41 +3589,6 @@ INSERT INTO meal_ingredients VALUES
 (200,(SELECT id FROM ingredients WHERE name='גינגר'),2,'tsp');
 
 
-CREATE VIEW meal_full_view AS
-SELECT 
-    m.id,
-
-    JSON_OBJECT(
-        'id', m.id,
-        'name', m.name,
-        'type', m.type,
-        'category', m.category,
-        'style', m.style,
-        'recipe', m.recipe,
-        'image', m.image,
-
-        'ingredients', JSON_ARRAYAGG(
-            JSON_OBJECT(
-                'ingredient', sub.name,
-                'quantity', sub.quantity,
-                'unit', sub.unit
-            )
-        )
-    ) AS meal
-
-FROM meals m
-
-JOIN (
-    SELECT DISTINCT
-        mi.meal_id,
-        i.name,
-        mi.quantity,
-        mi.unit
-    FROM meal_ingredients mi
-    JOIN ingredients i ON i.id = mi.ingredient_id
-) sub ON m.id = sub.meal_id
-
-GROUP BY m.id;
 
 
 UPDATE meal_ingredients
@@ -5449,3 +5412,73 @@ SELECT 199, id FROM tags WHERE name IN ('קינוחים');
 
 INSERT IGNORE INTO meal_tags (meal_id, tag_id)
 SELECT 200, id FROM tags WHERE name IN ('סיר אחד','מנות אורז','לכל המשפחה');
+
+CREATE VIEW meal_full_view AS
+SELECT 
+    m.id,
+
+    JSON_OBJECT(
+        'id', m.id,
+        'name', m.name,
+        'type', m.type,
+        'category', m.category,
+        'style', m.style,
+        'recipe', m.recipe,
+        'image', m.image,
+        'prep_time_minutes', m.prep_time_minutes,
+        'calories', m.calories,
+        'description', m.description,
+        'difficulty', m.difficulty,
+
+        'ingredients', (
+            SELECT JSON_ARRAYAGG(
+                JSON_OBJECT(
+                    'ingredient', i.name,
+                    'quantity', mi.quantity,
+                    'unit', mi.unit
+                )
+            )
+            FROM meal_ingredients mi
+            JOIN ingredients i ON i.id = mi.ingredient_id
+            WHERE mi.meal_id = m.id
+        ),
+
+        'tags', (
+            SELECT JSON_ARRAYAGG(t.name)
+            FROM meal_tags mt
+            JOIN tags t ON t.id = mt.tag_id
+            WHERE mt.meal_id = m.id
+        )
+
+    ) AS meal
+
+FROM meals m;
+
+
+UPDATE meals
+SET image = CASE id
+    WHEN 60 THEN 'https://www.thekitchencoach.co.il/wp-content/uploads/2015/09/RRR1.jpg'
+    WHEN 151 THEN 'https://hommyfood.co.il/wp-content/uploads/2024/01/%D7%90%D7%95%D7%9B%D7%9C-%D7%91%D7%99%D7%AA%D7%99-%D7%91%D7%A7%D7%9C%D7%95%D7%AA.webp'
+    WHEN 22 THEN 'https://batchen.cooking/wp-content/uploads/IMG_5763-Custom.jpg'
+    WHEN 1 THEN 'https://d3o5sihylz93ps.cloudfront.net/wp-content/uploads/2023/03/12105110/IMG_6577-%D7%91%D7%99%D7%A0%D7%95%D7%A0%D7%99-1024x683.jpg'
+    WHEN 122 THEN 'https://img.haarets.co.il/bs/0000018c-7d1a-d301-a3ac-ffdb368d0001/1f/2e/11824ff249d5a057489afd8f9caf/74467.jpg?&width=1100&height=1294&cmsprod'
+    WHEN 104 THEN 'https://d3o5sihylz93ps.cloudfront.net/wp-content/uploads/2025/12/17095540/chicken_sano_04-1024x682.jpg'
+END
+WHERE id IN (60, 151, 22, 1, 122, 104);
+
+UPDATE meals
+SET name = 'מרק עגבניות קלוי'
+WHERE id = 49
+
+UPDATE meals
+SET image = CASE id
+    WHEN 190 THEN 'https://st1.foodsd.co.il/Images/Recipes/xxl/Recipe-10111-6bhz4vuiiPmHRtTJ.jpg'
+    WHEN 144 THEN 'https://d3o5sihylz93ps.cloudfront.net/wp-content/uploads/2020/05/07101401/%D7%A7%D7%99%D7%A9-%D7%91%D7%98%D7%98%D7%94-4-1001x733.jpg'
+    WHEN 141 THEN 'https://imaot.co.il/images/Uploads/RecipeImages/79728512112020.jpg'
+    WHEN 178 THEN 'https://www.thekitchencoach.co.il/wp-content/uploads/2020/05/%D7%A4%D7%A8%D7%99%D7%98%D7%98%D7%94-%D7%91%D7%98%D7%98%D7%94-%D7%91%D7%A6%D7%9C-%D7%95%D7%A4%D7%9C%D7%A4%D7%9C%D7%99%D7%9D-%D7%A2%D7%9D-%D7%92%D7%91%D7%99%D7%A0%D7%95%D7%AA.-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A2%D7%96-%D7%AA%D7%9C%D7%9D.jpg'
+END
+WHERE id IN (190, 144, 141, 178);
+
+UPDATE meals
+SET name = 'פרגיות על האש עם חציל קלוי'
+WHERE id = 5;
