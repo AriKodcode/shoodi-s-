@@ -1,7 +1,5 @@
 import axios from "axios";
-import {
-  checkFrontBody,
-} from "../services/checkReqRes.services.js";
+import { checkFrontBody } from "../services/checkReqRes.services.js";
 import { getMealsByID } from "../dal/mysqlQuery.dal.js";
 const HOST = process.env.DAL_HOST;
 const PORT = process.env.DAL_PORT;
@@ -19,6 +17,7 @@ export default async function mealMatcher(req, res) {
         .json({ error: "Body must contain only two fields." });
     }
     checkFrontBody(type, weights);
+    console.log("before get cahce");
 
     try {
       const checkCache = await axios.post(
@@ -33,6 +32,9 @@ export default async function mealMatcher(req, res) {
       console.log({ error: "cant connect to cache server" });
     }
     let resDataService;
+    console.log(1);
+    console.log(HOST, PORT, ROUTE);
+
     try {
       const { data } = await axios.post(
         `http://${HOST}:${PORT}/${ROUTE}`,
@@ -43,7 +45,13 @@ export default async function mealMatcher(req, res) {
       console.log("cant connect to dataService");
       return res.status(500).json({ error: "dataService is down" });
     }
-    const meals = resDataService.result;
+    console.log(2);
+
+    const meals = resDataService.meals;
+    console.log(meals);
+    console.log(meals[0].meal);
+    console.log(meals[0].items);
+
     const dataMeal1 = await getMealsByID(
       meals[0].items.main,
       meals[0].items.side,
@@ -112,6 +120,7 @@ export default async function mealMatcher(req, res) {
       fifthMeal,
       sixthMeal,
     ];
+
     try {
       await axios.post(`${CACHE_HOST}${CACHE_PORT}/${CACHE_ROUTE_POST}`, {
         meals: allMeals,
