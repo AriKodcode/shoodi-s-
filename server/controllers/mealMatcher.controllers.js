@@ -119,6 +119,7 @@ export default async function mealMatcher(req, res) {
       console.log("cant post meals to cache");
     }
     console.log(allMeals);
+    console.log(1);
 
     res.status(200).json({ meals: allMeals });
   } catch (err) {
