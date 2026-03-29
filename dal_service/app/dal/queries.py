@@ -208,7 +208,7 @@ def build_query(request, category):
 
     query += """
     ORDER BY score DESC
-    LIMIT 5
+    LIMIT 6
     """
 
     return query
