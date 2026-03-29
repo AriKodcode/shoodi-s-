@@ -16,18 +16,6 @@ services:
     ports:
       
       - "8000:8000"
-  analyze-service:
-    build: ./data-analyze
-    container_name: analyze-service
-    depends_on:
-      dal-service:
-        condition: service_started
-    ports:
-      - "8001:8001"
-    environment:
-      - DAL_HOST=dal-service
-      - DAL_PORT=8000
-      - DAL_ROUTE=candidates
   backend:
     build: ./server
     ports:
