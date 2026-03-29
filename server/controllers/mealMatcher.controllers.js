@@ -5,9 +5,9 @@ import {
 } from "../services/checkReqRes.services.js";
 import { getMealsByID } from "../dal/mysqlQuery.dal.js";
 import { json } from "express";
-const HOST = process.env.ANALYZE_HOST;
-const PORT = process.env.ANALYZE_PORT;
-const ROUTE = process.env.ANALYZE_ROUTE;
+const HOST = process.env.ANALYZE_SERVICE_HOST;
+const PORT = process.env.ANALYZE_SERVICE_PORT;
+const ROUTE = process.env.ANALYZE_SERVICE_ROUTE;
 const CACHE_HOST = process.env.CACHE_HOST;
 const CACHE_PORT = process.env.CACHE_PORT;
 const CACHE_ROUTE_GET = process.env.CACHE_ROUTE_GET;
