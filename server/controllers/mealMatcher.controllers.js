@@ -1,13 +1,11 @@
 import axios from "axios";
 import {
-  checkDataService,
   checkFrontBody,
 } from "../services/checkReqRes.services.js";
 import { getMealsByID } from "../dal/mysqlQuery.dal.js";
-import { json } from "express";
-const HOST = process.env.ANALYZE_HOST;
-const PORT = process.env.ANALYZE_PORT;
-const ROUTE = process.env.ANALYZE_ROUTE;
+const HOST = process.env.DAL_HOST;
+const PORT = process.env.DAL_PORT;
+const ROUTE = process.env.DAL_ROUTE;
 const CACHE_HOST = process.env.CACHE_HOST;
 const CACHE_PORT = process.env.CACHE_PORT;
 const CACHE_ROUTE_GET = process.env.CACHE_ROUTE_GET;
@@ -45,82 +43,66 @@ export default async function mealMatcher(req, res) {
       console.log("cant connect to dataService");
       return res.status(500).json({ error: "dataService is down" });
     }
-    if (
-      !Array.isArray(resDataService.result) ||
-      resDataService.result.length !== 3
-    ) {
-      return res.status(500).json({ error: "Service did not return 3 meals." });
-    }
-    resDataService.result.forEach((meal) => {
-      checkDataService(meal.recipe_ids, meal.match, meal.tags);
-    });
     const meals = resDataService.result;
-
     const dataMeal1 = await getMealsByID(
-      meals[0].recipe_ids.main,
-      meals[0].recipe_ids.side,
-      meals[0].recipe_ids.salad
+      meals[0].items.main,
+      meals[0].items.side,
+      meals[0].items.salad
     );
     const dataMeal2 = await getMealsByID(
-      meals[1].recipe_ids.main,
-      meals[1].recipe_ids.side,
-      meals[1].recipe_ids.salad
+      meals[1].items.main,
+      meals[1].items.side,
+      meals[1].items.salad
     );
     const dataMeal3 = await getMealsByID(
-      meals[2].recipe_ids.main,
-      meals[2].recipe_ids.side,
-      meals[2].recipe_ids.salad
+      meals[2].items.main,
+      meals[2].items.side,
+      meals[2].items.salad
     );
     const dataMeal4 = await getMealsByID(
-      meals[3].recipe_ids.main,
-      meals[3].recipe_ids.side,
-      meals[3].recipe_ids.salad
+      meals[3].items.main,
+      meals[3].items.side,
+      meals[3].items.salad
     );
     const dataMeal5 = await getMealsByID(
-      meals[4].recipe_ids.main,
-      meals[4].recipe_ids.side,
-      meals[4].recipe_ids.salad
+      meals[4].items.main,
+      meals[4].items.side,
+      meals[4].items.salad
     );
     const dataMeal6 = await getMealsByID(
-      meals[5].recipe_ids.main,
-      meals[5].recipe_ids.side,
-      meals[5].recipe_ids.salad
+      meals[5].items.main,
+      meals[5].items.side,
+      meals[5].items.salad
     );
     const firstMeal = {
       id: 1,
       meals: dataMeal1,
-      match: meals[0].match,
-      tags: meals[0].tags,
+      match: meals[0].meal.match,
     };
     const secondMeal = {
       id: 2,
       meals: dataMeal2,
-      match: meals[1].match,
-      tags: meals[1].tags,
+      match: meals[1].meal.match,
     };
     const thirdMeal = {
       id: 3,
       meals: dataMeal3,
-      match: meals[2].match,
-      tags: meals[2].tags,
+      match: meals[2].meal.match,
     };
     const fourthMeal = {
       id: 4,
       meals: dataMeal4,
-      match: meals[3].match,
-      tags: meals[3].tags,
+      match: meals[3].meal.match,
     };
     const fifthMeal = {
       id: 5,
       meals: dataMeal5,
-      match: meals[4].match,
-      tags: meals[4].tags,
+      match: meals[4].meal.match,
     };
     const sixthMeal = {
       id: 6,
       meals: dataMeal6,
-      match: meals[5].match,
-      tags: meals[5].tags,
+      match: meals[5].meal.match,
     };
     const allMeals = [
       firstMeal,
